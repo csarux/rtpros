@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<protocolo_clinico>
+<estructuras>
+    <estructura id='Body' label='Body'>
+        <restriccion id='Dmax' unit='Gy'>60</restriccion>
+    </estructura>
+    <estructura id='PTV' label='PTV'>
+        <restriccion id='V95' unit='%'>95</restriccion>
+        <restriccion id='V107' unit='%'>5</restriccion>
+    </estructura>
+</estructuras>
+</protocolo_clinico>
