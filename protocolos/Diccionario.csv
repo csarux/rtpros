@@ -1,110 +1,111 @@
-,orgn, tras, cod, newcod
-0,Cabeza humeral I, Humerus_L, 25929, 
-1,Cabeza humeral D, Humerus_R, 25927, 
-2,Pulmón Izqdo, Lung_L, 7310, 
-3,Pulmón Dcho, Lung_R, 7309, 
-4,Médula, SpinalCord, 7647, 
-5,Tiroides, Glnd_Thyroid, 9603, 
-6,Corazón/pericard, Heart, 7088, 
-7,Aurícula izqda, Atrium_L, 7097, 
-8,Aurícula dcha, Atrium_R, 7096, 
-9,Arteria pulmonar, A_Pulmonary, 66326, 
-10,Arteria DA, A_LAD, 3862, 
-11,Aorta ascendente, A_Aorta_Asc, 3734, 
-12,Vena cava inf, V_Venacava_I, 10951, 
-13,Vena cava sup, V_Venacava_S, 4720, 
-14,Ventrículo dcho, Ventricle_R, 7098, 
-15,Ventrículo izqdo, Ventricle_L, 7101, 
-16,Mama izqda, Breast_L, 268893, 19910
-17,Mama dcha, Breast_R, 268893, 19908
-18,PRV DA, PRV_A_LAD, , 
-19,Vejiga, Bladder, 15900, 
-20,Recto, Rectum, 14544, 
-21,Intestino, Bowel_Small, 7200, 
-22,Cabeza femoral I, Femur_Head_L, 32843, 
-23,Cabeza femoral D, Femur_Head_R, 32842, 
-24,Bulbo peneano, PenileBulb, 19614, 
-25,via area, AirWay_Prox, , NO TIENE CÓDIGO
-26,Corazón, Heart, 7088, 
-27,Esófago, Esophagus, 7131, 
-28,Pulmones, Lungs, 68877, 
-29,Tráquea, Trachea, 7394, 
-30,PRV medula, SpinalCanal_PRVx, , 
-31,Plexo Braquial, BrachialPlex_R, 45244, 
-32,Plexo Braquial, BrachialPlex_L, 45244, 45245
-33,Piel, Skin, 7163, 
-34,Pared Costal, Chestwall, 71331, 50060
-35,Higado, Liver, 7197, 
-36,Aorta, A_Aorta, 3734, 
-37,Arteria Pulmonar, A_Pulmonary, 66326, 
-38,Vena Cava Sup, V_Venacava_S, 4720, 
-39,Vena Cava Inf, V_Venacava_I, 10951, 
-40,Cristalino_I, Lens_L, 58243, 
-41,Cristalino_D, Lens_R, 58242, 
-42,Mandibula, Bone_Mandible, 52748, 
-43,N_optico_D, OpticNrv_R, 50875, 
-44,N_optico_I, OpticNrv_L, 50878, 
-45,Coclea_D, Cochlea_R, 53641, 60202
-46,Coclea_I, Cochlea_L, , 60203
-47,Ojo_D, Eye_R, 12514, 
-48,Ojo_I, Eye_L, 12515, 
-49,Parotida_D, Parotid_R, 59797, 
-50,Parotida_I, Parotid_L, 59798, 
-51,Quiasma, OpticChiasm, 62045, 
-52,Tronco, Brainstem, 79876, 
-53,ATM_D, Joint_TM_R, 54833, 
-54,ATM_I, Joint_TM_L, 54834, 
-55,Pulmon_D, Lung_R, 7309, 
-56,Pulmon_I, Lung_L, 7310, 
-57,Laringe, Larynx, 55097, 
-58,Cerebro, Brain, 50801, 
-59,Lob_Temporal_D, Lobe_Temporal_R, 50801, 72971
-60,Lob_Temporal_I, Lobe_Temporal_L, 50801, 72972
-61,Gland_subm_D, Glnd_Submand_R, 59802, 
-62,Gland_subm_I, Glnd_Submand_L, 59803, 
-63,Esofago, Esophagus, 7131, 
-64,, Glnd_Lacrimal_R, 59102, 
-65,, Glnd_Lacrimal_L, 59103, 
-66,, Cavity_Oral, 20292, 
-67,, Larynx_SG, 55476, 
-68,, Musc_Constrict, 46620, 
-69,, A_Carotid_R,,
-70,, 3941, ,
-71,, A_Carotid_L, 4058, 
-72,, BrachialPlex_R, 45244, 
-73,, BrachialPlex_L, 45245, 
-74,, Brainstem_PRV, , 
-75,, SpinalCord_PRV, , 
-76,, Pituitary, 13889, 
-77,Tronco cerebral, Brainstem, 79876, 
-78,Quiasma óptico, OpticChiasm, 62045, 
-79,Nervio óptico D, OpticNrv_R, 50875, 
-80,Nervio óptico I, OpticNrv_L, 50878, 
-81,Ojo Dcho, Eye_R, 12514, 
-82,Ojo Izqdo, Eye_L, 12515, 
-83,Cristalino Dcho, Lens_R, 58242, 
-84,Cristalino Izqdo, Lens_L, 58243, 
-85,Hipófisis, Pituitary, 13889, 
-86,Hipocampo, Hippocampus_R, 275020, 275022
-87,Hipocampo, Hippocampus_L, 275020, 275024
-88,Oido Dcho, Cochlea_R, 53641, 60202
-89,Oido Izqdo, Cochlea_L, 53642, 60203
-90,Hígado, Liver, 7197, 
-91,Riñon dcho, Kidney_R, 7204, 
-92,Riñon izqdo, Kidney_L, 7205, 
-93,Pulmón dcho, Lung_R, 7309, 
-94,Pulmón izqdo, Lung_L, 7310, 
-95,Estómago, Stomach, 7148, 
-96,Ao, A_Aorta, 3734, 
-97,PV, V_Portal, 66645, 
-98,CA, A_Celiac, 12792, 50737
-99,SMA, A_Mesenteric_S, 14749, 
-100,PJ, Pancreat_Jejun_A, , 
-101,Ambos pulmones, Lungs, 68877, 
-102,Ambos riñones, Kidneys, 264815, 
-103,Pared costal, Chestwall, 50060, 
-104,Hígado Sano, Liver-CTV, , 
-105,Duodeno, Duodenum, , 7206
-106,Ambos riñones, Kidneys, , 264815
-107,Ambos pulmones, Lungs, , 68877
-108,Aorta, A_Aorta, , 3734
+,orgn,tras,cod,newcod
+0,Cabeza humeral I," Humerus_L"," 25929"," "
+1,Cabeza humeral D," Humerus_R"," 25927"," "
+2,Pulmón Izqdo," Lung_L"," 7310"," "
+3,Pulmón Dcho," Lung_R"," 7309"," "
+4,Médula," SpinalCord"," 7647"," "
+5,Tiroides," Glnd_Thyroid"," 9603"," "
+6,Corazón/pericard," Heart"," 7088"," "
+7,Aurícula izqda," Atrium_L"," 7097"," "
+8,Aurícula dcha," Atrium_R"," 7096"," "
+9,Arteria pulmonar," A_Pulmonary"," 66326"," "
+10,Arteria DA," A_LAD"," 3862"," "
+11,Aorta ascendente," A_Aorta_Asc"," 3734"," "
+12,Vena cava inf," V_Venacava_I"," 10951"," "
+13,Vena cava sup," V_Venacava_S"," 4720"," "
+14,Ventrículo dcho," Ventricle_R"," 7098"," "
+15,Ventrículo izqdo," Ventricle_L"," 7101"," "
+16,Mama izqda," Breast_L"," 268893"," 19910"
+17,Mama dcha," Breast_R"," 268893"," 19908"
+18,PRV DA," PRV_A_LAD"," "," "
+19,Vejiga," Bladder"," 15900"," "
+20,Recto," Rectum"," 14544"," "
+21,Intestino," Bowel_Small"," 7200"," "
+22,Cabeza femoral I," Femur_Head_L"," 32843"," "
+23,Cabeza femoral D," Femur_Head_R"," 32842"," "
+24,Bulbo peneano," PenileBulb"," 19614"," "
+25,via area," AirWay_Prox"," "," NO TIENE CÓDIGO"
+26,Corazón," Heart"," 7088"," "
+27,Esófago," Esophagus"," 7131"," "
+28,Pulmones," Lungs"," 68877"," "
+29,Tráquea," Trachea"," 7394"," "
+30,PRV medula," SpinalCanal_PRVx"," "," "
+31,Plexo Braquial," BrachialPlex_R"," 45244"," "
+32,Plexo Braquial," BrachialPlex_L"," 45244"," 45245"
+33,Piel," Skin"," 7163"," "
+34,Pared Costal," Chestwall"," 71331"," 50060"
+35,Higado," Liver"," 7197"," "
+36,Aorta," A_Aorta"," 3734"," "
+37,Arteria Pulmonar," A_Pulmonary"," 66326"," "
+38,Vena Cava Sup," V_Venacava_S"," 4720"," "
+39,Vena Cava Inf," V_Venacava_I"," 10951"," "
+40,Cristalino_I," Lens_L"," 58243"," "
+41,Cristalino_D," Lens_R"," 58242"," "
+42,Mandibula," Bone_Mandible"," 52748"," "
+43,N_optico_D," OpticNrv_R"," 50875"," "
+44,N_optico_I," OpticNrv_L"," 50878"," "
+45,Coclea_D," Cochlea_R"," 53641"," 60202"
+46,Coclea_I," Cochlea_L"," "," 60203"
+47,Ojo_D," Eye_R"," 12514"," "
+48,Ojo_I," Eye_L"," 12515"," "
+49,Parotida_D," Parotid_R"," 59797"," "
+50,Parotida_I," Parotid_L"," 59798"," "
+51,Quiasma," OpticChiasm"," 62045"," "
+52,Tronco," Brainstem"," 79876"," "
+53,ATM_D," Joint_TM_R"," 54833"," "
+54,ATM_I," Joint_TM_L"," 54834"," "
+55,Pulmon_D," Lung_R"," 7309"," "
+56,Pulmon_I," Lung_L"," 7310"," "
+57,Laringe," Larynx"," 55097"," "
+58,Cerebro," Brain"," 50801"," "
+59,Lob_Temporal_D," Lobe_Temporal_R"," 50801"," 72971"
+60,Lob_Temporal_I," Lobe_Temporal_L"," 50801"," 72972"
+61,Gland_subm_D," Glnd_Submand_R"," 59802"," "
+62,Gland_subm_I," Glnd_Submand_L"," 59803"," "
+63,Esofago," Esophagus"," 7131"," "
+64,," Glnd_Lacrimal_R"," 59102"," "
+65,," Glnd_Lacrimal_L"," 59103"," "
+66,," Cavity_Oral"," 20292"," "
+67,," Larynx_SG"," 55476"," "
+68,," Musc_Constrict"," 46620"," "
+69,," A_Carotid_R",,
+70,," 3941"," ",
+71,," A_Carotid_L"," 4058"," "
+72,," BrachialPlex_R"," 45244"," "
+73,," BrachialPlex_L"," 45245"," "
+74,," Brainstem_PRV"," "," "
+75,," SpinalCord_PRV"," "," "
+76,," Pituitary"," 13889"," "
+77,Tronco cerebral," Brainstem"," 79876"," "
+78,Quiasma óptico," OpticChiasm"," 62045"," "
+79,Nervio óptico D," OpticNrv_R"," 50875"," "
+80,Nervio óptico I," OpticNrv_L"," 50878"," "
+81,Ojo Dcho," Eye_R"," 12514"," "
+82,Ojo Izqdo," Eye_L"," 12515"," "
+83,Cristalino Dcho," Lens_R"," 58242"," "
+84,Cristalino Izqdo," Lens_L"," 58243"," "
+85,Hipófisis," Pituitary"," 13889"," "
+86,Hipocampo," Hippocampus_R"," 275020"," 275022"
+87,Hipocampo," Hippocampus_L"," 275020"," 275024"
+88,Oido Dcho," Cochlea_R"," 53641"," 60202"
+89,Oido Izqdo," Cochlea_L"," 53642"," 60203"
+90,Hígado," Liver"," 7197"," "
+91,Riñon dcho," Kidney_R"," 7204"," "
+92,Riñon izqdo," Kidney_L"," 7205"," "
+93,Pulmón dcho," Lung_R"," 7309"," "
+94,Pulmón izqdo," Lung_L"," 7310"," "
+95,Estómago," Stomach"," 7148"," "
+96,Ao," A_Aorta"," 3734"," "
+97,PV," V_Portal"," 66645"," "
+98,CA," A_Celiac"," 12792"," 50737"
+99,SMA," A_Mesenteric_S"," 14749"," "
+100,PJ," Pancreat_Jejun_A"," "," "
+101,Ambos pulmones," Lungs"," 68877"," "
+102,Ambos riñones," Kidneys"," 264815"," "
+103,Pared costal," Chestwall"," 50060"," "
+104,Hígado Sano," Liver-CTV"," "," "
+105,Duodeno," Duodenum"," "," 7206"
+106,Ambos riñones," Kidneys"," "," 264815"
+107,Ambos pulmones," Lungs"," "," 68877"
+108,Aorta," A_Aorta"," "," 3734"
+,,,,
