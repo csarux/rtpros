@@ -1,0 +1,54 @@
+﻿PatientId,PrescriptionName,CoverageConstraints,OrgansAtRisk
+718395,ORL radical, Volume / Structure :PTV70 Min Dose:   Gy Max Dose:   Gy At Least 95 % of PTV70 at 95 % 55.195 Gy No More Than 5 % of PTV70 at 107 % 62.167 Gy| Volume / Structure :PTV58.1 Min Dose:   Gy Max Dose:   Gy At Least 95 % of PTV58.1 at 95 % 66.5 Gy No More Than 5 % of PTV58.1 at 107 % 74.9 Gy,"Organ :parótida derecha Mean : 26 Gy Max Dose : 
+Constraints : 
+V30$50 %
+Organ :parótida izda Mean : 26 Gy Max Dose : 
+Constraints : 
+V30$50 %
+Organ :médula Mean :  Max Dose : 45 Gy
+Constraints : 
+
+Organ :tronco cerebral Mean :  Max Dose : 
+Constraints : 
+D53$100%
+V60$30%
+Organ :cristalino derecho Mean :  Max Dose : 8 Gy
+Constraints : 
+
+Organ :cristalino izquierdo Mean :  Max Dose : 8 Gy
+Constraints : 
+
+Organ :oido interno derecho Mean :  Max Dose : 50 Gy
+Constraints : 
+
+Organ :oido interno izquierdo Mean :  Max Dose : 50 Gy
+Constraints : 
+
+Organ :laringe Mean :  Max Dose : 70 Gy
+Constraints : 
+
+Organ :mandíbula Mean :  Max Dose : 70 Gy
+Constraints : 
+
+Organ :tiroides Mean :  Max Dose : 45 Gy
+Constraints : 
+
+Organ :quiasma óptico Mean :  Max Dose : 50 Gy
+Constraints : 
+
+Organ :n óptico derecho Mean :  Max Dose : 50 Gy
+Constraints : 
+
+Organ :n óptico izquierdo Mean :  Max Dose : 50 Gy
+Constraints : 
+
+Organ :cerebro sano Mean :  Max Dose : 
+Constraints : 
+V60$30%
+Organ :Esofago Mean :  Max Dose : 55 Gy
+Constraints : 
+
+Organ :Cavidad oral Mean : 41.8 Gy Max Dose : 
+Constraints : 
+V30$70%"
+
