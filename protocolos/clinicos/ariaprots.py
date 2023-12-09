@@ -13,7 +13,7 @@ def read_prescription(file):
     prdf: Pandas DataFrame
     Dataframe with the prescription data
     '''
-    prdf = pd.read_csv('prescripciones/orl_radical.csv')
+    prdf = pd.read_csv(file)
     return prdf
 
 def parse_prescription(file):
@@ -23,12 +23,21 @@ def parse_prescription(file):
     file: Path file
     File containing the prescription. Exported from ARIA in csv format
 
-    Returns: a tuple comtaining two dataframes ccdf, oardf
+    Returns: a tuple comtaining three dataframes pvdf, ccdf, oardf
+    pvdf: Pandas DataFrame
+    Dataframe with the prescription volumes
     ccdf: Pandas DataFrame
     Dataframe with the covarage constraints
     oardf: Pandas DataFrame
     Dataframe with oars restriction
     '''
+
+    # Regular expession dictionary to filter the prescription volumes (PrescribedTo field)
+    pv_rx_dict = {
+        'Volume': re.compile(r'Volume (?P<Volume>.*)  \d+'),
+        'Dose': re.compile(r'  (?P<Dose>\d+\.\d+) Gy'),
+        'FxDose' : re.compile(r'  (?P<FxDose>\d+\.\d+) Gy/Frac'),
+    }
 
     # Regular expession dictionary to filter the CovarageConstraints
     cc_rx_dict = {
@@ -45,6 +54,22 @@ def parse_prescription(file):
         'Dmean': re.compile(r'Mean :(?P<Dmean>.*) Max Dose'),
         'Dmax' : re.compile(r'Max Dose :(?P<Dmax>.*)$'),
     }
+   
+    # Define parsing functions
+    def _parse_prescription_volume(line):
+        """
+        Do a regex search against all defined regexes and
+        return a dictionary the key and match result
+    
+        """
+    
+        matches = {}
+        for key, rx in pv_rx_dict.items():
+            match = rx.search(line)
+            if match:
+                matches[key] = match.group(key)
+            
+        return matches
 
     def _parse_volume(line):
         """
@@ -103,9 +128,13 @@ def parse_prescription(file):
     # Read the prescription file
     prdf = read_prescription(file)
 
-    # Split the fields with the covarage constraints and the organ at risk
+    # Split the fields with the prescription volumes, covarage constraints and the organ at risk
+    pv_lines = prdf.PrescribedTo.values[0].split('|')
     cc_lines = prdf.CoverageConstraints.values[0].split('|')
     oar_lines = prdf.OrgansAtRisk.values[0].split('\n')
+    
+    # Parse the prescription volume lines and create the pvdf dataframe
+    pvdf = pd.DataFrame([_parse_prescription_volume(pv_line) for pv_line in pv_lines])
     
     # Parse the covarage constraint lines and create the ccdf dataframe
     ccdf = pd.DataFrame([_parse_volume(cc_line) for cc_line in cc_lines])
@@ -119,8 +148,9 @@ def parse_prescription(file):
             oar = [oar_line]
         else:
             oar.append(oar_line)
-    oars.remove(None)
-
+    oars.append(oar)
+    oars.pop(0)
+    oars
     # Parse each organ and create a list of dcitionaries with Dmin, Dmax and Dosimetric Parameters
     oars_list = []
     for oar in oars:
@@ -131,5 +161,5 @@ def parse_prescription(file):
     # Create the oardf dataframe
     oardf = pd.DataFrame(oars_list)
 
-    return ccdf, oardf
+    return pvdf, ccdf, oardf
 
