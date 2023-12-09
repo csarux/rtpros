@@ -1,0 +1,32 @@
+﻿PrescriptionName,CoverageConstraints,OrgansAtRisk,PrescribedTo
+PANCREAS ADYUVANTE, Volume / Structure :PTV 50.4 Min Dose:   Gy Max Dose:   Gy At Least 95 % of PTV 50.4 at 95 % 47.88 Gy No More Than 0.5 % of PTV 50.4 at 107 % 53.928 Gy,"Organ :HIGADO Mean : 23 Gy Max Dose : 
+Constraints : 
+V30$60%
+Organ :RIÑON 1 Mean :  Max Dose : 
+Constraints : 
+V18$50%
+Organ :RIÑON 2 Mean :  Max Dose : 
+Constraints : 
+V18$33%
+Organ :COMBINACION AMBOS RIÑONES Mean : 17.5 Gy Max Dose : 
+Constraints : 
+
+Organ :INTESTINO DELGADO Mean :  Max Dose : 55 Gy
+Constraints : 
+V40$150cc
+V40$30%
+Organ :ESTOMAGO DUODENO Mean :  Max Dose : 50 Gy
+Constraints : 
+
+Organ :CORAZON Mean :  Max Dose : 
+Constraints : 
+V38$33%
+V33$60%
+Organ :MEDULA Mean :  Max Dose : 45 Gy
+Constraints : 
+
+Organ :COMBI PULMON Mean : 15 Gy Max Dose : 
+Constraints : 
+V20$25%
+V10$40%",Volume PTV 50.4  50.400 Gy  1.800 Gy/Frac
+
