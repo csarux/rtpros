@@ -1,0 +1,18 @@
+﻿PrescriptionName,CoverageConstraints,OrgansAtRisk,PrescribedTo
+PTV pulmon 60, Volume / Structure :PTV total Min Dose:   Gy Max Dose:   Gy At Least 95 % of PTV total at 95 % 57 Gy No More Than 5 % of PTV total at 107 % 64.2 Gy,"Organ :pulmones suma Mean : 20 Gy Max Dose : 
+Constraints : 
+V20$30
+V10$40
+V5$60
+Organ :medula Mean :  Max Dose : 45 Gy
+Constraints : 
+
+Organ :esofago Mean : 34 Gy Max Dose : 66 Gy
+Constraints : 
+V50$40
+Organ :corazon Mean :  Max Dose : 
+Constraints : 
+V42$20
+V38$33
+V33$60",Volume PTV total  60.000 Gy  2.000 Gy/Frac
+
