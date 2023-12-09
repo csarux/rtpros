@@ -1,4 +1,4 @@
-﻿PrescriptionName,CoverageConstraints,OrgansAtRisk
+﻿PrescriptionName,CoverageConstraints,OrgansAtRisk,PrescribedTo
 Cerebral 50.4 Gy, Volume / Structure :PTV meningioma Min Dose:   Gy Max Dose:   Gy At Least 95 % of PTV meningioma at 95 % 47.88 Gy No More Than 5 % of PTV meningioma at 110 % 55.44 Gy,"Organ :Tronco cerebral Mean :  Max Dose : 52 Gy
 Constraints : 
 V 35$45%
@@ -35,5 +35,5 @@ Constraints :
 V20$1cc
 Organ :Nervio optico Dcho Mean :  Max Dose : 52 Gy
 Constraints : 
-"
+",Volume PTV meningioma  50.400 Gy  1.800 Gy/Frac
 
