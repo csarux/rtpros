@@ -1,0 +1,57 @@
+﻿PrescriptionName,CoverageConstraints,OrgansAtRisk,PrescribedTo
+ORL radical, Volume / Structure :PTV_HR Min Dose:   Gy Max Dose:   Gy At Least 95 % of PTV_HR at 95 % 51.3 Gy No More Than 5 % of PTV_HR at 105 % 56.7 Gy| Volume / Structure :PTV_LR Min Dose:   Gy Max Dose:   Gy At Least 95 % of PTV_LR at 95 % 51.3 Gy No More Than 5 % of PTV_LR at 105 % 56.7 Gy,"Organ :parótida derecha Mean : 26 Gy Max Dose : 
+Constraints : 
+V30$50 %
+Organ :parótida izda Mean : 26 Gy Max Dose : 
+Constraints : 
+V30$50 %
+Organ :médula Mean :  Max Dose : 45 Gy
+Constraints : 
+
+Organ :tronco cerebral Mean :  Max Dose : 
+Constraints : 
+D53$100%
+V60$30%
+Organ :cristalino derecho Mean :  Max Dose : 8 Gy
+Constraints : 
+
+Organ :cristalino izquierdo Mean :  Max Dose : 8 Gy
+Constraints : 
+
+Organ :oido interno derecho Mean :  Max Dose : 50 Gy
+Constraints : 
+
+Organ :oido interno izquierdo Mean :  Max Dose : 50 Gy
+Constraints : 
+
+Organ :laringe Mean :  Max Dose : 70 Gy
+Constraints : 
+
+Organ :mandíbula Mean :  Max Dose : 70 Gy
+Constraints : 
+
+Organ :tiroides Mean :  Max Dose : 45 Gy
+Constraints : 
+
+Organ :quiasma óptico Mean :  Max Dose : 45 Gy
+Constraints : 
+V44$0.5cc
+Organ :n óptico izquierdo Mean :  Max Dose : 45 Gy
+Constraints : 
+
+Organ :cerebro sano Mean :  Max Dose : 
+Constraints : 
+V60$30%
+Organ :PRV n.optico derecho Mean :  Max Dose : 54 Gy
+Constraints : 
+
+Organ :N. óptico derecho Mean :  Max Dose : 50 Gy
+Constraints : 
+V44$0.5cc
+Organ :glandula lacrimal izq Mean :  Max Dose : 36 Gy
+Constraints : 
+V20$1cc
+Organ :glandula lacrimal derecha Mean :  Max Dose : 36 Gy
+Constraints : 
+V20$1cc",Volume PTV_HR  70.000 Gy  2.000 Gy/Frac|Volume PTV_LR  54.000 Gy  1.543 Gy/Frac
+
