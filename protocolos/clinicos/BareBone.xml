@@ -11,6 +11,16 @@
     <FieldAlignmentRules></FieldAlignmentRules>
     <Phases>
         <Phase ID="Prostata">
+            <DefaultEnergyKV>6000</DefaultEnergyKV>
+            <FractionCount>20</FractionCount>
+            <FractionsPerWeek xsi:nil="true"></FractionsPerWeek>
+            <FractionsPerDay xsi:nil="true"></FractionsPerDay>
+            <TreatmentUnit>TrueBeam2</TreatmentUnit>
+            <TreatmentStyle>Dynamic ARC</TreatmentStyle>
+            <ImmobilizationDevice></ImmobilizationDevice>
+            <LocalizationTechnique></LocalizationTechnique>
+            <Prescription Version="1.10">
+            </Prescription>
         </Phase>
     </Phases>
     <Review ShowMin="true" ShowMax="true" ShowMean="true" ShowModal="false" ShowMedian="false"
