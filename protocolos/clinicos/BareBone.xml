@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Protocol Version="1.12" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Preview Version="1.2" ID="Próstata 20Fx" Type="Protocol" ApprovalStatus="Unapproved"
+        Diagnosis="" TreatmentSite="Próstata + vvss hipofx" AssignedUsers="salud\50724293r"
+        Description="" LastModified=" diciembre 09 2023 20:52:07:632"
+        ApprovalHistory="salud\50724293r Created [ noviembre 16 2023 10:56:25:988 ];salud\50724293r Unapproved [ diciembre 03 2023 13:36:49:738 ]" />
+    <StructureTemplate Version="1.2">
+        <Structures>
+        </Structures>
+    </StructureTemplate>
+    <FieldAlignmentRules></FieldAlignmentRules>
+    <Phases>
+        <Phase ID="Prostata">
+        </Phase>
+    </Phases>
+    <Review ShowMin="true" ShowMax="true" ShowMean="true" ShowModal="false" ShowMedian="false"
+        ShowStdDev="false" ShowEUD="true" ShowTCP="false" ShowNTCP="false" ShowNDR="false"
+        ShowEquivalentSphereDiameter="false" ShowConformityIndex="false" ShowGradientMeasure="false">
+        <ReviewStructures>
+        </ReviewStructures>
+    </Review>
+</Protocol>
