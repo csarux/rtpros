@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Protocol Version="1.12" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <Preview Version="1.2" ID="Próstata 20Fx" Type="Protocol" ApprovalStatus="Unapproved"
+    <Preview Version="1.2" ID="Armadura" Type="Protocol" ApprovalStatus="Unapproved"
         Diagnosis="" TreatmentSite="Próstata + vvss hipofx" AssignedUsers="salud\50724293r"
         Description="" LastModified=" diciembre 09 2023 20:52:07:632"
-        ApprovalHistory="salud\50724293r Created [ noviembre 16 2023 10:56:25:988 ];salud\50724293r Unapproved [ diciembre 03 2023 13:36:49:738 ]" />
+        ApprovalHistory="salud\50724293r Created [ noviembre 16 2023 10:56:25:988 ]" />
     <StructureTemplate Version="1.2">
         <Structures>
         </Structures>
@@ -11,6 +11,7 @@
     <FieldAlignmentRules></FieldAlignmentRules>
     <Phases>
         <Phase ID="Prostata">
+            <Mode>Photon</Mode>
             <DefaultEnergyKV>6000</DefaultEnergyKV>
             <FractionCount>20</FractionCount>
             <FractionsPerWeek xsi:nil="true"></FractionsPerWeek>
@@ -21,7 +22,22 @@
             <LocalizationTechnique></LocalizationTechnique>
             <Prescription Version="1.10">
             </Prescription>
-        </Phase>
+             <PlanTemplate Version="1.6">
+                <PrescribedPercentage>1</PrescribedPercentage>
+                <DosePerFraction>3</DosePerFraction>
+                <FractionCount>20</FractionCount>
+                <FieldAlignmentRules></FieldAlignmentRules>
+                <PrescriptionSite>
+                    <VolumeID>PTV prostata+vvss</VolumeID>
+                    <VolumeCode></VolumeCode>
+                    <VolumeType>PTV</VolumeType>
+                    <VolumeCodeTable></VolumeCodeTable>
+                </PrescriptionSite>
+                <Boluses />
+                <Fields>
+                </Fields>
+             </PlanTemplate>
+       </Phase>
     </Phases>
     <Review ShowMin="true" ShowMax="true" ShowMean="true" ShowModal="false" ShowMedian="false"
         ShowStdDev="false" ShowEUD="true" ShowTCP="false" ShowNTCP="false" ShowNDR="false"
