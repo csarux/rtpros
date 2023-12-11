@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Protocol Version="1.12" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Preview Version="1.2" ID="Armadura" Type="Protocol" ApprovalStatus="Unapproved"
+        Diagnosis="" TreatmentSite="Próstata + vvss hipofx" AssignedUsers="salud\50724293r"
+        Description="" LastModified=" diciembre 09 2023 20:52:07:632"
+        ApprovalHistory="salud\50724293r Created [ noviembre 16 2023 10:56:25:988 ]" />
+    <StructureTemplate Version="1.2">
+        <Structures>
+            <Structure ID="Recto" Name="Recto">
+                <Identification>
+                    <VolumeID></VolumeID>
+                    <VolumeCode></VolumeCode>
+                    <VolumeType>Organ</VolumeType>
+                    <VolumeCodeTable></VolumeCodeTable>
+                    <StructureCode Code="14544" CodeScheme="FMA" CodeSchemeVersion="3.2" />
+                </Identification>
+                <TypeIndex>2</TypeIndex>
+                <ColorAndStyle>Contour - Brown</ColorAndStyle>
+                <SearchCTLow>1000</SearchCTLow>
+                <SearchCTHigh>1000</SearchCTHigh>
+                <DVHLineStyle>0</DVHLineStyle>
+                <DVHLineColor>-16777216</DVHLineColor>
+                <DVHLineWidth>1</DVHLineWidth>
+                <EUDAlpha xsi:nil="true"></EUDAlpha>
+                <TCPAlpha xsi:nil="true"></TCPAlpha>
+                <TCPBeta xsi:nil="true"></TCPBeta>
+                <TCPGamma xsi:nil="true"></TCPGamma>
+            </Structure>
+        </Structures>
+    </StructureTemplate>
+    <FieldAlignmentRules></FieldAlignmentRules>
+    <Phases>
+        <Phase ID="Prostata">
+            <Mode>Photon</Mode>
+            <DefaultEnergyKV>6000</DefaultEnergyKV>
+            <FractionCount>20</FractionCount>
+            <FractionsPerWeek xsi:nil="true"></FractionsPerWeek>
+            <FractionsPerDay xsi:nil="true"></FractionsPerDay>
+            <TreatmentUnit>TrueBeam2</TreatmentUnit>
+            <TreatmentStyle>Dynamic ARC</TreatmentStyle>
+            <ImmobilizationDevice></ImmobilizationDevice>
+            <LocalizationTechnique></LocalizationTechnique>
+            <Prescription Version="1.10">
+                <Item ID="Recto" Primary="false">
+                    <Type>0</Type>
+                    <Modifier>0</Modifier>
+                    <Parameter>85</Parameter>
+                    <Dose>1</Dose>
+                    <TotalDose>20</TotalDose>
+                </Item>
+                <MeasureItem ID="Recto">
+                    <Type>3</Type>
+                    <Modifier>1</Modifier>
+                    <Value>57</Value>
+                    <TypeSpecifier>30</TypeSpecifier>
+                    <ReportDQPValueInAbsoluteUnits>false</ReportDQPValueInAbsoluteUnits>
+                </MeasureItem>
+            </Prescription>
+             <PlanTemplate Version="1.6">
+                <PrescribedPercentage>1</PrescribedPercentage>
+                <DosePerFraction>3</DosePerFraction>
+                <FractionCount>20</FractionCount>
+                <FieldAlignmentRules></FieldAlignmentRules>
+                <PrescriptionSite>
+                    <VolumeID>PTV prostata+vvss</VolumeID>
+                    <VolumeCode></VolumeCode>
+                    <VolumeType>PTV</VolumeType>
+                    <VolumeCodeTable></VolumeCodeTable>
+                </PrescriptionSite>
+                <Boluses />
+                <Fields>
+                </Fields>
+             </PlanTemplate>
+       </Phase>
+    </Phases>
+    <Review ShowMin="true" ShowMax="true" ShowMean="true" ShowModal="false" ShowMedian="false"
+        ShowStdDev="false" ShowEUD="true" ShowTCP="false" ShowNTCP="false" ShowNDR="false"
+        ShowEquivalentSphereDiameter="false" ShowConformityIndex="false" ShowGradientMeasure="false">
+        <ReviewStructures>
+        </ReviewStructures>
+    </Review>
+</Protocol>
