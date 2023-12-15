@@ -39,7 +39,7 @@ def parse_prescription(file):
 
     # Regular expession dictionary to filter the prescription volumes (PrescribedTo field)
     pv_rx_dict = {
-        'Volume': re.compile(r'Volume (?P<Volume>.*)  \d+'),
+        'Volume': re.compile(r'Volume (?P<Volume>.+)  \d+\.\d+ Gy '),
         'Dose': re.compile(r'  (?P<Dose>\d+\.\d+) Gy'),
         'FxDose' : re.compile(r'  (?P<FxDose>\d+\.\d+) Gy/Frac'),
     }
