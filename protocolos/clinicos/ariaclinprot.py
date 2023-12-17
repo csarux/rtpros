@@ -168,6 +168,21 @@ def parse_prescription(file):
 
     return pvdf, ccdf, oardf
 
+def getTreatmentDosePrescription(pvdf):
+    '''
+    Function: Retrieve the treatment dose prescription. 
+
+    Arguments:
+    pvdf: Pandas DataFrame
+        Dataframe with the prescription volumes
+
+    Returns:
+    TreatmentDosePrescription: Float
+        The PTV prescription with the highest dose 
+    '''
+    TreatmentDosePrescription = pvdf.Dose.astype('float').max()
+    return TreatmentDosePrescription
+    
 '''
     Clinical protocols
 '''
@@ -263,18 +278,22 @@ def addStructure(bbx, structureName, stColourAndStyle='Countour - Brown', search
     TCPGamma = ET.SubElement(Structure, 'TCPGamma')
     TCPGamma.set('xsi:nil', 'true')
 
-def modPhaseID(bbx, ID):
+def modPhase(bbx, ID, vFractionCount):
     '''
-    Function: modify the Phase identification
+    Function: modify the Phase section
 
     Arguments:
     bbx: An element tree instance
     ID: String
         The Phase identification
+    vFractionCount: Int
+        The treatment fraction count
     '''
     Phases = bbx.find('Phases')
     Phase = Phases.find('Phase')
     Phase.set('ID', ID)
+    FractionCount = Phase.find('FractionCount')
+    FractionCount.text = str(vFractionCount)
 
 def addPlanObjetive(bbx, ID, vParameter, vDose, vTotalDose, vPrimary='false', vModifier=1):
     '''
@@ -347,7 +366,7 @@ def addQualityIndex(bbx, ID, vType, vModifier, vValue, vTypeSpecifier, vReportDQ
     vValue: Float
         The constrain in %, Gy o cc
     vTypeSpecifier: Float
-        The dose or volume in Vdose o Dvolume in %, Gy or cc
+        The dose or volume in Vdose or Dvolume in %, Gy or cc
     vReportDQPValueInAbsoluteUnits: string {'true', 'false'}
         If the constrain is specified in absolute units
     '''
@@ -379,4 +398,3 @@ def writeProt(bbx, protout = 'TestSalida.xml'):
     '''
     ET.indent(bbx)
     bbx.write(protout, encoding='utf-8', xml_declaration=True)
-
