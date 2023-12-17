@@ -1,0 +1,36 @@
+﻿PrescriptionName,CoverageConstraints,OrgansAtRisk,PrescribedTo
+ORL adyuvante, Volume / Structure :PTV 63 Min Dose:   Gy Max Dose:   Gy At Least 95 % of PTV 63 at 95 % 59.85 Gy No More Than 5 % of PTV 63 at 105 % 67.41 Gy| Volume / Structure :PTV 54 Min Dose:   Gy Max Dose:   Gy At Least 95 % of PTV 54 at 95 % 51.3 Gy No More Than 5 % of PTV 54 at 105 % 57.78 Gy,"Organ :Parotidas Mean : 26 Gy Max Dose : 
+Constraints : 
+V30$50%
+Organ :Tronco cerebral Mean :  Max Dose : 
+Constraints : 
+D53$100%
+V60$30 %
+Organ :Medula espinal Mean :  Max Dose : 45 Gy
+Constraints : 
+
+Organ :Laringe Mean :  Max Dose : 70 Gy
+Constraints : 
+
+Organ :Mandibula Mean :  Max Dose : 70 Gy
+Constraints : 
+
+Organ :Tiroides Mean :  Max Dose : 45 Gy
+Constraints : 
+
+Organ :Cerebro sano Mean :  Max Dose : 
+Constraints : 
+V 60$30 %
+Organ :Oido interno Mean :  Max Dose : 50 Gy
+Constraints : 
+
+Organ :Nervios opticos Mean :  Max Dose : 50 Gy
+Constraints : 
+
+Organ :Quiasma optico Mean :  Max Dose : 50 Gy
+Constraints : 
+
+Organ :Cristalinos Mean :  Max Dose : 8 Gy
+Constraints : 
+",Volume PTV 63  63.000 Gy  2.100 Gy/Frac|Volume PTV 54  54.000 Gy  1.800 Gy/Frac
+
