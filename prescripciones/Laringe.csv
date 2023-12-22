@@ -1,0 +1,57 @@
+﻿PrescriptionName,CoverageConstraints,OrgansAtRisk,PrescribedTo
+Laringe 63, Volume / Structure :PTV63 Min Dose:   Gy Max Dose:   Gy At Least 95 % of PTV63 at 95 % 59.85 Gy No More Than 5 % of PTV63 at 105 % 66.15 Gy,"Organ :parótida derecha Mean : 26 Gy Max Dose : 
+Constraints : 
+V30$50 %
+Organ :parótida izda Mean : 26 Gy Max Dose : 
+Constraints : 
+V30$50 %
+Organ :médula Mean :  Max Dose : 45 Gy
+Constraints : 
+
+Organ :tronco cerebral Mean :  Max Dose : 
+Constraints : 
+D53$100%
+V60$30%
+Organ :cristalino derecho Mean :  Max Dose : 8 Gy
+Constraints : 
+
+Organ :cristalino izquierdo Mean :  Max Dose : 8 Gy
+Constraints : 
+
+Organ :oido interno derecho Mean :  Max Dose : 50 Gy
+Constraints : 
+
+Organ :oido interno izquierdo Mean :  Max Dose : 50 Gy
+Constraints : 
+
+Organ :laringe Mean :  Max Dose : 70 Gy
+Constraints : 
+
+Organ :mandíbula Mean :  Max Dose : 70 Gy
+Constraints : 
+
+Organ :tiroides Mean :  Max Dose : 45 Gy
+Constraints : 
+
+Organ :quiasma óptico Mean :  Max Dose : 50 Gy
+Constraints : 
+
+Organ :n óptico derecho Mean :  Max Dose : 50 Gy
+Constraints : 
+
+Organ :n óptico izquierdo Mean :  Max Dose : 50 Gy
+Constraints : 
+
+Organ :cerebro sano Mean :  Max Dose : 
+Constraints : 
+V60$30%
+Organ :Esofago Mean :  Max Dose : 55 Gy
+Constraints : 
+
+Organ :Cavidad oral Mean : 41.8 Gy Max Dose : 
+Constraints : 
+V30$70%
+Organ :Carotida Mean : 52 Gy Max Dose : 35 Gy
+Constraints : 
+",Volume PTV63  63.000 Gy  2.250 Gy/Frac
+
