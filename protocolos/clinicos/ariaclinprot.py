@@ -182,7 +182,7 @@ def parse_prescription(file):
         for key, rx in oar_rx_dict.items():
             match = rx.search(line)
             if match:
-                matches[key] = match.group(key)
+                matches[key] = match.group(key).strip()
             
         return matches
 
@@ -442,7 +442,7 @@ def addQualityIndex(bbx, ID, vType, vModifier, vValue, vTypeSpecifier, vReportDQ
     ReportDQPValueInAbsoluteUnits = ET.SubElement(MeasureItem, 'ReportDQPValueInAbsoluteUnits')
     ReportDQPValueInAbsoluteUnits.text = vReportDQPValueInAbsoluteUnits
 
-def writeProt(bbx, protout = 'TestSalida.xml'):
+def writeProt(bbx, protout):
     '''
     Function: write a clinical protocol
 
@@ -455,7 +455,7 @@ def writeProt(bbx, protout = 'TestSalida.xml'):
     ET.indent(bbx)
     bbx.write(protout, encoding='utf-8', xml_declaration=True)
 
-def convertPrescriptionToClinicalProtocol(prescription, ProtocolID, TreatmentSite, PlanID, ProtTemplate='BareBone.xml'):
+def convertPrescriptionToClinicalProtocol(prescription, ProtocolID, TreatmentSite, PlanID, ProtTemplate='BareBone.xml', ProtOut='ClinicalProtocol.xml'):
     '''
     Function: Convert a prescription into a clinical protocol
 
@@ -470,6 +470,8 @@ def convertPrescriptionToClinicalProtocol(prescription, ProtocolID, TreatmentSit
         The plan identification
     ProtTemplate: String
         The xml document used as a clinical protocol template
+    ProtOut: String
+        Name of the xml file describing the clinical protocol
         
     '''
     # Read the prescriptiop
@@ -518,6 +520,7 @@ def convertPrescriptionToClinicalProtocol(prescription, ProtocolID, TreatmentSit
             ID = oar.Organ
             Parameter = 0
             Fxs = float(pvdf.Dose.values[0]) / float(pvdf.FxDose.values[0])
+            print(repr(oar.Dmean))
             TotalDose = parseDose(oar.Dmean)
             Dose = f'{TotalDose / Fxs:.5f}'
             addPlanObjetive(bbx, ID=ID, vParameter=Parameter, vDose=Dose, vTotalDose=TotalDose,
@@ -587,4 +590,4 @@ def convertPrescriptionToClinicalProtocol(prescription, ProtocolID, TreatmentSit
                                             vReportDQPValueInAbsoluteUnits='false')
     
     # Write clincial protocol
-    writeProt(bbx)
+    writeProt(bbx, ProtOut)
