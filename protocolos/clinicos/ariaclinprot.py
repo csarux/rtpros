@@ -3,7 +3,8 @@ import io
 import re
 import pandas as pd
 import xml.etree.ElementTree as ET
-
+import pydicom as dcm
+from textdistance import ratcliff_obershelp
 
 def parseDose(strDose):
     '''
@@ -455,7 +456,7 @@ def writeProt(bbx, protout):
     ET.indent(bbx)
     bbx.write(protout, encoding='utf-8', xml_declaration=True)
 
-def convertPrescriptionToClinicalProtocol(prescription, ProtocolID, TreatmentSite, PlanID, ProtTemplate='BareBone.xml', ProtOut='ClinicalProtocol.xml'):
+def convertPrescriptionIntoClinicalProtocol(prescription, ProtocolID, TreatmentSite, PlanID, ProtTemplate='BareBone.xml', ProtOut='ClinicalProtocol.xml'):
     '''
     Function: Convert a prescription into a clinical protocol
 
@@ -481,7 +482,6 @@ def convertPrescriptionToClinicalProtocol(prescription, ProtocolID, TreatmentSit
     # Preview
     modPreview(bbx, ID=ProtocolID, TreatmentSite=TreatmentSite)
     # Phases
-    PlanID='ORL'
     FractionCount = int(float(pvdf.Dose[0])/float(pvdf.FxDose[0]))
     modPhase(bbx, ID=PlanID, vFractionCount=FractionCount)
     # Structutures
@@ -591,3 +591,157 @@ def convertPrescriptionToClinicalProtocol(prescription, ProtocolID, TreatmentSit
     
     # Write clincial protocol
     writeProt(bbx, ProtOut)
+
+'''
+    Contouring
+'''
+
+def readContouringStructureNames(rsdicom):
+    '''
+    Function: Read RT Dicom structure set file and generate a list of structure names
+
+    Arguments:
+    rsdicom: String
+        File Path to the RT Dicom structure set
+
+    Return:
+        constrnames: list
+        A list of the structure names given in ARIA
+    '''
+    dcmds = dcm.read_file(rsdicom)
+    strsetsq = dcmds.StructureSetROISequence
+    contstrnames = [structure.ROIName for structure in strsetsq]
+    return contstrnames
+
+def readClinProtStructureNames(clinprot):
+    '''
+    Function: Read the structure names in the clinical protocol xml file
+
+    Arguments:
+    clinprot: String
+        File Path to the clinical protocol xml file
+
+    Return:
+        protstrnames: list
+        A list of the structure names given in the clinical protocol xml file
+    '''
+    tree = ET.parse(clinprot)
+    root = tree.getroot()
+    structures = root.find('StructureTemplate').find('Structures')
+    protstrnames = [structure.get('ID') for structure in structures.findall('Structure')]
+    return protstrnames
+
+def checkStructureNameLength(strnames):
+    '''
+    Function: Check if the structure name length is less than 16 characters
+
+    Arguments:
+    strnames: List
+        Structure name list
+
+    Return:
+        invalidStrNames: List
+        List of contouring structures names with length greater than 16 characters
+    '''
+    invalidStrNames = []
+    for strname in strnames:
+        if len(strname) > 16:
+            invalidStrNames.append(strname)
+    return invalidStrNames
+
+def _suggestStrNames(strlistA, strlistB):
+    '''
+    Function: Suggest changes in a list of structure names based on the names of the other list 
+
+    Arguments:
+    strlistA: List
+        Structure name list to be corrected
+
+    strlistB: List
+        Structure name list taken as reference
+
+    Return:
+        suggestiondf: Pandas DataFrame
+        A pandas DataFrame which index is the names of the structures to be corrected and its column is the structure name suggested
+    '''
+    infstrdf = pd.DataFrame([{strB: ratcliff_obershelp(strA, strB) 
+                              for strB in strlistB} 
+                                for strA in strlistA], index=strlistA)
+    infstrdf['Suggestion'] = infstrdf.idxmax(axis=1)
+    suggestiondf = pd.DataFrame(infstrdf['Suggestion'])
+    suggestiondf.reset_index(names='Structure', inplace=True)
+    return suggestiondf
+
+def suggestStrNames(clinprot, rsdicom):
+    '''
+    Function: Suggest changes in a list of structure names based on the names of the other list 
+
+    Arguments:
+    clinprot: String
+        File Path to the clinical protocol xml file containing the structure names to be corrected
+
+    rsdicom: String
+        File Path to the RT Dicom containing the reference structure set
+
+    Return:
+        suggestiondf: Pandas DataFrame
+        A pandas DataFrame which index is the names of the structures to be corrected and its column is the structure name suggested
+    '''
+
+    protstrnames = readClinProtStructureNames(clinprot)
+    contstrnames = readContouringStructureNames(rsdicom)
+    invalidStrNames = checkStructureNameLength(contstrnames)
+    sep = ', '
+    if invalidStrNames:
+        raise NameError('''
+        The following structures are more than 16 characters long
+        which is not allowed for the clinical protocol definition.\n
+        ''' + sep.join(invalidStrNames))
+    invalidStrNames = checkStructureNameLength(protstrnames)
+    if invalidStrNames:
+        raise NameError('''
+        The following structures are more than 16 characters long
+        which is not allowed for the clinical protocol definition
+        ''' + sep.join(invalidStrNames))
+    suggestiondf = _suggestStrNames(protstrnames, contstrnames)
+    return suggestiondf
+
+def _correctStrNames(filedata, strNameChanges):
+    '''
+    Function: Correct structure names in a prescrption file following a DataFrame of directions  
+
+    Arguments:
+    filedata: String
+        The text content of a prescription csv file to be corrected
+
+    strNameChanges: DataFrame
+        Pandas datafrmae with the old and new names of each structure to be corrected
+
+    Return:
+        filedata: String
+        The corrected text of the prescription csv file
+    '''
+    for index, strName in strNameChanges.iterrows():
+        filedata.replace(strName.Old, strName.New)
+    return filedata
+
+def correctStrNames(prescriptionFile, strNameChanges):
+    '''
+    Function: Correct structure names in a prescrption file following a DataFrame of directions  
+
+    Arguments:
+    prescriptionFile: String
+        The path to the prescription csv file to be corrected
+
+    strNameChanges: DataFrame
+        Pandas datafrmae with the old and new names of each structure to be corrected
+
+    '''
+    # Read the prescription file
+    with open(prescriptionFile, 'r') as file:
+      filedata = file.read()
+    # Correct the prescription file
+    filedata = _correctStrNames(filedata, strNameChanges)
+    # Write the corrected prescription file
+    with open(prescriptionFile, 'w') as file:
+      file.write(filedata)
