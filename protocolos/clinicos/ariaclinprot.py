@@ -722,7 +722,7 @@ def _correctStrNames(filedata, strNameChanges):
         The corrected text of the prescription csv file
     '''
     for index, strName in strNameChanges.iterrows():
-        filedata.replace(strName.Old, strName.New)
+        filedata = filedata.replace(strName.Old, strName.New)
     return filedata
 
 def correctStrNames(prescriptionFile, strNameChanges):

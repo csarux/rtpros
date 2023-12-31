@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <Protocol xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.12">
-  <Preview Version="1.2" ID="SBRTPulmon7.5x8" Type="Protocol" ApprovalStatus="Unapproved" Diagnosis="" TreatmentSite="Lung" AssignedUsers="salud\50724293r" Description="" LastModified=" December 30 2023 14:17:59:146" ApprovalHistory="salud\50724293r Created [ December 30 2023 14:17:59:146 ]" />
+  <Preview Version="1.2" ID="SBRTPulmon7.5x8" Type="Protocol" ApprovalStatus="Unapproved" Diagnosis="" TreatmentSite="Lung" AssignedUsers="salud\50724293r" Description="" LastModified=" December 31 2023 14:27:54:462" ApprovalHistory="salud\50724293r Created [ December 31 2023 14:27:54:462 ]" />
   <StructureTemplate Version="1.2">
     <Structures>
       <Structure ID="PTV LSI" Name="PTV LSI">
@@ -23,7 +23,7 @@
         <TCPBeta xsi:nil="true" />
         <TCPGamma xsi:nil="true" />
       </Structure>
-      <Structure ID="suma pulmones" Name="suma pulmones">
+      <Structure ID="Ambos pulmones" Name="Ambos pulmones">
         <Identification>
           <VolumeID />
           <VolumeCode />
@@ -43,7 +43,7 @@
         <TCPBeta xsi:nil="true" />
         <TCPGamma xsi:nil="true" />
       </Structure>
-      <Structure ID="medula" Name="medula">
+      <Structure ID="Médula" Name="Médula">
         <Identification>
           <VolumeID />
           <VolumeCode />
@@ -103,7 +103,7 @@
         <TCPBeta xsi:nil="true" />
         <TCPGamma xsi:nil="true" />
       </Structure>
-      <Structure ID="traquea" Name="traquea">
+      <Structure ID="Tráquea" Name="Tráquea">
         <Identification>
           <VolumeID />
           <VolumeCode />
@@ -123,7 +123,7 @@
         <TCPBeta xsi:nil="true" />
         <TCPGamma xsi:nil="true" />
       </Structure>
-      <Structure ID="esofago" Name="esofago">
+      <Structure ID="Esófago" Name="Esófago">
         <Identification>
           <VolumeID />
           <VolumeCode />
@@ -143,7 +143,7 @@
         <TCPBeta xsi:nil="true" />
         <TCPGamma xsi:nil="true" />
       </Structure>
-      <Structure ID="corazon" Name="corazon">
+      <Structure ID="Corazón" Name="Corazón">
         <Identification>
           <VolumeID />
           <VolumeCode />
@@ -203,7 +203,7 @@
         <TCPBeta xsi:nil="true" />
         <TCPGamma xsi:nil="true" />
       </Structure>
-      <Structure ID="v cava superior" Name="v cava superior">
+      <Structure ID="Vena cava sup" Name="Vena cava sup">
         <Identification>
           <VolumeID />
           <VolumeCode />
@@ -223,7 +223,7 @@
         <TCPBeta xsi:nil="true" />
         <TCPGamma xsi:nil="true" />
       </Structure>
-      <Structure ID="arteria pulmonar" Name="arteria pulmonar">
+      <Structure ID="Arteria Pulmonar" Name="Arteria Pulmonar">
         <Identification>
           <VolumeID />
           <VolumeCode />
@@ -263,7 +263,7 @@
         <TCPBeta xsi:nil="true" />
         <TCPGamma xsi:nil="true" />
       </Structure>
-      <Structure ID="piel" Name="piel">
+      <Structure ID="Piel" Name="Piel">
         <Identification>
           <VolumeID />
           <VolumeCode />
@@ -283,7 +283,7 @@
         <TCPBeta xsi:nil="true" />
         <TCPGamma xsi:nil="true" />
       </Structure>
-      <Structure ID="pared costal" Name="pared costal">
+      <Structure ID="Pared costal" Name="Pared costal">
         <Identification>
           <VolumeID />
           <VolumeCode />
@@ -303,27 +303,7 @@
         <TCPBeta xsi:nil="true" />
         <TCPGamma xsi:nil="true" />
       </Structure>
-      <Structure ID="higado" Name="higado">
-        <Identification>
-          <VolumeID />
-          <VolumeCode />
-          <VolumeType>Organ</VolumeType>
-          <VolumeCodeTable />
-          <StructureCode />
-        </Identification>
-        <TypeIndex>2</TypeIndex>
-        <ColorAndStyle>Countour - Brown</ColorAndStyle>
-        <SearchCTLow>1000</SearchCTLow>
-        <SearchCTHigh>1000</SearchCTHigh>
-        <DVHLineStyle>0</DVHLineStyle>
-        <DVHLineColor>-16777216</DVHLineColor>
-        <DVHLineWidth>1</DVHLineWidth>
-        <EUDAlpha xsi:nil="true" />
-        <TCPAlpha xsi:nil="true" />
-        <TCPBeta xsi:nil="true" />
-        <TCPGamma xsi:nil="true" />
-      </Structure>
-      <Structure ID="plexo braquial" Name="plexo braquial">
+      <Structure ID="Hígado" Name="Hígado">
         <Identification>
           <VolumeID />
           <VolumeCode />
@@ -372,7 +352,7 @@
           <Dose>8.025</Dose>
           <TotalDose>64.2</TotalDose>
         </Item>
-        <Item ID="suma pulmones" Primary="false">
+        <Item ID="Ambos pulmones" Primary="false">
           <Type>0</Type>
           <Modifier>1</Modifier>
           <Parameter>37.0</Parameter>
@@ -407,28 +387,28 @@
           <Dose>4.80000</Dose>
           <TotalDose>38.4</TotalDose>
         </Item>
-        <Item ID="traquea" Primary="false">
+        <Item ID="Tráquea" Primary="false">
           <Type>0</Type>
           <Modifier>10</Modifier>
           <Parameter>0</Parameter>
           <Dose>7.00000</Dose>
           <TotalDose>56.0</TotalDose>
         </Item>
-        <Item ID="esofago" Primary="false">
+        <Item ID="Esófago" Primary="false">
           <Type>0</Type>
           <Modifier>10</Modifier>
           <Parameter>0</Parameter>
           <Dose>5.40000</Dose>
           <TotalDose>43.2</TotalDose>
         </Item>
-        <Item ID="corazon" Primary="false">
+        <Item ID="Corazón" Primary="false">
           <Type>0</Type>
           <Modifier>10</Modifier>
           <Parameter>0</Parameter>
           <Dose>5.00000</Dose>
           <TotalDose>40.0</TotalDose>
         </Item>
-        <Item ID="corazon" Primary="false">
+        <Item ID="Corazón" Primary="false">
           <Type>0</Type>
           <Modifier>1</Modifier>
           <Parameter>15.0</Parameter>
@@ -463,28 +443,28 @@
           <Dose>6.90000</Dose>
           <TotalDose>55.2</TotalDose>
         </Item>
-        <Item ID="v cava superior" Primary="false">
+        <Item ID="Vena cava sup" Primary="false">
           <Type>0</Type>
           <Modifier>10</Modifier>
           <Parameter>0</Parameter>
           <Dose>7.75000</Dose>
           <TotalDose>62.0</TotalDose>
         </Item>
-        <Item ID="v cava superior" Primary="false">
+        <Item ID="Vena cava sup" Primary="false">
           <Type>0</Type>
           <Modifier>1</Modifier>
           <Parameter>10.0</Parameter>
           <Dose>6.90000</Dose>
           <TotalDose>55.2</TotalDose>
         </Item>
-        <Item ID="arteria pulmonar" Primary="false">
+        <Item ID="Arteria Pulmonar" Primary="false">
           <Type>0</Type>
           <Modifier>10</Modifier>
           <Parameter>0</Parameter>
           <Dose>7.75000</Dose>
           <TotalDose>62.0</TotalDose>
         </Item>
-        <Item ID="arteria pulmonar" Primary="false">
+        <Item ID="Arteria Pulmonar" Primary="false">
           <Type>0</Type>
           <Modifier>1</Modifier>
           <Parameter>10.0</Parameter>
@@ -505,33 +485,26 @@
           <Dose>6.90000</Dose>
           <TotalDose>55.2</TotalDose>
         </Item>
-        <Item ID="piel" Primary="false">
+        <Item ID="Piel" Primary="false">
           <Type>0</Type>
           <Modifier>10</Modifier>
           <Parameter>0</Parameter>
           <Dose>5.70000</Dose>
           <TotalDose>45.6</TotalDose>
         </Item>
-        <Item ID="piel" Primary="false">
+        <Item ID="Piel" Primary="false">
           <Type>0</Type>
           <Modifier>1</Modifier>
           <Parameter>10.0</Parameter>
           <Dose>5.40000</Dose>
           <TotalDose>43.2</TotalDose>
         </Item>
-        <Item ID="pared costal" Primary="false">
+        <Item ID="Pared costal" Primary="false">
           <Type>0</Type>
           <Modifier>10</Modifier>
           <Parameter>0</Parameter>
           <Dose>7.87500</Dose>
           <TotalDose>63.0</TotalDose>
-        </Item>
-        <Item ID="plexo braquial" Primary="false">
-          <Type>0</Type>
-          <Modifier>10</Modifier>
-          <Parameter>0</Parameter>
-          <Dose>4.90000</Dose>
-          <TotalDose>39.2</TotalDose>
         </Item>
         <MeasureItem ID="PTV LSI">
           <Type>2</Type>
@@ -547,7 +520,7 @@
           <TypeSpecifier>107.0</TypeSpecifier>
           <ReportDQPValueInAbsoluteUnits>false</ReportDQPValueInAbsoluteUnits>
         </MeasureItem>
-        <MeasureItem ID="suma pulmones">
+        <MeasureItem ID="Ambos pulmones">
           <Type>2</Type>
           <Modifier>1</Modifier>
           <Value>37.0</Value>
@@ -568,7 +541,7 @@
           <TypeSpecifier>64.00000</TypeSpecifier>
           <ReportDQPValueInAbsoluteUnits>false</ReportDQPValueInAbsoluteUnits>
         </MeasureItem>
-        <MeasureItem ID="corazon">
+        <MeasureItem ID="Corazón">
           <Type>2</Type>
           <Modifier>1</Modifier>
           <Value>15.0</Value>
@@ -589,14 +562,14 @@
           <TypeSpecifier>92.00000</TypeSpecifier>
           <ReportDQPValueInAbsoluteUnits>false</ReportDQPValueInAbsoluteUnits>
         </MeasureItem>
-        <MeasureItem ID="v cava superior">
+        <MeasureItem ID="Vena cava sup">
           <Type>2</Type>
           <Modifier>1</Modifier>
           <Value>10.0</Value>
           <TypeSpecifier>92.00000</TypeSpecifier>
           <ReportDQPValueInAbsoluteUnits>false</ReportDQPValueInAbsoluteUnits>
         </MeasureItem>
-        <MeasureItem ID="arteria pulmonar">
+        <MeasureItem ID="Arteria Pulmonar">
           <Type>2</Type>
           <Modifier>1</Modifier>
           <Value>10.0</Value>
@@ -610,14 +583,14 @@
           <TypeSpecifier>92.00000</TypeSpecifier>
           <ReportDQPValueInAbsoluteUnits>false</ReportDQPValueInAbsoluteUnits>
         </MeasureItem>
-        <MeasureItem ID="piel">
+        <MeasureItem ID="Piel">
           <Type>2</Type>
           <Modifier>1</Modifier>
           <Value>10.0</Value>
           <TypeSpecifier>72.00000</TypeSpecifier>
           <ReportDQPValueInAbsoluteUnits>false</ReportDQPValueInAbsoluteUnits>
         </MeasureItem>
-        <MeasureItem ID="higado">
+        <MeasureItem ID="Hígado">
           <Type>4</Type>
           <Modifier>1</Modifier>
           <Value>700.0</Value>
