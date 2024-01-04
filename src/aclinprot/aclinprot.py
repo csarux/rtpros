@@ -41,22 +41,27 @@ def parseDosimPar(strDosimPar):
     Returns:
     '''
     dosimPar_rx_dict = {
-        'Vxx': re.compile(r'V(\s+)?(?P<Dose>\d+\.?(\d+))?\$(?P<Volume>\d+\.?(\d+))\%?'),
-        'Dxx': re.compile(r'D(\s+)?(?P<Volume>\d+\.?(\d+))?\$(?P<Dose>\d+\.?(\d+))\%?')
+        'Vxx%': re.compile(r'V(\s+)?(?P<Dose>\d+\.?(\d+)?)\$(?P<VolumeRelative>\d+\.?(\d+)?)(\s+)?\%$'),
+        'Vxxcc': re.compile(r'V(\s+)?(?P<Dose>\d+\.?(\d+)?)\$(?P<VolumeAbsolute>\d+\.?(\d+)?)(\s+)?cc$'),
+        'Dxx': re.compile(r'D(\s+)?(?P<Volume>\d+\.?(\d+)?)\$(?P<Dose>\d+\.?(\d+)?)(\s+)?\%?')
     }
 
     matches = {}
     for key, rx in dosimPar_rx_dict.items():
         match = rx.search(strDosimPar)
         if match:
-            if key == 'Vxx':
-                Volume = float(match.group('Volume'))
+            if key == 'Vxx%':
+                VolumeRelative = float(match.group('VolumeRelative'))
                 Dose = float(match.group('Dose'))
-                matches[key] = {'Volume%': Volume, 'DoseGy': Dose}
+                matches[key] = {'VolumeRelative': VolumeRelative, 'DoseGy': Dose}
+            if key == 'Vxxcc':
+                VolumeAbsolute = float(match.group('VolumeAbsolute'))
+                Dose = float(match.group('Dose'))
+                matches[key] = {'VolumeAbsolute': VolumeAbsolute, 'DoseGy': Dose}
             if key == 'Dxx':
                 Volume = float(match.group('Volume'))
                 Dose = float(match.group('Dose'))
-                matches[key] = {'Volume%': Volume, 'Dose%': Dose}
+                matches[key] = {'VolumeRelative': Volume, 'Dose%': Dose}
         
     return matches        
 
@@ -520,7 +525,6 @@ def convertPrescriptionIntoClinicalProtocol(prescription, ProtocolID, TreatmentS
             ID = oar.Organ
             Parameter = 0
             Fxs = float(pvdf.Dose.values[0]) / float(pvdf.FxDose.values[0])
-            print(repr(oar.Dmean))
             TotalDose = parseDose(oar.Dmean)
             Dose = f'{TotalDose / Fxs:.5f}'
             addPlanObjetive(bbx, ID=ID, vParameter=Parameter, vDose=Dose, vTotalDose=TotalDose,
@@ -538,8 +542,8 @@ def convertPrescriptionIntoClinicalProtocol(prescription, ProtocolID, TreatmentS
             for DosimPar in oar.DosimPars:
                 constraint_dict = parseDosimPar(DosimPar)
                 for key, constraint in constraint_dict.items():
-                    if key == 'Vxx':
-                        VolumePercentage = constraint['Volume%']
+                    if key == 'Vxx%':
+                        VolumePercentage = constraint['VolumeRelative']
                         Fxs = float(pvdf.Dose.values[0]) / float(pvdf.FxDose.values[0])
                         TotalDose = constraint['DoseGy']
                         Dose = f'{TotalDose / Fxs:.5f}'
@@ -574,16 +578,24 @@ def convertPrescriptionIntoClinicalProtocol(prescription, ProtocolID, TreatmentS
             for DosimPar in oar.DosimPars:
                 constraint_dict = parseDosimPar(DosimPar)
                 for key, constraint in constraint_dict.items():
-                    if key == 'Vxx':
-                        VolumePercentage = constraint['Volume%']
+                    if key == 'Vxx%':
+                        VolumePercentage = constraint['VolumeRelative']
                         PrescriptionDoseGy = pvdf.Dose.astype('float').max()
                         ConstraintDoseGy = constraint['DoseGy']
                         StructureRelativeDose = f'{ConstraintDoseGy / PrescriptionDoseGy * 100:.5f}'
                         addQualityIndex(bbx, ID=ID, vType=2, vModifier=1, 
                                             vValue=VolumePercentage, vTypeSpecifier=StructureRelativeDose, 
                                             vReportDQPValueInAbsoluteUnits='false')
+                    if key == 'Vxxcc':
+                        VolumeAbsolute = constraint['VolumeAbsolute']*1000
+                        PrescriptionDoseGy = pvdf.Dose.astype('float').max()
+                        ConstraintDoseGy = constraint['DoseGy']
+                        StructureRelativeDose = f'{ConstraintDoseGy / PrescriptionDoseGy * 100:.5f}'
+                        addQualityIndex(bbx, ID=ID, vType=2, vModifier=1, 
+                                            vValue=VolumeAbsolute, vTypeSpecifier=StructureRelativeDose, 
+                                            vReportDQPValueInAbsoluteUnits='true')
                     if key == 'Dxx':
-                        VolumePercentage = constraint['Volume%']
+                        VolumePercentage = constraint['VolumeRelative']
                         StructureRelativeDose = constraint['Dose%']
                         addQualityIndex(bbx, ID=ID, vType=4, vModifier=1, 
                                             vValue=VolumePercentage, vTypeSpecifier=StructureRelativeDose, 
