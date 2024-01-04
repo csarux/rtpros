@@ -461,6 +461,19 @@ def writeProt(bbx, protout):
     ET.indent(bbx)
     bbx.write(protout, encoding='utf-8', xml_declaration=True)
 
+def indentProt(prot):
+    '''
+    Function: indent a clinical protocol xml file
+    Overwrite the xml file indenting its elements
+
+    Arguments:
+    prot: String
+        File name of the clinical protocal (XML formt)
+    '''
+    # Leer el protocolo clínico de entrada
+    bbx = ET.parse(prot)
+    writeProt(bbx, prot)
+
 def convertPrescriptionIntoClinicalProtocol(prescription, ProtocolID, TreatmentSite, PlanID, ProtTemplate='BareBone.xml', ProtOut='ClinicalProtocol.xml'):
     '''
     Function: Convert a prescription into a clinical protocol
