@@ -1,0 +1,27 @@
+﻿PrescriptionName,CoverageConstraints,OrgansAtRisk,PrescribedTo
+Prostata + vvss + gg hipofx, Volume / Structure :PTV prostata Min Dose:   Gy Max Dose:   Gy At Least 95 % of PTV prostata at 95 % 47.88 Gy No More Than 5 % of PTV prostata at 105 % 52.92 Gy| Volume / Structure :PTV vvss Min Dose:   Gy Max Dose:   Gy At Least 95 % of PTV vvss at 95 % 66.5 Gy No More Than 5 % of PTV vvss at 105 % 73.5 Gy| Volume / Structure :PTV gg Min Dose:   Gy Max Dose:   Gy At Least 95 % of PTV gg at 95 % 47.88 Gy No More Than 5 % of PTV gg at 105 % 52.92 Gy,"Organ :Recto Mean : 44 Gy Max Dose : 
+Constraints : 
+V 68.2$15 %
+V 63.6$20%
+V 59$25 %
+V 54.5$35 %
+V 45.4$50%
+V 36.4$60 %
+Organ :Vejiga Mean :  Max Dose : 
+Constraints : 
+V 72.7$15%
+V 68.2$25%
+V 63.6$35 %
+V 59$50%
+Organ :Cabeza Femoral D Mean :  Max Dose : 54 Gy
+Constraints : 
+V 45$10 %
+Organ :Cabeza Femoral I Mean :  Max Dose : 54 Gy
+Constraints : 
+V 45$10 %
+Organ :Intestino Mean :  Max Dose : 
+Constraints : 
+V60$0.5cc
+V40$124cc
+V45$71cc",Volume PTV prostata  70.000 Gy  2.500 Gy/Frac|Volume PTV vvss  56.000 Gy  2.000 Gy/Frac|Volume PTV gg  50.400 Gy  1.800 Gy/Frac
+
