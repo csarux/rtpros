@@ -1,0 +1,49 @@
+﻿PrescriptionName,CoverageConstraints,OrgansAtRisk,PrescribedTo
+SBRT pulmon 8fx, Volume / Structure :PTV LSI Min Dose:   Gy Max Dose:   Gy At Least 95 % of PTV LSI at 95 % 57 Gy No More Than 5 % of PTV LSI at 107 % 64.2 Gy,"Organ :Ambos pulmones Mean :  Max Dose : 
+Constraints : 
+D 950cc$14.4 Gy
+V15.2$37%
+Organ :Médula Mean :  Max Dose : 
+Constraints : 
+V32$1 cc
+Organ :plexo braquial Mean :  Max Dose : 33.6 Gy
+Constraints : 
+V26.4$0.35 cc
+V32.8$3cc
+Organ :via aerea Mean :  Max Dose : 48.8 Gy
+Constraints : 
+V 38.4$0.5 cc
+Organ :Tráquea Mean :  Max Dose : 56 Gy
+Constraints : 
+V50$4 cc
+Organ :Esófago Mean :  Max Dose : 43.2 Gy
+Constraints : 
+V36.8$5cc
+Organ :Corazón Mean :  Max Dose : 40 Gy
+Constraints : 
+V34.4$15 cc
+Organ :aorta Mean :  Max Dose : 62 Gy
+Constraints : 
+V55.2$10cc
+Organ :v cava inferior Mean :  Max Dose : 62 Gy
+Constraints : 
+V55.2$10cc
+Organ :Vena cava sup Mean :  Max Dose : 62 Gy
+Constraints : 
+V55.2$10cc
+Organ :Arteria Pulmonar Mean :  Max Dose : 62 Gy
+Constraints : 
+V55.2$10cc
+Organ :venas pulmonares Mean :  Max Dose : 62 Gy
+Constraints : 
+V55.2$10cc
+Organ :Piel Mean :  Max Dose : 45.6 Gy
+Constraints : 
+V43.2$10 cc
+Organ :Pared costal Mean :  Max Dose : 63 Gy
+Constraints : 
+V50$5 cc
+Organ :Hígado Mean :  Max Dose : 
+Constraints : 
+D700$24.8 Gy",Volume PTV LSI  60.000 Gy  7.500 Gy/Frac
+
