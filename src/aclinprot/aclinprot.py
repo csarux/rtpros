@@ -260,15 +260,15 @@ def parseProt(protin = 'BareBone.xml'):
     An ElementTree instance
     '''
     # Leer el protocolo clínico de entrada
-    bbx = ET.parse(protin)
-    return bbx
+    cpet = ET.parse(protin)
+    return cpet
 
-def modPreview(bbx, ID, ApprovalStatus='Unapproved', TreatmentSite='', AssignedUsers='salud\\50724293r'):
+def modPreview(cpet, ID, ApprovalStatus='Unapproved', TreatmentSite='', AssignedUsers='salud\\50724293r'):
     '''
     Function: Modify the Preview section of a clinical protocol
 
     Arguments:
-    bbx: An element tree instance
+    cpet: An element tree instance
         The xml document to be modified
     ID: String
         The identification of the clinical protocol
@@ -279,7 +279,7 @@ def modPreview(bbx, ID, ApprovalStatus='Unapproved', TreatmentSite='', AssignedU
     AssignedUsers: String
         Aria User(s) writing the clinical protocol. It defaults to 'salud\50724293r'
     '''
-    Preview = bbx.find('Preview')
+    Preview = cpet.find('Preview')
     Preview.set('ID', ID)
     Preview.set('ApprovalStatus', ApprovalStatus)
     Preview.set('TreatmentSite', TreatmentSite)
@@ -289,12 +289,12 @@ def modPreview(bbx, ID, ApprovalStatus='Unapproved', TreatmentSite='', AssignedU
     ApprovalHistory = AssignedUsers + ' Created [' + creationdatetime + ' ]'
     Preview.set('ApprovalHistory', ApprovalHistory)
 
-def addStructure(bbx, structureName, stColourAndStyle='Countour - Brown', searchCT=1000, vDVHLineColor=-16777216):
+def addStructure(cpet, structureName, stColourAndStyle='Countour - Brown', searchCT=1000, vDVHLineColor=-16777216):
     '''
     Function: Add a new structure to the Structures section of a clinical protocol
 
     Arguments:
-    bbx: An element tree instance
+    cpet: An element tree instance
         The xml document to be modified
     structureName: String
         The name of the structure to be added
@@ -305,7 +305,7 @@ def addStructure(bbx, structureName, stColourAndStyle='Countour - Brown', search
     vDVHLineColor:  Int
         A signed integer coding the DVH line color of the structure
     '''
-    StructureTemplate = bbx.find('StructureTemplate')
+    StructureTemplate = cpet.find('StructureTemplate')
     Structures = StructureTemplate.find('Structures')
     Structure = ET.SubElement(Structures, 'Structure')
     Structure.set('ID', structureName)
@@ -340,29 +340,29 @@ def addStructure(bbx, structureName, stColourAndStyle='Countour - Brown', search
     TCPGamma = ET.SubElement(Structure, 'TCPGamma')
     TCPGamma.set('xsi:nil', 'true')
 
-def modPhase(bbx, ID, vFractionCount):
+def modPhase(cpet, ID, vFractionCount):
     '''
     Function: modify the Phase section
 
     Arguments:
-    bbx: An element tree instance
+    cpet: An element tree instance
     ID: String
         The Phase identification
     vFractionCount: Int
         The treatment fraction count
     '''
-    Phases = bbx.find('Phases')
+    Phases = cpet.find('Phases')
     Phase = Phases.find('Phase')
     Phase.set('ID', ID)
     FractionCount = Phase.find('FractionCount')
     FractionCount.text = str(vFractionCount)
 
-def addPlanObjetive(bbx, ID, vParameter, vDose, vTotalDose, vPrimary='false', vModifier=1):
+def addPlanObjetive(cpet, ID, vParameter, vDose, vTotalDose, vPrimary='false', vModifier=1):
     '''
     Function: Add a Plan Objetive
     
     Arguments:
-    bbx: An element tree instance
+    cpet: An element tree instance
         The xml document to be modified
     ID: String
         Structure name which the plan objetive applies to
@@ -386,7 +386,7 @@ def addPlanObjetive(bbx, ID, vParameter, vDose, vTotalDose, vPrimary='false', vM
     vTotalDose: Float
         Total dose in Gy
     '''
-    Phases = bbx.find('Phases')
+    Phases = cpet.find('Phases')
     Phase = Phases.find('Phase')
     Prescription = Phase.find('Prescription')
     Item = ET.SubElement(Prescription, 'Item')
@@ -403,12 +403,12 @@ def addPlanObjetive(bbx, ID, vParameter, vDose, vTotalDose, vPrimary='false', vM
     TotalDose = ET.SubElement(Item, 'TotalDose')
     TotalDose.text = str(vTotalDose)
 
-def addQualityIndex(bbx, ID, vType, vModifier, vValue, vTypeSpecifier, vReportDQPValueInAbsoluteUnits):
+def addQualityIndex(cpet, ID, vType, vModifier, vValue, vTypeSpecifier, vReportDQPValueInAbsoluteUnits):
     '''
     Function: Add a Quality Index
     
     Arguments:
-    bbx: An element tree instance
+    cpet: An element tree instance
         The xml document to be modified
     ID: String
         Structure name which the quality index applies to
@@ -432,7 +432,7 @@ def addQualityIndex(bbx, ID, vType, vModifier, vValue, vTypeSpecifier, vReportDQ
     vReportDQPValueInAbsoluteUnits: string {'true', 'false'}
         If the constrain is specified in absolute units
     '''
-    Phases = bbx.find('Phases')
+    Phases = cpet.find('Phases')
     Phase = Phases.find('Phase')
     Prescription = Phase.find('Prescription')
     MeasureItem = ET.SubElement(Prescription, 'MeasureItem')
@@ -448,18 +448,18 @@ def addQualityIndex(bbx, ID, vType, vModifier, vValue, vTypeSpecifier, vReportDQ
     ReportDQPValueInAbsoluteUnits = ET.SubElement(MeasureItem, 'ReportDQPValueInAbsoluteUnits')
     ReportDQPValueInAbsoluteUnits.text = vReportDQPValueInAbsoluteUnits
 
-def writeProt(bbx, protout):
+def writeProt(cpet, protout):
     '''
     Function: write a clinical protocol
 
     Arguments:
-    bbx: An element tree instance
+    cpet: An element tree instance
         The xml document to be written
     protout: String
         File name of the clinical protocal (XML formt) to be written
     '''
-    ET.indent(bbx)
-    bbx.write(protout, encoding='utf-8', xml_declaration=True)
+    ET.indent(cpet)
+    cpet.write(protout, encoding='utf-8', xml_declaration=True)
 
 def indentProt(prot):
     '''
@@ -471,8 +471,8 @@ def indentProt(prot):
         File name of the clinical protocal (XML formt)
     '''
     # Leer el protocolo clínico de entrada
-    bbx = ET.parse(prot)
-    writeProt(bbx, prot)
+    cpet = ET.parse(prot)
+    writeProt(cpet, prot)
 
 def convertPrescriptionIntoClinicalProtocol(prescription, ProtocolID, TreatmentSite, PlanID, ProtTemplate='BareBone.xml', ProtOut='ClinicalProtocol.xml'):
     '''
@@ -496,17 +496,17 @@ def convertPrescriptionIntoClinicalProtocol(prescription, ProtocolID, TreatmentS
     # Read the prescriptiop
     pvdf, ccdf, oardf = parse_prescription(prescription)
     # Read protocol template
-    bbx = parseProt(ProtTemplate)
+    cpet = parseProt(ProtTemplate)
     # Preview
-    modPreview(bbx, ID=ProtocolID, TreatmentSite=TreatmentSite)
+    modPreview(cpet, ID=ProtocolID, TreatmentSite=TreatmentSite)
     # Phases
     FractionCount = int(float(pvdf.Dose[0])/float(pvdf.FxDose[0]))
-    modPhase(bbx, ID=PlanID, vFractionCount=FractionCount)
+    modPhase(cpet, ID=PlanID, vFractionCount=FractionCount)
     # Structutures
     for pv in pvdf.itertuples():
-        addStructure(bbx, structureName=pv.Volume)
+        addStructure(cpet, structureName=pv.Volume)
     for oar in oardf.itertuples():
-        addStructure(bbx, structureName=oar.Organ)
+        addStructure(cpet, structureName=oar.Organ)
     
     # Plan objetives
     for pv in pvdf.itertuples():
@@ -523,7 +523,7 @@ def convertPrescriptionIntoClinicalProtocol(prescription, ProtocolID, TreatmentS
             DosePercentage = float(atLeastlst[1])/100
             FxDoseGy = float(pv.FxDose) * DosePercentage
             DoseGy = float(pv.Dose) * DosePercentage
-            addPlanObjetive(bbx, ID=pv.Volume, vParameter=VolumePercentage,
+            addPlanObjetive(cpet, ID=pv.Volume, vParameter=VolumePercentage,
                                 vDose=FxDoseGy, vTotalDose=DoseGy, vModifier=0)
         if ccVolumedf.NoMore.values[0]:
             noMorelst = ccVolumedf.NoMore.values[0]
@@ -531,7 +531,7 @@ def convertPrescriptionIntoClinicalProtocol(prescription, ProtocolID, TreatmentS
             DosePercentage = float(noMorelst[1])/100
             FxDoseGy = float(pv.FxDose) * DosePercentage
             DoseGy = float(pv.Dose) * DosePercentage
-            addPlanObjetive(bbx, ID=pv.Volume, vParameter=VolumePercentage,
+            addPlanObjetive(cpet, ID=pv.Volume, vParameter=VolumePercentage,
                                 vDose=FxDoseGy, vTotalDose=DoseGy)
     for oar in oardf.itertuples():
         if oar.Dmean:
@@ -540,7 +540,7 @@ def convertPrescriptionIntoClinicalProtocol(prescription, ProtocolID, TreatmentS
             Fxs = float(pvdf.Dose.values[0]) / float(pvdf.FxDose.values[0])
             TotalDose = parseDose(oar.Dmean)
             Dose = f'{TotalDose / Fxs:.5f}'
-            addPlanObjetive(bbx, ID=ID, vParameter=Parameter, vDose=Dose, vTotalDose=TotalDose,
+            addPlanObjetive(cpet, ID=ID, vParameter=Parameter, vDose=Dose, vTotalDose=TotalDose,
                                 vModifier=8)
         if oar.Dmax:
             ID = oar.Organ
@@ -548,7 +548,7 @@ def convertPrescriptionIntoClinicalProtocol(prescription, ProtocolID, TreatmentS
             Fxs = float(pvdf.Dose.values[0]) / float(pvdf.FxDose.values[0])
             TotalDose = parseDose(oar.Dmax)
             Dose = f'{TotalDose / Fxs:.5f}'
-            addPlanObjetive(bbx, ID=ID, vParameter=Parameter, vDose=Dose, vTotalDose=TotalDose,
+            addPlanObjetive(cpet, ID=ID, vParameter=Parameter, vDose=Dose, vTotalDose=TotalDose,
                                 vModifier=10)
         if oar.DosimPars:
             ID = oar.Organ
@@ -560,7 +560,7 @@ def convertPrescriptionIntoClinicalProtocol(prescription, ProtocolID, TreatmentS
                         Fxs = float(pvdf.Dose.values[0]) / float(pvdf.FxDose.values[0])
                         TotalDose = constraint['DoseGy']
                         Dose = f'{TotalDose / Fxs:.5f}'
-                        addPlanObjetive(bbx, ID=ID, vParameter=VolumePercentage, vDose=Dose, vTotalDose=TotalDose,
+                        addPlanObjetive(cpet, ID=ID, vParameter=VolumePercentage, vDose=Dose, vTotalDose=TotalDose,
                                             vModifier=1)
                         
     # Quality Indexes
@@ -572,7 +572,7 @@ def convertPrescriptionIntoClinicalProtocol(prescription, ProtocolID, TreatmentS
             VolumePercentage =  atLeastlst[0]
             DosePercentage = float(atLeastlst[1])/100
             StructureRelativeDose = float(pv.Dose) * DosePercentage / TreatmentDosePrescription * 100
-            addQualityIndex(bbx, ID=pv.Volume, vType=2, vModifier=0, 
+            addQualityIndex(cpet, ID=pv.Volume, vType=2, vModifier=0, 
                                 vValue=VolumePercentage, vTypeSpecifier=StructureRelativeDose, 
                                 vReportDQPValueInAbsoluteUnits='false')
         if ccVolumedf.NoMore.values[0]:
@@ -581,7 +581,7 @@ def convertPrescriptionIntoClinicalProtocol(prescription, ProtocolID, TreatmentS
             VolumePercentage = noMorelst[0]
             DosePercentage = float(noMorelst[1])/100
             StructureRelativeDose = float(pv.Dose) * DosePercentage / TreatmentDosePrescription * 100
-            addQualityIndex(bbx, ID=pv.Volume, vType=2, vModifier=1, 
+            addQualityIndex(cpet, ID=pv.Volume, vType=2, vModifier=1, 
                                 vValue=VolumePercentage, vTypeSpecifier=StructureRelativeDose, 
                                 vReportDQPValueInAbsoluteUnits='false')
     
@@ -596,7 +596,7 @@ def convertPrescriptionIntoClinicalProtocol(prescription, ProtocolID, TreatmentS
                         PrescriptionDoseGy = pvdf.Dose.astype('float').max()
                         ConstraintDoseGy = constraint['DoseGy']
                         StructureRelativeDose = f'{ConstraintDoseGy / PrescriptionDoseGy * 100:.5f}'
-                        addQualityIndex(bbx, ID=ID, vType=2, vModifier=1, 
+                        addQualityIndex(cpet, ID=ID, vType=2, vModifier=1, 
                                             vValue=VolumePercentage, vTypeSpecifier=StructureRelativeDose, 
                                             vReportDQPValueInAbsoluteUnits='false')
                     if key == 'Vxxcc':
@@ -604,18 +604,114 @@ def convertPrescriptionIntoClinicalProtocol(prescription, ProtocolID, TreatmentS
                         PrescriptionDoseGy = pvdf.Dose.astype('float').max()
                         ConstraintDoseGy = constraint['DoseGy']
                         StructureRelativeDose = f'{ConstraintDoseGy / PrescriptionDoseGy * 100:.5f}'
-                        addQualityIndex(bbx, ID=ID, vType=2, vModifier=1, 
+                        addQualityIndex(cpet, ID=ID, vType=2, vModifier=1, 
                                             vValue=VolumeAbsolute, vTypeSpecifier=StructureRelativeDose, 
                                             vReportDQPValueInAbsoluteUnits='true')
                     if key == 'Dxx':
                         VolumePercentage = constraint['VolumeRelative']
                         StructureRelativeDose = constraint['Dose%']
-                        addQualityIndex(bbx, ID=ID, vType=4, vModifier=1, 
+                        addQualityIndex(cpet, ID=ID, vType=4, vModifier=1, 
                                             vValue=VolumePercentage, vTypeSpecifier=StructureRelativeDose, 
                                             vReportDQPValueInAbsoluteUnits='false')
     
     # Write clincial protocol
-    writeProt(bbx, ProtOut)
+    writeProt(cpet, ProtOut)
+
+
+def structureElementByID(cpet, ID):
+    '''
+    Function: Retrieve the structure element with the specified ID in the clinical protocol element tree
+
+    Arguments:
+    cpet: Element Tree
+        Clinical protocol element tree
+
+    ID: String
+        Structure element ID
+        
+    Returns:
+    structureElement: Elment
+        Structure Element in the clinical protocol element tree
+    '''
+    for structureElement in cpet.find('StructureTemplate').find('Structures').findall('Structure'):
+        if structureElement.get('ID') == ID:
+            return structureElement
+    return None
+
+def prescriptionItemsByID(cpet, ID):
+    '''
+    Function: Retrieve the prescription elements with the specified ID in the clinical protocol element tree
+
+    Arguments:
+    cpet: Element Tree
+        Clinical protocol element tree
+
+    ID: String
+        Structure element ID
+        
+    Returns:
+    prescriptionItems: List
+        Prescription Item Element List in the clinical protocol element tree
+    '''
+    prescriptionItems = []
+    for prescriptionItem in cpet.find('Phases').find('Phase').find('Prescription').findall('Item'):
+        if prescriptionItem.get('ID') == ID:
+            prescriptionItems.append(prescriptionItem)
+    return prescriptionItems
+
+def measureItemsByID(cpet, ID):
+    '''
+    Function: Retrieve the MeasureItem elements with the specified ID in the clinical protocol element tree
+
+    Arguments:
+    cpet: Element Tree
+        Clinical protocol element tree
+
+    ID: String
+        Structure element ID
+        
+    Returns:
+    measureItems: List
+        Measure Item Element List in the clinical protocol element tree
+    '''
+    measureItems = []
+    for measureItem in cpet.find('Phases').find('Phase').find('Prescription').findall('MeasureItem'):
+        if measureItem.get('ID') == ID:
+            measureItems.append(measureItem)
+    return measureItems
+
+def amendClinicalProtocol(amendedcpet, modelcpet, ID):
+    '''
+    Function: Amend a clinical protocolo element tree using the element tree of other clinical protocol as a model
+
+    Arguments:
+    amendedcpet: Element Tree
+        Clinical protocol element tree to be amended
+
+    modelcpet: Element Tree
+        Clinical protocol element tree to be used as a model
+
+    ID: String
+        Structure element ID
+        
+    Returns:
+    amendedcpet: Element Tree
+        Amended clinical protocol element tree
+    '''
+    # Structures
+    structureElement = structureElementByID(cpet=modelcpet, ID=ID)
+    amendedcpet.find('StructureTemplate').find('Structures').append(structureElement)
+    # Prescriptions
+    prescriptionItems = prescriptionItemsByID(cpet=modelcpet, ID=ID)
+    for prescriptionItem in prescriptionItems:
+        indexInsertedItem = len([element for element in amendedcpet.find('Phases').find('Phase').find('Prescription').iter(tag='Item')])
+        amendedcpet.find('Phases').find('Phase').find('Prescription').insert(indexInsertedItem, prescriptionItem)
+    # MeasureItems
+    measureItems = measureItemsByID(cpet=modelcpet, ID=ID)
+    for measureItem in measureItems:
+        amendedcpet.find('Phases').find('Phase').find('Prescription').append(measureItem)    
+     
+    return amendedcpet
 
 '''
     Contouring
