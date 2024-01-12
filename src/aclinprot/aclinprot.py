@@ -721,7 +721,7 @@ def coverageConstraintCounting(prescriptionFile, prescriptionIndex=0):
     '''
     Function: covareageConstraintCounting
     Arguments:
-    file: Path file
+    prescriptionFile: Path file
     File containing the prescription. Exported from ARIA in csv format
     
     prescriptionIndex: Integer
@@ -759,7 +759,7 @@ def OARConstraintCounting(prescriptionFile, prescriptionIndex=0):
     '''
     Function: OARConstraintCounting
     Arguments:
-    file: Path file
+    prescriptionFile: Path file
     File containing the prescription. Exported from ARIA in csv format
     
     prescriptionIndex: Integer
@@ -794,6 +794,44 @@ def OARConstraintCounting(prescriptionFile, prescriptionIndex=0):
     OARConstraints = list(filter(None, OARConstraints))
     OARConstraintCount = len(OARConstraints)
     return OARConstraintCount
+
+def prescriptionPlanObjetiveCounting(prescriptionFile, prescriptionIndex=0):
+    '''
+    Function: prescriptionPlanObjetiveCounting
+    Arguments:
+    prescriptionFile: Path file
+    File containing the prescription. Exported from ARIA in csv format
+    
+    prescriptionIndex: Integer
+    Index of the prescription to be considered. Defaut: 0, the first prescription in the file
+    
+    Returns:
+    prescriptionPlanObjetiveCount: Integer
+    Number of constraints in the prescription writable as plan objetive in the clinical protocol
+    '''
+    prdf = read_prescription(prescriptionFile)
+    prescription = prdf.iloc[0]
+    
+    OARs = prescription.OrgansAtRisk.split('Organ :')[1:]
+    
+    rxVxx = re.compile(r'V.*?\$')
+    rxVxxGy = re.compile(r'V.*?Gy.*?\$')
+    
+    VxxConstraints, VxxGyConstraints = [], []
+    for OAR in OARs:
+        MeanMax, Constraints = OAR.split('Constraints : \n')
+        constraintList = Constraints.splitlines()
+        for constraint in constraintList:
+            matchVxx = rxVxx.search(constraint)
+            if matchVxx:
+                VxxConstraints.append(matchVxx.string)
+    
+            matchVxxGy = rxVxxGy.search(constraint)
+            if matchVxxGy:
+                VxxGyConstraints.append(matchVxxGy.string)
+    
+    prescriptionPlanObjetiveCount = len(VxxConstraints) - len(VxxGyConstraints)
+    return prescriptionPlanObjetiveCount
 
 '''
     Contouring
