@@ -714,6 +714,88 @@ def amendClinicalProtocol(amendedcpet, modelcpet, ID):
     return amendedcpet
 
 '''
+    Validation
+'''
+
+def coverageConstraintCounting(prescriptionFile, prescriptionIndex=0):
+    '''
+    Function: covareageConstraintCounting
+    Arguments:
+    file: Path file
+    File containing the prescription. Exported from ARIA in csv format
+    
+    prescriptionIndex: Integer
+    Index of the prescription to be considered. Defaut: 0, the first prescription in the file
+    
+    Returns:
+    coverageConstraintCount: Integer
+    Number of coverage constraints in the prescription
+    '''
+    prdf = read_prescription(prescriptionFile)
+    pres = prdf.iloc[prescriptionIndex]
+    coverageConstraints = pres.CoverageConstraints.split('|')
+    
+    targetVolume_rx_dict = {
+    #    'targetVolume': re.compile(r'Volume / Structure :(?P<targetVolume>.*?) M'),
+        'Dmean': re.compile(r'Mean :(?P<Dmean>.*?) c?Gy'),
+        'Dmax': re.compile(r'Max Dose:(?P<Dmax>.*?) c?Gy'),
+        'Dmin': re.compile(r'Min Dose:(?P<Dmin>.*?) c?Gy'),
+        'atLeast': re.compile(r'At Least(?P<atLeast>.*?) No More Than'),
+        'noMoreThan': re.compile(r'No More Than(?P<noMoreThan>.*?)$'),
+    }
+    
+    coverageConstraintList = []
+    for coverageConstraint in coverageConstraints:
+        for key, rx in targetVolume_rx_dict.items():
+            match = rx.search(coverageConstraint)
+            if match:
+                if match.group(key).strip():
+                    coverageConstraintList.append(match.group(key))
+    
+    coverageConstraintCount = len(coverageConstraintList)
+    return coverageConstraintCount
+
+def OARConstraintCounting(prescriptionFile, prescriptionIndex=0):
+    '''
+    Function: OARConstraintCounting
+    Arguments:
+    file: Path file
+    File containing the prescription. Exported from ARIA in csv format
+    
+    prescriptionIndex: Integer
+    Index of the prescription to be considered. Defaut: 0, the first prescription in the file
+    
+    Returns:
+    OARConstraintCount: Integer
+    Number of OAR constraints in the prescription
+    '''
+    prdf = read_prescription(prescriptionFile)
+    prescription = prdf.iloc[prescriptionIndex]
+    
+    OARs = prescription.OrgansAtRisk.split('Organ :')[1:]
+    
+    MeanMax_rx_dict = {
+    #    'targetVolume': re.compile(r'Volume / Structure :(?P<targetVolume>.*?) M'),
+        'Mean': re.compile(r'Mean :(?P<Mean>.*?) Max Dose :'),
+        'Max': re.compile(r'Max Dose :(?P<Max>.*?c?Gy)$'),
+    }
+    
+    OARConstraints = []
+    for OAR in OARs:
+        MeanMax, Constraints = OAR.split('Constraints : \n')
+        for key, rx in MeanMax_rx_dict.items():
+            match = rx.search(MeanMax)
+            if match:
+                if match.group(key).strip():
+                    OARConstraints.append(match.group(key))
+        
+        OARConstraints = OARConstraints + Constraints.splitlines()
+    
+    OARConstraints = list(filter(None, OARConstraints))
+    OARConstraintCount = len(OARConstraints)
+    return OARConstraintCount
+
+'''
     Contouring
 '''
 
