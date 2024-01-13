@@ -248,7 +248,7 @@ def getTreatmentDosePrescription(pvdf):
 '''
     Clinical protocols
 '''
-def parseProt(protin = 'BareBone.xml'):
+def parseProt(protin = 'ClinicalProtocol.xml'):
     '''
     Function: Parse a clinical protocol
 
@@ -782,7 +782,7 @@ def OARConstraintCounting(prescriptionFile, prescriptionIndex=0):
     
     OARConstraints = []
     for OAR in OARs:
-        MeanMax, Constraints = OAR.split('Constraints : \n')
+        MeanMax, Constraints = re.split(r'Constraints : \r?\n', OAR)
         for key, rx in MeanMax_rx_dict.items():
             match = rx.search(MeanMax)
             if match:
@@ -813,13 +813,24 @@ def prescriptionPlanObjetiveCounting(prescriptionFile, prescriptionIndex=0):
     prescription = prdf.iloc[0]
     
     OARs = prescription.OrgansAtRisk.split('Organ :')[1:]
-    
+
+    MeanMax_rx_dict = {
+    #    'targetVolume': re.compile(r'Volume / Structure :(?P<targetVolume>.*?) M'),
+        'Mean': re.compile(r'Mean :(?P<Mean>.*?) Max Dose :'),
+        'Max': re.compile(r'Max Dose :(?P<Max>.*?c?Gy)$'),
+    }
+
     rxVxx = re.compile(r'V.*?\$')
     rxVxxGy = re.compile(r'V.*?Gy.*?\$')
     
-    VxxConstraints, VxxGyConstraints = [], []
+    MeanMaxConstraints, VxxConstraints, VxxGyConstraints = [], [], []
     for OAR in OARs:
-        MeanMax, Constraints = OAR.split('Constraints : \n')
+        MeanMax, Constraints = re.split(r'Constraints : \r?\n', OAR)
+        for key, rx in MeanMax_rx_dict.items():
+            match = rx.search(MeanMax)
+            if match:
+                if match.group(key).strip():
+                    MeanMaxConstraints.append(match.group(key))
         constraintList = Constraints.splitlines()
         for constraint in constraintList:
             matchVxx = rxVxx.search(constraint)
@@ -830,7 +841,7 @@ def prescriptionPlanObjetiveCounting(prescriptionFile, prescriptionIndex=0):
             if matchVxxGy:
                 VxxGyConstraints.append(matchVxxGy.string)
     
-    prescriptionPlanObjetiveCount = len(VxxConstraints) - len(VxxGyConstraints)
+    prescriptionPlanObjetiveCount = len(MeanMaxConstraints) + len(VxxConstraints) - len(VxxGyConstraints)
     return prescriptionPlanObjetiveCount
 
 '''
