@@ -843,6 +843,98 @@ def prescriptionPlanObjetiveCounting(prescriptionFile, prescriptionIndex=0):
     
     prescriptionPlanObjetiveCount = len(MeanMaxConstraints) + len(VxxConstraints) - len(VxxGyConstraints)
     return prescriptionPlanObjetiveCount
+    
+def prescriptionConstraintsToQualityIndexesCounting(prescriptionFile, prescriptionIndex=0):
+    '''
+    Function: prescriptionConstraintsToQualityIndexesCounting
+    Count the number of prescriptions items convertible into quality indexes
+    
+    Arguments:
+    prescriptionFile: Path file
+    File containing the prescription. Exported from ARIA in csv format
+    
+    prescriptionIndex: Integer
+    Index of the prescription to be considered. Defaut: 0, the first prescription in the file
+    
+    Returns:
+    prescriptionConstraintsToQualityIndexesCount: Integer
+    Number of constraints in the prescription writable as quality indexes in the clinical protocol
+    '''
+    prdf = read_prescription(prescriptionFile)
+    prescription = prdf.iloc[0]
+    
+    OARs = prescription.OrgansAtRisk.split('Organ :')[1:]
+
+    rxVxx = re.compile(r'V.*?\$')
+    rxVxxGy = re.compile(r'V.*?Gy.*?\$')
+    rxVxxpc = re.compile(r'V.*?\%.*?\$')
+    rxDxx = re.compile(r'D.*?\$')
+    rxDxxcc = re.compile(r'D.*?cc.*?\$')
+    rxDxxpc = re.compile(r'D.*?\%.*?\$')
+    
+    VxxConstraints, VxxGyConstraints, VxxpcConstraints, DxxConstraints, DxxccConstraints, DxxpcConstraints = [], [], [], [], [], []
+    for OAR in OARs:
+        MeanMax, Constraints = re.split(r'Constraints : \r?\n', OAR)
+        constraintList = Constraints.splitlines()
+        for constraint in constraintList:
+            matchVxx = rxVxx.search(constraint)
+            if matchVxx:
+                VxxConstraints.append(matchVxx.string)
+    
+            matchVxxGy = rxVxxGy.search(constraint)
+            if matchVxxGy:
+                VxxGyConstraints.append(matchVxxGy.string)
+    
+            matchVxxpc = rxVxxpc.search(constraint)
+            if matchVxxpc:
+                VxxpcConstraints.append(matchVxxpc.string)
+
+            matchDxx = rxDxx.search(constraint)
+            if matchDxx:
+                DxxConstraints.append(matchDxx.string)
+    
+            matchDxxcc = rxDxxcc.search(constraint)
+            if matchDxxcc:
+                DxxccConstraints.append(matchDxxcc.string)
+    
+            matchDxxpc = rxDxxpc.search(constraint)
+            if matchDxxpc:
+                DxxpcConstraints.append(matchDxxpc.string)
+
+    prescriptionConstraintsToQualityIndexesCount = len(VxxConstraints + VxxGyConstraints + VxxpcConstraints + DxxConstraints + DxxccConstraints + DxxpcConstraints)
+    print(VxxConstraints + VxxGyConstraints + VxxpcConstraints + DxxConstraints + DxxccConstraints + DxxpcConstraints)
+    return prescriptionConstraintsToQualityIndexesCount
+
+def clinicalProtocolPrescriptionItemCounting(clinicalProtocol='ClinicalProtocol.xml'):
+    '''
+    Function: clinicalProtocolPrescriptionItemCounting
+    Arguments:
+    clinicalProtocol: Path file
+    File containing the Clinical Protocol in XML formal
+       
+    Returns:
+    clinicalProtocolPrescriptionItemCount: Integer
+    Number of Items in the prescription section of the clinical protocol
+    '''
+    cpet = parseProt(clinicalProtocol)
+    clinicalProtocolPrescriptionItemCount = len(cpet.find('Phases').find('Phase').find('Prescription').findall('Item'))
+    return clinicalProtocolPrescriptionItemCount
+
+
+def clinicalProtocolPrescriptionQualityIndexCounting(clinicalProtocol='ClinicalProtocol.xml'):
+    '''
+    Function: clinicalProtocolPrescriptionItemCounting
+    Arguments:
+    clinicalProtocol: Path file
+    File containing the Clinical Protocol in XML formal
+       
+    Returns:
+    clinicalProtocolPrescriptionQualityIndexCount: Integer
+    Number of Quality Indexes (Measure Items) in the prescription section of the clinical protocol
+    '''
+    cpet = parseProt(clinicalProtocol)
+    clinicalProtocolPrescriptionQualityIndexCount = len(cpet.find('Phases').find('Phase').find('Prescription').findall('MeasureItem'))
+    return clinicalProtocolPrescriptionQualityIndexCount
 
 '''
     Contouring
