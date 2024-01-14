@@ -43,7 +43,12 @@ def parseDosimPar(strDosimPar):
     dosimPar_rx_dict = {
         'Vxx%': re.compile(r'V(\s+)?(?P<Dose>\d+\.?(\d+)?)\$(?P<VolumeRelative>\d+\.?(\d+)?)(\s+)?\%$'),
         'Vxxcc': re.compile(r'V(\s+)?(?P<Dose>\d+\.?(\d+)?)\$(?P<VolumeAbsolute>\d+\.?(\d+)?)(\s+)?cc$'),
-        'Dxx': re.compile(r'D(\s+)?(?P<Volume>\d+\.?(\d+)?)\$(?P<Dose>\d+\.?(\d+)?)(\s+)?\%?')
+        'Dxx': re.compile(r'D(\s+)?(?P<Volume>\d+\.?(\d+)?)\$(?P<Dose%>\d+\.?(\d+)?)(\s+)?\%?')
+        'Dxxcc': re.compile(r'D(\s+)?(?P<Volume>\d+\.?(\d+)?)cc\$(?P<Dose%>\d+\.?(\d+)?)(\s+)?\%?')
+        'Dxx%': re.compile(r'D(\s+)?(?P<Volume%>\d+\.?(\d+)?)\%\$(?P<Dose%>\d+\.?(\d+)?)(\s+)?\%?')
+        'Dxx_Gy': re.compile(r'D(\s+)?(?P<Volume>\d+\.?(\d+)?)\$(?P<DoseGy>\d+\.?(\d+)?)(\s+)?(Gy)?')
+        'Dxxcc_Gy': re.compile(r'D(\s+)?(?P<Volume>\d+\.?(\d+)?)cc\$(?P<DoseGy>\d+\.?(\d+)?)(\s+)?(Gy)?')
+        'Dxx%_Gy': re.compile(r'D(\s+)?(?P<VolumeRelative>\d+\.?(\d+)?)\%\$(?P<DoseGy>\d+\.?(\d+)?)(\s+)?(Gy)?')
     }
 
     matches = {}
@@ -61,7 +66,27 @@ def parseDosimPar(strDosimPar):
             if key == 'Dxx':
                 Volume = float(match.group('Volume'))
                 Dose = float(match.group('Dose'))
-                matches[key] = {'VolumeRelative': Volume, 'Dose%': Dose}
+                matches[key] = {'VolumeRelative': Volume, 'DoseRelative': Dose}
+            if key == 'Dxxcc':
+                Volume = float(match.group('Volume'))
+                Dose = float(match.group('Dose%'))
+                matches[key] = {'VolumeAbsolute': Volume, 'DoseRelative': Dose}
+            if key == 'Dxx%':
+                Volume = float(match.group('Volume%'))
+                Dose = float(match.group('Dose%'))
+                matches[key] = {'VolumeRelative': Volume, 'DoseRelative': Dose}
+            if key == 'Dxx_Gy':
+                Volume = float(match.group('Volume'))
+                Dose = float(match.group('DoseGy'))
+                matches[key] = {'VolumeRelative': Volume, 'DoseAbsolute': Dose}
+            if key == 'Dxxcc_Gy':
+                Volume = float(match.group('Volume'))
+                Dose = float(match.group('DoseGy'))
+                matches[key] = {'VolumeAbsolute': Volume, 'DoseAbsolute': Dose}
+            if key == 'Dxx%_Gy':
+                Volume = float(match.group('Volume%'))
+                Dose = float(match.group('DoseGy'))
+                matches[key] = {'VolumeRelative': Volume, 'DoseAbsolute': Dose}
         
     return matches        
 
@@ -248,7 +273,7 @@ def getTreatmentDosePrescription(pvdf):
 '''
     Clinical protocols
 '''
-def parseProt(protin = 'BareBone.xml'):
+def parseProt(protin = 'ClinicalProtocol.xml'):
     '''
     Function: Parse a clinical protocol
 
@@ -721,7 +746,7 @@ def coverageConstraintCounting(prescriptionFile, prescriptionIndex=0):
     '''
     Function: covareageConstraintCounting
     Arguments:
-    file: Path file
+    prescriptionFile: Path file
     File containing the prescription. Exported from ARIA in csv format
     
     prescriptionIndex: Integer
@@ -759,7 +784,7 @@ def OARConstraintCounting(prescriptionFile, prescriptionIndex=0):
     '''
     Function: OARConstraintCounting
     Arguments:
-    file: Path file
+    prescriptionFile: Path file
     File containing the prescription. Exported from ARIA in csv format
     
     prescriptionIndex: Integer
@@ -782,7 +807,7 @@ def OARConstraintCounting(prescriptionFile, prescriptionIndex=0):
     
     OARConstraints = []
     for OAR in OARs:
-        MeanMax, Constraints = OAR.split('Constraints : \n')
+        MeanMax, Constraints = re.split(r'Constraints : \r?\n', OAR)
         for key, rx in MeanMax_rx_dict.items():
             match = rx.search(MeanMax)
             if match:
@@ -794,6 +819,150 @@ def OARConstraintCounting(prescriptionFile, prescriptionIndex=0):
     OARConstraints = list(filter(None, OARConstraints))
     OARConstraintCount = len(OARConstraints)
     return OARConstraintCount
+
+def prescriptionPlanObjetiveCounting(prescriptionFile, prescriptionIndex=0):
+    '''
+    Function: prescriptionPlanObjetiveCounting
+    Arguments:
+    prescriptionFile: Path file
+    File containing the prescription. Exported from ARIA in csv format
+    
+    prescriptionIndex: Integer
+    Index of the prescription to be considered. Defaut: 0, the first prescription in the file
+    
+    Returns:
+    prescriptionPlanObjetiveCount: Integer
+    Number of constraints in the prescription writable as plan objetive in the clinical protocol
+    '''
+    prdf = read_prescription(prescriptionFile)
+    prescription = prdf.iloc[0]
+    
+    OARs = prescription.OrgansAtRisk.split('Organ :')[1:]
+
+    MeanMax_rx_dict = {
+    #    'targetVolume': re.compile(r'Volume / Structure :(?P<targetVolume>.*?) M'),
+        'Mean': re.compile(r'Mean :(?P<Mean>.*?) Max Dose :'),
+        'Max': re.compile(r'Max Dose :(?P<Max>.*?c?Gy)$'),
+    }
+
+    rxVxx = re.compile(r'V.*?\$')
+    rxVxxGy = re.compile(r'V.*?Gy.*?\$')
+    
+    MeanMaxConstraints, VxxConstraints, VxxGyConstraints = [], [], []
+    for OAR in OARs:
+        MeanMax, Constraints = re.split(r'Constraints : \r?\n', OAR)
+        for key, rx in MeanMax_rx_dict.items():
+            match = rx.search(MeanMax)
+            if match:
+                if match.group(key).strip():
+                    MeanMaxConstraints.append(match.group(key))
+        constraintList = Constraints.splitlines()
+        for constraint in constraintList:
+            matchVxx = rxVxx.search(constraint)
+            if matchVxx:
+                VxxConstraints.append(matchVxx.string)
+    
+            matchVxxGy = rxVxxGy.search(constraint)
+            if matchVxxGy:
+                VxxGyConstraints.append(matchVxxGy.string)
+    
+    coverageConstraintCount = coverageConstraintCounting(prescriptionFile)
+    prescriptionPlanObjetiveCount = len(MeanMaxConstraints) + len(VxxConstraints) - len(VxxGyConstraints) + coverageConstraintCount
+    return prescriptionPlanObjetiveCount
+    
+def prescriptionConstraintsToQualityIndexesCounting(prescriptionFile, prescriptionIndex=0):
+    '''
+    Function: prescriptionConstraintsToQualityIndexesCounting
+    Count the number of prescriptions items convertible into quality indexes
+    
+    Arguments:
+    prescriptionFile: Path file
+    File containing the prescription. Exported from ARIA in csv format
+    
+    prescriptionIndex: Integer
+    Index of the prescription to be considered. Defaut: 0, the first prescription in the file
+    
+    Returns:
+    prescriptionConstraintsToQualityIndexesCount: Integer
+    Number of constraints in the prescription writable as quality indexes in the clinical protocol
+    '''
+    prdf = read_prescription(prescriptionFile)
+    prescription = prdf.iloc[0]
+    
+    OARs = prescription.OrgansAtRisk.split('Organ :')[1:]
+
+    rxVxx = re.compile(r'V.*?\$')
+    rxDxx = re.compile(r'D.*?\$')
+    
+    VxxConstraints, DxxConstraints = [], []
+    for OAR in OARs:
+        MeanMax, Constraints = re.split(r'Constraints : \r?\n', OAR)
+        constraintList = Constraints.splitlines()
+        for constraint in constraintList:
+            matchVxx = rxVxx.search(constraint)
+            if matchVxx:
+                VxxConstraints.append(matchVxx.string)
+    
+            matchDxx = rxDxx.search(constraint)
+            if matchDxx:
+                DxxConstraints.append(matchDxx.string)
+    
+
+    prescriptionConstraintsToQualityIndexesCount = len(VxxConstraints + DxxConstraints)
+    return prescriptionConstraintsToQualityIndexesCount
+
+def prescriptionQualityIndexCounting(prescriptionFile, prescriptionIndex=0):
+    '''
+    Function: prescriptionQualityIndexCounting
+    Count the number of items convertible into quality indexes
+    
+    Arguments:
+    prescriptionFile: Path file
+    File containing the prescription. Exported from ARIA in csv format
+    
+    prescriptionIndex: Integer
+    Index of the prescription to be considered. Defaut: 0, the first prescription in the file
+    
+    Returns:
+    prescriptionQualityIndexCount: Integer
+    Number of quality indexes to be written in the clinical protocol
+    '''
+
+    prescriptionConstraintsToQualityIndexesCount = prescriptionConstraintsToQualityIndexesCounting(prescriptionFile)
+    coverageConstraintCount = coverageConstraintCounting(prescriptionFile)
+    prescriptionQualityIndexCount = prescriptionConstraintsToQualityIndexesCount + coverageConstraintCount
+    return prescriptionQualityIndexCount
+
+def clinicalProtocolPrescriptionItemCounting(clinicalProtocol='ClinicalProtocol.xml'):
+    '''
+    Function: clinicalProtocolPrescriptionItemCounting
+    Arguments:
+    clinicalProtocol: Path file
+    File containing the Clinical Protocol in XML formal
+       
+    Returns:
+    clinicalProtocolPrescriptionItemCount: Integer
+    Number of Items in the prescription section of the clinical protocol
+    '''
+    cpet = parseProt(clinicalProtocol)
+    clinicalProtocolPrescriptionItemCount = len(cpet.find('Phases').find('Phase').find('Prescription').findall('Item'))
+    return clinicalProtocolPrescriptionItemCount
+
+
+def clinicalProtocolPrescriptionQualityIndexCounting(clinicalProtocol='ClinicalProtocol.xml'):
+    '''
+    Function: clinicalProtocolPrescriptionItemCounting
+    Arguments:
+    clinicalProtocol: Path file
+    File containing the Clinical Protocol in XML formal
+       
+    Returns:
+    clinicalProtocolPrescriptionQualityIndexCount: Integer
+    Number of Quality Indexes (Measure Items) in the prescription section of the clinical protocol
+    '''
+    cpet = parseProt(clinicalProtocol)
+    clinicalProtocolPrescriptionQualityIndexCount = len(cpet.find('Phases').find('Phase').find('Prescription').findall('MeasureItem'))
+    return clinicalProtocolPrescriptionQualityIndexCount
 
 '''
     Contouring
