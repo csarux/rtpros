@@ -43,12 +43,12 @@ def parseDosimPar(strDosimPar):
     dosimPar_rx_dict = {
         'Vxx%': re.compile(r'V(\s+)?(?P<Dose>\d+\.?(\d+)?)\$(?P<VolumeRelative>\d+\.?(\d+)?)(\s+)?\%$'),
         'Vxxcc': re.compile(r'V(\s+)?(?P<Dose>\d+\.?(\d+)?)\$(?P<VolumeAbsolute>\d+\.?(\d+)?)(\s+)?cc$'),
-        'Dxx': re.compile(r'D(\s+)?(?P<Volume>\d+\.?(\d+)?)\$(?P<Dose%>\d+\.?(\d+)?)(\s+)?\%?')
-        'Dxxcc': re.compile(r'D(\s+)?(?P<Volume>\d+\.?(\d+)?)cc\$(?P<Dose%>\d+\.?(\d+)?)(\s+)?\%?')
-        'Dxx%': re.compile(r'D(\s+)?(?P<Volume%>\d+\.?(\d+)?)\%\$(?P<Dose%>\d+\.?(\d+)?)(\s+)?\%?')
-        'Dxx_Gy': re.compile(r'D(\s+)?(?P<Volume>\d+\.?(\d+)?)\$(?P<DoseGy>\d+\.?(\d+)?)(\s+)?(Gy)?')
-        'Dxxcc_Gy': re.compile(r'D(\s+)?(?P<Volume>\d+\.?(\d+)?)cc\$(?P<DoseGy>\d+\.?(\d+)?)(\s+)?(Gy)?')
-        'Dxx%_Gy': re.compile(r'D(\s+)?(?P<VolumeRelative>\d+\.?(\d+)?)\%\$(?P<DoseGy>\d+\.?(\d+)?)(\s+)?(Gy)?')
+        'Dxx': re.compile(r'D(\s+)?(?P<Volume>\d+\.?(\d+)?)\$(?P<Dose%>\d+\.?(\d+)?)(\s+)?\%?'),
+        'Dxxcc': re.compile(r'D(\s+)?(?P<Volume>\d+\.?(\d+)?)cc\$(?P<Dose%>\d+\.?(\d+)?)(\s+)?\%?'),
+        'Dxx%': re.compile(r'D(\s+)?(?P<Volume%>\d+\.?(\d+)?)\%\$(?P<Dose%>\d+\.?(\d+)?)(\s+)?\%?'),
+        'Dxx_Gy': re.compile(r'D(\s+)?(?P<Volume>\d+\.?(\d+)?)\$(?P<DoseGy>\d+\.?(\d+)?)(\s+)?(Gy)?'),
+        'Dxxcc_Gy': re.compile(r'D(\s+)?(?P<Volume>\d+\.?(\d+)?)cc\$(?P<DoseGy>\d+\.?(\d+)?)(\s+)?(Gy)?'),
+        'Dxx%_Gy': re.compile(r'D(\s+)?(?P<VolumeRelative>\d+\.?(\d+)?)\%\$(?P<DoseGy>\d+\.?(\d+)?)(\s+)?(Gy)?'),
     }
 
     matches = {}
@@ -536,12 +536,7 @@ def convertPrescriptionIntoClinicalProtocol(prescription, ProtocolID, TreatmentS
     # Plan objetives
     for pv in pvdf.itertuples():
         ccVolumedf = ccdf[ccdf.Volume == pv.Volume]
-        '''
-        if not ccVolumedf.Min.str.match(' +')[0]:
-            a=1
-        if ccVolumedf.Max.str.match(' +')[0] == False:
-            a=1
-        '''
+
         if ccVolumedf.AtLeast.values[0]:
             atLeastlst = ccVolumedf.AtLeast.values[0]
             VolumePercentage =  atLeastlst[0]
