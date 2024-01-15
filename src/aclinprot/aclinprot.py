@@ -43,9 +43,9 @@ def parseDosimPar(strDosimPar):
     dosimPar_rx_dict = {
         'Vxx%': re.compile(r'V(\s+)?(?P<Dose>\d+\.?(\d+)?)\$(?P<VolumeRelative>\d+\.?(\d+)?)(\s+)?\%$'),
         'Vxxcc': re.compile(r'V(\s+)?(?P<Dose>\d+\.?(\d+)?)\$(?P<VolumeAbsolute>\d+\.?(\d+)?)(\s+)?cc$'),
-        'Dxx': re.compile(r'D(\s+)?(?P<Volume>\d+\.?(\d+)?)\$(?P<Dose%>\d+\.?(\d+)?)(\s+)?\%?'),
-        'Dxxcc': re.compile(r'D(\s+)?(?P<Volume>\d+\.?(\d+)?)cc\$(?P<Dose%>\d+\.?(\d+)?)(\s+)?\%?'),
-        'Dxx%': re.compile(r'D(\s+)?(?P<Volume%>\d+\.?(\d+)?)\%\$(?P<Dose%>\d+\.?(\d+)?)(\s+)?\%?'),
+        'Dxx': re.compile(r'D(\s+)?(?P<Volume>\d+\.?(\d+)?)\$(?P<DoseRelative>\d+\.?(\d+)?)(\s+)?\%?'),
+        'Dxxcc': re.compile(r'D(\s+)?(?P<Volume>\d+\.?(\d+)?)cc\$(?P<DoseRelative>\d+\.?(\d+)?)(\s+)?\%?'),
+        'Dxx%': re.compile(r'D(\s+)?(?P<VolumeRelative>\d+\.?(\d+)?)\%\$(?P<DoseRelative>\d+\.?(\d+)?)(\s+)?\%?'),
         'Dxx_Gy': re.compile(r'D(\s+)?(?P<Volume>\d+\.?(\d+)?)\$(?P<DoseGy>\d+\.?(\d+)?)(\s+)?(Gy)?'),
         'Dxxcc_Gy': re.compile(r'D(\s+)?(?P<Volume>\d+\.?(\d+)?)cc\$(?P<DoseGy>\d+\.?(\d+)?)(\s+)?(Gy)?'),
         'Dxx%_Gy': re.compile(r'D(\s+)?(?P<VolumeRelative>\d+\.?(\d+)?)\%\$(?P<DoseGy>\d+\.?(\d+)?)(\s+)?(Gy)?'),
