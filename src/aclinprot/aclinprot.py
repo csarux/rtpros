@@ -1,10 +1,12 @@
 import datetime
 import io
+import os
 import re
 import pandas as pd
 import xml.etree.ElementTree as ET
 import pydicom as dcm
 from textdistance import ratcliff_obershelp
+from numpy import isnan
 
 def parseDose(strDose):
     '''
@@ -41,13 +43,12 @@ def parseDosimPar(strDosimPar):
     Returns:
     '''
     dosimPar_rx_dict = {
-        'Vxx%': re.compile(r'V(\s+)?(?P<Dose>\d+\.?(\d+)?)\$(?P<VolumeRelative>\d+\.?(\d+)?)(\s+)?\%$'),
-        'Vxxcc': re.compile(r'V(\s+)?(?P<Dose>\d+\.?(\d+)?)\$(?P<VolumeAbsolute>\d+\.?(\d+)?)(\s+)?cc$'),
-        'Dxx': re.compile(r'D(\s+)?(?P<Volume>\d+\.?(\d+)?)\$(?P<DoseRelative>\d+\.?(\d+)?)(\s+)?\%?'),
+        'Vxx%': re.compile(r'V(\s+)?(?P<Dose>\d+\.?(\d+)?)\s*?(Gy)?\$(?P<VolumeRelative>\d+\.?(\d+)?)(\s+)?\%$'),
+        'Vxxcc': re.compile(r'V(\s+)?(?P<Dose>\d+\.?(\d+)?)\s*?(Gy)?\$(?P<VolumeAbsolute>\d+\.?(\d+)?)(\s+)?cc$'),
         'Dxxcc': re.compile(r'D(\s+)?(?P<Volume>\d+\.?(\d+)?)cc\$(?P<DoseRelative>\d+\.?(\d+)?)(\s+)?\%?'),
         'Dxx%': re.compile(r'D(\s+)?(?P<VolumeRelative>\d+\.?(\d+)?)\%\$(?P<DoseRelative>\d+\.?(\d+)?)(\s+)?\%?'),
         'Dxx_Gy': re.compile(r'D(\s+)?(?P<Volume>\d+\.?(\d+)?)\$(?P<DoseGy>\d+\.?(\d+)?)(\s+)?(Gy)?'),
-        'Dxxcc_Gy': re.compile(r'D(\s+)?(?P<Volume>\d+\.?(\d+)?)cc\$(?P<DoseGy>\d+\.?(\d+)?)(\s+)?(Gy)?'),
+        'Dxxcc_Gy': re.compile(r'D(\s+)?(?P<Volume>\d+\.?(\d+)?).*?cc\$(?P<DoseGy>\d+\.?(\d+)?)(\s+)?(Gy)?'),
         'Dxx%_Gy': re.compile(r'D(\s+)?(?P<VolumeRelative>\d+\.?(\d+)?)\%\$(?P<DoseGy>\d+\.?(\d+)?)(\s+)?(Gy)?'),
     }
 
@@ -63,30 +64,26 @@ def parseDosimPar(strDosimPar):
                 VolumeAbsolute = float(match.group('VolumeAbsolute'))
                 Dose = float(match.group('Dose'))
                 matches[key] = {'VolumeAbsolute': VolumeAbsolute, 'DoseGy': Dose}
-            if key == 'Dxx':
-                Volume = float(match.group('Volume'))
-                Dose = float(match.group('Dose'))
-                matches[key] = {'VolumeRelative': Volume, 'DoseRelative': Dose}
             if key == 'Dxxcc':
                 Volume = float(match.group('Volume'))
-                Dose = float(match.group('Dose%'))
+                Dose = float(match.group('DoseRelative'))
                 matches[key] = {'VolumeAbsolute': Volume, 'DoseRelative': Dose}
             if key == 'Dxx%':
-                Volume = float(match.group('Volume%'))
-                Dose = float(match.group('Dose%'))
+                Volume = float(match.group('VolumeRelative'))
+                Dose = float(match.group('DoseRelative'))
                 matches[key] = {'VolumeRelative': Volume, 'DoseRelative': Dose}
             if key == 'Dxx_Gy':
                 Volume = float(match.group('Volume'))
                 Dose = float(match.group('DoseGy'))
-                matches[key] = {'VolumeRelative': Volume, 'DoseAbsolute': Dose}
+                matches[key] = {'VolumeAbsolute': Volume, 'DoseGy': Dose}
             if key == 'Dxxcc_Gy':
                 Volume = float(match.group('Volume'))
                 Dose = float(match.group('DoseGy'))
-                matches[key] = {'VolumeAbsolute': Volume, 'DoseAbsolute': Dose}
+                matches[key] = {'VolumeAbsolute': Volume, 'DoseGy': Dose}
             if key == 'Dxx%_Gy':
-                Volume = float(match.group('Volume%'))
+                Volume = float(match.group('VolumeRelative'))
                 Dose = float(match.group('DoseGy'))
-                matches[key] = {'VolumeRelative': Volume, 'DoseAbsolute': Dose}
+                matches[key] = {'VolumeRelative': Volume, 'DoseGy': Dose}
         
     return matches        
 
@@ -223,7 +220,10 @@ def parse_prescription(file):
     # Split the fields with the prescription volumes, covarage constraints and the organ at risk
     pv_lines = prdf.PrescribedTo.values[0].split('|')
     cc_lines = prdf.CoverageConstraints.values[0].split('|')
-    oar_lines = prdf.OrgansAtRisk.values[0].split('\n')
+    if isinstance(prdf.OrgansAtRisk.values[0], str):
+        oar_lines = prdf.OrgansAtRisk.values[0].split('\n')
+    else:
+        oar_lines = []
     
     # Parse the prescription volume lines and create the pvdf dataframe
     pvdf = pd.DataFrame([_parse_prescription_volume(pv_line) for pv_line in pv_lines])
@@ -288,7 +288,7 @@ def parseProt(protin = 'ClinicalProtocol.xml'):
     cpet = ET.parse(protin)
     return cpet
 
-def modPreview(cpet, ID, ApprovalStatus='Unapproved', TreatmentSite='', AssignedUsers='salud\\50724293r'):
+def modPreview(cpet, ID, ApprovalStatus='Unapproved', TreatmentSite='', AssignedUsers=r'salud\50724293R'):
     '''
     Function: Modify the Preview section of a clinical protocol
 
@@ -521,7 +521,7 @@ def convertPrescriptionIntoClinicalProtocol(prescription, ProtocolID, TreatmentS
     # Read the prescriptiop
     pvdf, ccdf, oardf = parse_prescription(prescription)
     # Read protocol template
-    cpet = parseProt(ProtTemplate)
+    cpet = parseProt(os.path.dirname(__file__) + '/' + ProtTemplate)
     # Preview
     modPreview(cpet, ID=ProtocolID, TreatmentSite=TreatmentSite)
     # Phases
@@ -536,8 +536,7 @@ def convertPrescriptionIntoClinicalProtocol(prescription, ProtocolID, TreatmentS
     # Plan objetives
     for pv in pvdf.itertuples():
         ccVolumedf = ccdf[ccdf.Volume == pv.Volume]
-
-        if ccVolumedf.AtLeast.values[0]:
+        if ccVolumedf.AtLeast.values[0] and isinstance(ccVolumedf.AtLeast.values[0], list):
             atLeastlst = ccVolumedf.AtLeast.values[0]
             VolumePercentage =  atLeastlst[0]
             DosePercentage = float(atLeastlst[1])/100
@@ -545,7 +544,7 @@ def convertPrescriptionIntoClinicalProtocol(prescription, ProtocolID, TreatmentS
             DoseGy = float(pv.Dose) * DosePercentage
             addPlanObjetive(cpet, ID=pv.Volume, vParameter=VolumePercentage,
                                 vDose=FxDoseGy, vTotalDose=DoseGy, vModifier=0)
-        if ccVolumedf.NoMore.values[0]:
+        if ccVolumedf.NoMore.values[0] and isinstance(ccVolumedf.NoMore.values[0], list):
             noMorelst = ccVolumedf.NoMore.values[0]
             VolumePercentage =  noMorelst[0]
             DosePercentage = float(noMorelst[1])/100
@@ -586,23 +585,25 @@ def convertPrescriptionIntoClinicalProtocol(prescription, ProtocolID, TreatmentS
     # Quality Indexes
     for pv in pvdf.itertuples():
         ccVolumedf = ccdf[ccdf.Volume == pv.Volume]
-        if ccVolumedf.AtLeast.values[0]:
+        if ccVolumedf.AtLeast.values[0] and isinstance(ccVolumedf.AtLeast.values[0], list):
             TreatmentDosePrescription = getTreatmentDosePrescription(pvdf)
             atLeastlst = ccVolumedf.AtLeast.values[0]
             VolumePercentage =  atLeastlst[0]
             DosePercentage = float(atLeastlst[1])/100
-            StructureRelativeDose = float(pv.Dose) * DosePercentage / TreatmentDosePrescription * 100
-            addQualityIndex(cpet, ID=pv.Volume, vType=2, vModifier=0, 
-                                vValue=VolumePercentage, vTypeSpecifier=StructureRelativeDose, 
+            structureAbsoluteDose = float(pv.Dose) * DosePercentage
+            StructureRelativeDose = structureAbsoluteDose / TreatmentDosePrescription * 100
+            addQualityIndex(cpet, ID=pv.Volume, vType=3, vModifier=0, 
+                                vValue=VolumePercentage, vTypeSpecifier=structureAbsoluteDose, 
                                 vReportDQPValueInAbsoluteUnits='false')
-        if ccVolumedf.NoMore.values[0]:
+        if ccVolumedf.NoMore.values[0] and isinstance(ccVolumedf.NoMore.values[0], list):
             TreatmentDosePrescription = getTreatmentDosePrescription(pvdf)
             noMorelst = ccVolumedf.NoMore.values[0]
             VolumePercentage = noMorelst[0]
             DosePercentage = float(noMorelst[1])/100
-            StructureRelativeDose = float(pv.Dose) * DosePercentage / TreatmentDosePrescription * 100
-            addQualityIndex(cpet, ID=pv.Volume, vType=2, vModifier=1, 
-                                vValue=VolumePercentage, vTypeSpecifier=StructureRelativeDose, 
+            structureAbsoluteDose = float(pv.Dose) * DosePercentage
+            StructureRelativeDose = structureAbsoluteDose / TreatmentDosePrescription * 100
+            addQualityIndex(cpet, ID=pv.Volume, vType=3, vModifier=1, 
+                                vValue=VolumePercentage, vTypeSpecifier=structureAbsoluteDose, 
                                 vReportDQPValueInAbsoluteUnits='false')
     
     for oar in oardf.itertuples():
@@ -616,23 +617,30 @@ def convertPrescriptionIntoClinicalProtocol(prescription, ProtocolID, TreatmentS
                         PrescriptionDoseGy = pvdf.Dose.astype('float').max()
                         ConstraintDoseGy = constraint['DoseGy']
                         StructureRelativeDose = f'{ConstraintDoseGy / PrescriptionDoseGy * 100:.5f}'
-                        addQualityIndex(cpet, ID=ID, vType=2, vModifier=1, 
-                                            vValue=VolumePercentage, vTypeSpecifier=StructureRelativeDose, 
+                        addQualityIndex(cpet, ID=ID, vType=3, vModifier=1, 
+                                            vValue=VolumePercentage, vTypeSpecifier=ConstraintDoseGy, 
                                             vReportDQPValueInAbsoluteUnits='false')
                     if key == 'Vxxcc':
                         VolumeAbsolute = constraint['VolumeAbsolute']*1000
                         PrescriptionDoseGy = pvdf.Dose.astype('float').max()
                         ConstraintDoseGy = constraint['DoseGy']
                         StructureRelativeDose = f'{ConstraintDoseGy / PrescriptionDoseGy * 100:.5f}'
-                        addQualityIndex(cpet, ID=ID, vType=2, vModifier=1, 
-                                            vValue=VolumeAbsolute, vTypeSpecifier=StructureRelativeDose, 
+                        addQualityIndex(cpet, ID=ID, vType=3, vModifier=1, 
+                                            vValue=VolumeAbsolute, vTypeSpecifier=ConstraintDoseGy, 
                                             vReportDQPValueInAbsoluteUnits='true')
-                    if key == 'Dxx':
-                        VolumePercentage = constraint['VolumeRelative']
-                        StructureRelativeDose = constraint['Dose%']
-                        addQualityIndex(cpet, ID=ID, vType=4, vModifier=1, 
-                                            vValue=VolumePercentage, vTypeSpecifier=StructureRelativeDose, 
-                                            vReportDQPValueInAbsoluteUnits='false')
+                    if key == 'Dxx_Gy':
+                        VolumeAbsolute = constraint['VolumeAbsolute']
+                        print(VolumeAbsolute)
+                        StructureAbsoluteDose = constraint['DoseGy']
+                        addQualityIndex(cpet, ID=ID, vType=5, vModifier=1, 
+                                            vValue=StructureAbsoluteDose, vTypeSpecifier=VolumeAbsolute, 
+                                            vReportDQPValueInAbsoluteUnits='true')
+                    if key == 'Dxxcc_Gy':
+                        VolumeAbsolute = constraint['VolumeAbsolute']
+                        StructureAbsoluteDose = constraint['DoseGy']
+                        addQualityIndex(cpet, ID=ID, vType=5, vModifier=1, 
+                                            vValue=StructureAbsoluteDose, vTypeSpecifier=VolumeAbsolute, 
+                                            vReportDQPValueInAbsoluteUnits='true')
     
     # Write clincial protocol
     writeProt(cpet, ProtOut)
