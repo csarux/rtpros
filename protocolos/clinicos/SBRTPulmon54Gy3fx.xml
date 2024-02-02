@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <Protocol xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.12">
-  <Preview Version="1.2" ID="SBRTPulmon54Gy3fx_test" Type="Protocol" ApprovalStatus="Unapproved" Diagnosis="" TreatmentSite="Lung" AssignedUsers="salud\50724293R" Description="" LastModified=" enero 16 2024 18:57:55:311" ApprovalHistory="salud\50724293R Created [ January 16 2024 18:46:38:104 ]" />
+  <Preview Version="1.2" ID="SBRTPulmon54Gy3fx" Type="Protocol" ApprovalStatus="Unapproved" Diagnosis="" TreatmentSite="Lungs" AssignedUsers="salud\50724293R" Description="" LastModified=" febrero 02 2024 12:22:53:493" ApprovalHistory="salud\50724293R Created [ February 02 2024 12:19:52:528 ]" />
   <StructureTemplate Version="1.2">
     <Structures>
       <Structure ID="PTV t" Name="PTV t">
