@@ -1,0 +1,625 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Protocol xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.12">
+  <Preview Version="1.2" ID="SBRTPulmon54Gy3fx_test" Type="Protocol" ApprovalStatus="Unapproved" Diagnosis="" TreatmentSite="Lung" AssignedUsers="salud\50724293R" Description="" LastModified=" enero 16 2024 18:57:55:311" ApprovalHistory="salud\50724293R Created [ January 16 2024 18:46:38:104 ]" />
+  <StructureTemplate Version="1.2">
+    <Structures>
+      <Structure ID="PTV t" Name="PTV t">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="Médula" Name="Médula">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="Pared costal" Name="Pared costal">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="Piel" Name="Piel">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="Ambos pulmones" Name="Ambos pulmones">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="via aerea" Name="via aerea">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="Vena cava sup" Name="Vena cava sup">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="Plexo Braquial" Name="Plexo Braquial">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="Corazón" Name="Corazón">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="Tráquea" Name="Tráquea">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="venas pulmonares" Name="venas pulmonares">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="Aorta" Name="Aorta">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="Vena cava inf" Name="Vena cava inf">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="Arteria Pulmonar" Name="Arteria Pulmonar">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="Esófago" Name="Esófago">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="Hígado" Name="Hígado">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+    </Structures>
+  </StructureTemplate>
+  <FieldAlignmentRules />
+  <Phases>
+    <Phase ID="SBRTPulmon">
+      <Mode>Photon</Mode>
+      <DefaultEnergyKV>6000</DefaultEnergyKV>
+      <FractionCount>3</FractionCount>
+      <FractionsPerWeek xsi:nil="true" />
+      <FractionsPerDay xsi:nil="true" />
+      <TreatmentUnit>TrueBeam2</TreatmentUnit>
+      <TreatmentStyle>Dynamic ARC</TreatmentStyle>
+      <ImmobilizationDevice />
+      <LocalizationTechnique />
+      <Prescription Version="1.10">
+        <Item ID="PTV t" Primary="false">
+          <Type>0</Type>
+          <Modifier>0</Modifier>
+          <Parameter>95</Parameter>
+          <Dose>17.1</Dose>
+          <TotalDose>51.3</TotalDose>
+        </Item>
+        <Item ID="PTV t" Primary="false">
+          <Type>0</Type>
+          <Modifier>1</Modifier>
+          <Parameter>5</Parameter>
+          <Dose>19.26</Dose>
+          <TotalDose>57.78</TotalDose>
+        </Item>
+        <Item ID="Médula" Primary="false">
+          <Type>0</Type>
+          <Modifier>10</Modifier>
+          <Parameter>0</Parameter>
+          <Dose>7.5</Dose>
+          <TotalDose>22.5</TotalDose>
+        </Item>
+        <Item ID="Pared costal" Primary="false">
+          <Type>0</Type>
+          <Modifier>10</Modifier>
+          <Parameter>0</Parameter>
+          <Dose>16.6667</Dose>
+          <TotalDose>50.0001</TotalDose>
+        </Item>
+        <Item ID="Piel" Primary="false">
+          <Type>0</Type>
+          <Modifier>10</Modifier>
+          <Parameter>0</Parameter>
+          <Dose>11</Dose>
+          <TotalDose>33</TotalDose>
+        </Item>
+        <Item ID="Ambos pulmones" Primary="false">
+          <Type>0</Type>
+          <Modifier>1</Modifier>
+          <Parameter>37</Parameter>
+          <Dose>3.8</Dose>
+          <TotalDose>11.4</TotalDose>
+        </Item>
+        <Item ID="via aerea" Primary="false">
+          <Type>0</Type>
+          <Modifier>10</Modifier>
+          <Parameter>0</Parameter>
+          <Dose>10</Dose>
+          <TotalDose>30</TotalDose>
+        </Item>
+        <Item ID="Vena cava sup" Primary="false">
+          <Type>0</Type>
+          <Modifier>10</Modifier>
+          <Parameter>0</Parameter>
+          <Dose>15</Dose>
+          <TotalDose>45</TotalDose>
+        </Item>
+        <Item ID="Plexo Braquial" Primary="false">
+          <Type>0</Type>
+          <Modifier>10</Modifier>
+          <Parameter>0</Parameter>
+          <Dose>8.66667</Dose>
+          <TotalDose>26</TotalDose>
+        </Item>
+        <Item ID="Corazón" Primary="false">
+          <Type>0</Type>
+          <Modifier>10</Modifier>
+          <Parameter>0</Parameter>
+          <Dose>10</Dose>
+          <TotalDose>30</TotalDose>
+        </Item>
+        <Item ID="Tráquea" Primary="false">
+          <Type>0</Type>
+          <Modifier>10</Modifier>
+          <Parameter>0</Parameter>
+          <Dose>14.3333</Dose>
+          <TotalDose>42.9999</TotalDose>
+        </Item>
+        <Item ID="venas pulmonares" Primary="false">
+          <Type>0</Type>
+          <Modifier>10</Modifier>
+          <Parameter>0</Parameter>
+          <Dose>15</Dose>
+          <TotalDose>45</TotalDose>
+        </Item>
+        <Item ID="Aorta" Primary="false">
+          <Type>0</Type>
+          <Modifier>10</Modifier>
+          <Parameter>0</Parameter>
+          <Dose>15</Dose>
+          <TotalDose>45</TotalDose>
+        </Item>
+        <Item ID="Vena cava inf" Primary="false">
+          <Type>0</Type>
+          <Modifier>10</Modifier>
+          <Parameter>0</Parameter>
+          <Dose>15</Dose>
+          <TotalDose>45</TotalDose>
+        </Item>
+        <Item ID="Arteria Pulmonar" Primary="false">
+          <Type>0</Type>
+          <Modifier>10</Modifier>
+          <Parameter>0</Parameter>
+          <Dose>15</Dose>
+          <TotalDose>45</TotalDose>
+        </Item>
+        <Item ID="Esófago" Primary="false">
+          <Type>0</Type>
+          <Modifier>10</Modifier>
+          <Parameter>0</Parameter>
+          <Dose>10.8</Dose>
+          <TotalDose>32.4</TotalDose>
+        </Item>
+        <MeasureItem ID="PTV t">
+          <Type>3</Type>
+          <Modifier>0</Modifier>
+          <Value>95</Value>
+          <TypeSpecifier>51.3</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>false</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="PTV t">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>5</Value>
+          <TypeSpecifier>57.78</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>false</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Médula">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>350</Value>
+          <TypeSpecifier>15.9</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>true</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Pared costal">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>5000</Value>
+          <TypeSpecifier>40</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>true</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Piel">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>10000</Value>
+          <TypeSpecifier>31</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>true</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Ambos pulmones">
+          <Type>5</Type>
+          <Modifier>1</Modifier>
+          <Value>10.8</Value>
+          <TypeSpecifier>950</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>true</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Ambos pulmones">
+          <Type>5</Type>
+          <Modifier>1</Modifier>
+          <Value>10.8</Value>
+          <TypeSpecifier>1500</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>true</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Ambos pulmones">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>37</Value>
+          <TypeSpecifier>11.4</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>false</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="via aerea">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>500</Value>
+          <TypeSpecifier>25.8</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>true</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Vena cava sup">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>10000</Value>
+          <TypeSpecifier>39</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>true</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Plexo Braquial">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>3000</Value>
+          <TypeSpecifier>22</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>true</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Corazón">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>15000</Value>
+          <TypeSpecifier>24</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>true</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Tráquea">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>5000</Value>
+          <TypeSpecifier>39</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>true</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="venas pulmonares">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>10000</Value>
+          <TypeSpecifier>39</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>true</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Aorta">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>10000</Value>
+          <TypeSpecifier>39</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>true</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Vena cava inf">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>10000</Value>
+          <TypeSpecifier>39</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>true</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Arteria Pulmonar">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>10000</Value>
+          <TypeSpecifier>39</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>true</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Esófago">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>5000</Value>
+          <TypeSpecifier>27.9</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>true</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Hígado">
+          <Type>5</Type>
+          <Modifier>1</Modifier>
+          <Value>17.7</Value>
+          <TypeSpecifier>700</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>true</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+      </Prescription>
+      <PlanTemplate Version="1.6">
+        <PrescribedPercentage>1</PrescribedPercentage>
+        <DosePerFraction>3</DosePerFraction>
+        <FractionCount>20</FractionCount>
+        <FieldAlignmentRules />
+        <PrescriptionSite>
+          <VolumeID>PTV prostata+vvss</VolumeID>
+          <VolumeCode />
+          <VolumeType>PTV</VolumeType>
+          <VolumeCodeTable />
+        </PrescriptionSite>
+        <Boluses />
+        <Fields />
+      </PlanTemplate>
+      <ObjectiveTemplate Version="1.9">
+        <Type>Helios</Type>
+        <Helios DefaultFixedJaws="false" Interpolate="false" UseColors="false" TargetAutocrop="false" Aldo="false">
+          <DefaultSmoothingX>40</DefaultSmoothingX>
+          <DefaultSmoothingY>30</DefaultSmoothingY>
+          <DefaultMinimizeDose>0</DefaultMinimizeDose>
+          <DefaultOptimizationType>Beamlet</DefaultOptimizationType>
+          <MaxIterations>0</MaxIterations>
+          <MaxTime>12</MaxTime>
+          <NormalTissueObjective>
+            <Use>true</Use>
+            <Priority>100</Priority>
+            <DistanceFromTargetBorder>1</DistanceFromTargetBorder>
+            <StartDose>105</StartDose>
+            <EndDose>60</EndDose>
+            <FallOff>0.05</FallOff>
+            <Mode />
+            <Auto>true</Auto>
+          </NormalTissueObjective>
+          <Geos>
+            <InitialFieldDistribution>Coplanar</InitialFieldDistribution>
+            <MinimumNumberOfFields>5</MinimumNumberOfFields>
+            <MaximumNumberOfFields>9</MaximumNumberOfFields>
+            <MaximumElevationAngleForNonCoplanarFields>10</MaximumElevationAngleForNonCoplanarFields>
+            <MaximumCollimatorVariation>10</MaximumCollimatorVariation>
+            <LocalGeometricOptimizationMode>None</LocalGeometricOptimizationMode>
+          </Geos>
+          <Imat UseMU="false" JawTracking="false">
+            <MUWeight>50</MUWeight>
+            <MinMU>0</MinMU>
+            <MaxMU>2000</MaxMU>
+          </Imat>
+        </Helios>
+        <ObjectivesAllStructures />
+      </ObjectiveTemplate>
+    </Phase>
+  </Phases>
+  <Review ShowMin="true" ShowMax="true" ShowMean="true" ShowModal="false" ShowMedian="false" ShowStdDev="false" ShowEUD="true" ShowTCP="false" ShowNTCP="false" ShowNDR="false" ShowEquivalentSphereDiameter="false" ShowConformityIndex="false" ShowGradientMeasure="false">
+    <ReviewStructures />
+  </Review>
+</Protocol>
