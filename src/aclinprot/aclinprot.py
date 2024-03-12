@@ -43,7 +43,7 @@ def parseDosimPar(strDosimPar):
     Returns:
     '''
     dosimPar_rx_dict = {
-        'Vxx%': re.compile(r'V(\s+)?(?P<Dose>\d+\.?(\d+)?)\s*?(Gy)?\$(?P<VolumeRelative>\d+\.?(\d+)?)(\s+)?\%$'),
+        'Vxx%': re.compile(r'V(\s+)?(?P<Dose>\d+\.?(\d+)?)\s*?(Gy)?\$(?P<VolumeRelative>\d+\.?(\d+)?)(\s+)?(\%)?$'),
         'Vxxcc': re.compile(r'V(\s+)?(?P<Dose>\d+\.?(\d+)?)\s*?(Gy)?\$(?P<VolumeAbsolute>\d+\.?(\d+)?)(\s+)?cc$'),
         'Dxxcc': re.compile(r'D(\s+)?(?P<Volume>\d+\.?(\d+)?)cc\$(?P<DoseRelative>\d+\.?(\d+)?)(\s+)?\%?'),
         'Dxx%': re.compile(r'D(\s+)?(?P<VolumeRelative>\d+\.?(\d+)?)\%\$(?P<DoseRelative>\d+\.?(\d+)?)(\s+)?\%?'),
@@ -422,11 +422,11 @@ def addPlanObjetive(cpet, ID, vParameter, vDose, vTotalDose, vPrimary='false', v
     Modifier = ET.SubElement(Item, 'Modifier')
     Modifier.text = str(vModifier)
     Parameter = ET.SubElement(Item, 'Parameter')
-    Parameter.text = str(vParameter)
+    Parameter.text = f'{float(vParameter):g}'
     Dose = ET.SubElement(Item, 'Dose')
-    Dose.text = str(vDose)
+    Dose.text = f'{float(vDose):g}'
     TotalDose = ET.SubElement(Item, 'TotalDose')
-    TotalDose.text = str(vTotalDose)
+    TotalDose.text = f'{float(vTotalDose):g}'
 
 def addQualityIndex(cpet, ID, vType, vModifier, vValue, vTypeSpecifier, vReportDQPValueInAbsoluteUnits):
     '''
@@ -467,9 +467,9 @@ def addQualityIndex(cpet, ID, vType, vModifier, vValue, vTypeSpecifier, vReportD
     Modifier = ET.SubElement(MeasureItem, 'Modifier')
     Modifier.text = str(vModifier)
     Value = ET.SubElement(MeasureItem, 'Value')
-    Value.text = str(vValue)
+    Value.text = f'{float(vValue):g}' 
     TypeSpecifier = ET.SubElement(MeasureItem, 'TypeSpecifier')
-    TypeSpecifier.text = str(vTypeSpecifier)
+    TypeSpecifier.text = f'{float(vTypeSpecifier):g}' 
     ReportDQPValueInAbsoluteUnits = ET.SubElement(MeasureItem, 'ReportDQPValueInAbsoluteUnits')
     ReportDQPValueInAbsoluteUnits.text = vReportDQPValueInAbsoluteUnits
 
@@ -558,7 +558,7 @@ def convertPrescriptionIntoClinicalProtocol(prescription, ProtocolID, TreatmentS
             Parameter = 0
             Fxs = float(pvdf.Dose.values[0]) / float(pvdf.FxDose.values[0])
             TotalDose = parseDose(oar.Dmean)
-            Dose = f'{TotalDose / Fxs:.5f}'
+            Dose = f'{TotalDose / Fxs:g}'
             addPlanObjetive(cpet, ID=ID, vParameter=Parameter, vDose=Dose, vTotalDose=TotalDose,
                                 vModifier=8)
         if oar.Dmax:
@@ -566,7 +566,7 @@ def convertPrescriptionIntoClinicalProtocol(prescription, ProtocolID, TreatmentS
             Parameter = 0
             Fxs = float(pvdf.Dose.values[0]) / float(pvdf.FxDose.values[0])
             TotalDose = parseDose(oar.Dmax)
-            Dose = f'{TotalDose / Fxs:.5f}'
+            Dose = f'{TotalDose / Fxs:g}'
             addPlanObjetive(cpet, ID=ID, vParameter=Parameter, vDose=Dose, vTotalDose=TotalDose,
                                 vModifier=10)
         if oar.DosimPars:
@@ -578,7 +578,7 @@ def convertPrescriptionIntoClinicalProtocol(prescription, ProtocolID, TreatmentS
                         VolumePercentage = constraint['VolumeRelative']
                         Fxs = float(pvdf.Dose.values[0]) / float(pvdf.FxDose.values[0])
                         TotalDose = constraint['DoseGy']
-                        Dose = f'{TotalDose / Fxs:.5f}'
+                        Dose = f'{TotalDose / Fxs:g}'
                         addPlanObjetive(cpet, ID=ID, vParameter=VolumePercentage, vDose=Dose, vTotalDose=TotalDose,
                                             vModifier=1)
                         
@@ -616,7 +616,7 @@ def convertPrescriptionIntoClinicalProtocol(prescription, ProtocolID, TreatmentS
                         VolumePercentage = constraint['VolumeRelative']
                         PrescriptionDoseGy = pvdf.Dose.astype('float').max()
                         ConstraintDoseGy = constraint['DoseGy']
-                        StructureRelativeDose = f'{ConstraintDoseGy / PrescriptionDoseGy * 100:.5f}'
+                        StructureRelativeDose = f'{ConstraintDoseGy / PrescriptionDoseGy * 100:g}'
                         addQualityIndex(cpet, ID=ID, vType=3, vModifier=1, 
                                             vValue=VolumePercentage, vTypeSpecifier=ConstraintDoseGy, 
                                             vReportDQPValueInAbsoluteUnits='false')
@@ -624,7 +624,7 @@ def convertPrescriptionIntoClinicalProtocol(prescription, ProtocolID, TreatmentS
                         VolumeAbsolute = constraint['VolumeAbsolute']*1000
                         PrescriptionDoseGy = pvdf.Dose.astype('float').max()
                         ConstraintDoseGy = constraint['DoseGy']
-                        StructureRelativeDose = f'{ConstraintDoseGy / PrescriptionDoseGy * 100:.5f}'
+                        StructureRelativeDose = f'{ConstraintDoseGy / PrescriptionDoseGy * 100:g}'
                         addQualityIndex(cpet, ID=ID, vType=3, vModifier=1, 
                                             vValue=VolumeAbsolute, vTypeSpecifier=ConstraintDoseGy, 
                                             vReportDQPValueInAbsoluteUnits='true')
@@ -642,8 +642,20 @@ def convertPrescriptionIntoClinicalProtocol(prescription, ProtocolID, TreatmentS
                                             vValue=StructureAbsoluteDose, vTypeSpecifier=VolumeAbsolute, 
                                             vReportDQPValueInAbsoluteUnits='true')
     
+                    if key == 'Dxx%_Gy':
+                        VolumePercentage = constraint['VolumeRelative']
+                        StructureAbsoluteDose = constraint['DoseGy']
+                        addQualityIndex(cpet, ID=ID, vType=4, vModifier=1, 
+                                            vValue=StructureAbsoluteDose, vTypeSpecifier=VolumePercentage, 
+                                            vReportDQPValueInAbsoluteUnits='true')
+
     # Write clincial protocol
-    writeProt(cpet, ProtOut)
+    clinprotpath = '../protocolos/clinicos/'
+    if os.path.exists(clinprotpath):
+        writeProt(cpet, clinprotpath + ProtOut)
+        print('Creado protocolo ' + clinprotpath + ProtOut)
+    else:
+        writeProt(cpet, ProtOut)
 
 
 def structureElementByID(cpet, ID):
