@@ -44,7 +44,7 @@ def parseDosimPar(strDosimPar):
     '''
     dosimPar_rx_dict = {
         'Vxx%': re.compile(r'V(\s+)?(?P<Dose>\d+\.?(\d+)?)\s*?(Gy)?\$(?P<VolumeRelative>\d+\.?(\d+)?)(\s+)?(\%)?$'),
-        'Vxxcc': re.compile(r'V(\s+)?(?P<Dose>\d+\.?(\d+)?)\s*?(Gy)?\$(?P<VolumeAbsolute>\d+\.?(\d+)?)(\s+)?cc$'),
+        'VxxGy': re.compile(r'V(\s+)?(?P<Dose>\d+\.?(\d+)?)\s*?(Gy)?\$(?P<VolumeAbsolute>\d+\.?(\d+)?)(\s+)?cc$'),
         'Dxxcc': re.compile(r'D(\s+)?(?P<Volume>\d+\.?(\d+)?)cc\$(?P<DoseRelative>\d+\.?(\d+)?)(\s+)?\%?'),
         'Dxx%': re.compile(r'D(\s+)?(?P<VolumeRelative>\d+\.?(\d+)?)\%\$(?P<DoseRelative>\d+\.?(\d+)?)(\s+)?\%?'),
         'Dxx_Gy': re.compile(r'D(\s+)?(?P<Volume>\d+\.?(\d+)?)\$(?P<DoseGy>\d+\.?(\d+)?)(\s+)?(Gy)?'),
@@ -60,7 +60,7 @@ def parseDosimPar(strDosimPar):
                 VolumeRelative = float(match.group('VolumeRelative'))
                 Dose = float(match.group('Dose'))
                 matches[key] = {'VolumeRelative': VolumeRelative, 'DoseGy': Dose}
-            if key == 'Vxxcc':
+            if key == 'VxxGy':
                 VolumeAbsolute = float(match.group('VolumeAbsolute'))
                 Dose = float(match.group('Dose'))
                 matches[key] = {'VolumeAbsolute': VolumeAbsolute, 'DoseGy': Dose}
@@ -620,7 +620,7 @@ def convertPrescriptionIntoClinicalProtocol(prescription, ProtocolID, TreatmentS
                         addQualityIndex(cpet, ID=ID, vType=3, vModifier=1, 
                                             vValue=VolumePercentage, vTypeSpecifier=ConstraintDoseGy, 
                                             vReportDQPValueInAbsoluteUnits='false')
-                    if key == 'Vxxcc':
+                    if key == 'VxxGy':
                         VolumeAbsolute = constraint['VolumeAbsolute']*1000
                         PrescriptionDoseGy = pvdf.Dose.astype('float').max()
                         ConstraintDoseGy = constraint['DoseGy']
@@ -630,7 +630,6 @@ def convertPrescriptionIntoClinicalProtocol(prescription, ProtocolID, TreatmentS
                                             vReportDQPValueInAbsoluteUnits='true')
                     if key == 'Dxx_Gy':
                         VolumeAbsolute = constraint['VolumeAbsolute']
-                        print(VolumeAbsolute)
                         StructureAbsoluteDose = constraint['DoseGy']
                         addQualityIndex(cpet, ID=ID, vType=5, vModifier=1, 
                                             vValue=StructureAbsoluteDose, vTypeSpecifier=VolumeAbsolute, 
