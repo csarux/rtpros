@@ -4,3 +4,4 @@ streamlit>=1.35.0
 pandas>=2.2.2
 numpy>=1.26.4
 pydicom>=2.4.4
+textdistance>=4.6.2

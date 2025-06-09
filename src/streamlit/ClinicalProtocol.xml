@@ -1,0 +1,358 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Protocol xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.12">
+  <Preview Version="1.2" ID="ProtocoloID" Type="Protocol" ApprovalStatus="Unapproved" Diagnosis="" TreatmentSite="Brain" AssignedUsers="salud\50724293R" Description="" LastModified=" June 09 2025 13:05:41:675" ApprovalHistory="salud\50724293R Created [ June 09 2025 13:05:41:675 ]" />
+  <StructureTemplate Version="1.2">
+    <Structures>
+      <Structure ID="PTV boost" Name="PTV boost">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+          <StructureCode />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="PTV pelvis" Name="PTV pelvis">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+          <StructureCode />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="Recto" Name="Recto">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+          <StructureCode />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="Vejiga" Name="Vejiga">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+          <StructureCode />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="Cabeza femoral D" Name="Cabeza femoral D">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+          <StructureCode />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="Cabeza femoral I" Name="Cabeza femoral I">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+          <StructureCode />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="Intestino Del" Name="Intestino Del">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+          <StructureCode />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+    </Structures>
+  </StructureTemplate>
+  <FieldAlignmentRules />
+  <Phases>
+    <Phase ID="PlanID">
+      <Mode>Photon</Mode>
+      <DefaultEnergyKV>6000</DefaultEnergyKV>
+      <FractionCount>30</FractionCount>
+      <FractionsPerWeek xsi:nil="true" />
+      <FractionsPerDay xsi:nil="true" />
+      <TreatmentUnit>TrueBeam2</TreatmentUnit>
+      <TreatmentStyle>Dynamic ARC</TreatmentStyle>
+      <ImmobilizationDevice />
+      <LocalizationTechnique />
+      <Prescription Version="1.10">
+        <Item ID="PTV boost" Primary="false">
+          <Type>0</Type>
+          <Modifier>0</Modifier>
+          <Parameter>95</Parameter>
+          <Dose>1.71</Dose>
+          <TotalDose>51.3</TotalDose>
+        </Item>
+        <Item ID="PTV boost" Primary="false">
+          <Type>0</Type>
+          <Modifier>1</Modifier>
+          <Parameter>5</Parameter>
+          <Dose>1.926</Dose>
+          <TotalDose>57.78</TotalDose>
+        </Item>
+        <Item ID="PTV pelvis" Primary="false">
+          <Type>0</Type>
+          <Modifier>0</Modifier>
+          <Parameter>95</Parameter>
+          <Dose>1.425</Dose>
+          <TotalDose>42.75</TotalDose>
+        </Item>
+        <Item ID="PTV pelvis" Primary="false">
+          <Type>0</Type>
+          <Modifier>1</Modifier>
+          <Parameter>5</Parameter>
+          <Dose>1.605</Dose>
+          <TotalDose>48.15</TotalDose>
+        </Item>
+        <Item ID="Recto" Primary="false">
+          <Type>0</Type>
+          <Modifier>1</Modifier>
+          <Parameter>80</Parameter>
+          <Dose>1.53333</Dose>
+          <TotalDose>46</TotalDose>
+        </Item>
+        <Item ID="Vejiga" Primary="false">
+          <Type>0</Type>
+          <Modifier>1</Modifier>
+          <Parameter>80</Parameter>
+          <Dose>1.53333</Dose>
+          <TotalDose>46</TotalDose>
+        </Item>
+        <Item ID="Cabeza femoral D" Primary="false">
+          <Type>0</Type>
+          <Modifier>1</Modifier>
+          <Parameter>10</Parameter>
+          <Dose>1.66667</Dose>
+          <TotalDose>50</TotalDose>
+        </Item>
+        <Item ID="Cabeza femoral D" Primary="false">
+          <Type>0</Type>
+          <Modifier>1</Modifier>
+          <Parameter>45</Parameter>
+          <Dose>1.53333</Dose>
+          <TotalDose>46</TotalDose>
+        </Item>
+        <Item ID="Cabeza femoral I" Primary="false">
+          <Type>0</Type>
+          <Modifier>1</Modifier>
+          <Parameter>10</Parameter>
+          <Dose>1.66667</Dose>
+          <TotalDose>50</TotalDose>
+        </Item>
+        <Item ID="Cabeza femoral I" Primary="false">
+          <Type>0</Type>
+          <Modifier>1</Modifier>
+          <Parameter>45</Parameter>
+          <Dose>1.53333</Dose>
+          <TotalDose>46</TotalDose>
+        </Item>
+        <Item ID="Intestino Del" Primary="false">
+          <Type>0</Type>
+          <Modifier>10</Modifier>
+          <Parameter>0</Parameter>
+          <Dose>1.83333</Dose>
+          <TotalDose>55</TotalDose>
+        </Item>
+        <Item ID="Intestino Del" Primary="false">
+          <Type>0</Type>
+          <Modifier>1</Modifier>
+          <Parameter>30</Parameter>
+          <Dose>1.5</Dose>
+          <TotalDose>45</TotalDose>
+        </Item>
+        <MeasureItem ID="PTV boost">
+          <Type>3</Type>
+          <Modifier>0</Modifier>
+          <Value>95</Value>
+          <TypeSpecifier>51.3</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>false</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="PTV boost">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>5</Value>
+          <TypeSpecifier>57.78</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>false</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="PTV pelvis">
+          <Type>3</Type>
+          <Modifier>0</Modifier>
+          <Value>95</Value>
+          <TypeSpecifier>42.75</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>false</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="PTV pelvis">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>5</Value>
+          <TypeSpecifier>48.15</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>false</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Recto">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>80</Value>
+          <TypeSpecifier>46</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>false</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Vejiga">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>80</Value>
+          <TypeSpecifier>46</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>false</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Cabeza femoral D">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>10</Value>
+          <TypeSpecifier>50</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>false</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Cabeza femoral D">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>45</Value>
+          <TypeSpecifier>46</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>false</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Cabeza femoral I">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>10</Value>
+          <TypeSpecifier>50</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>false</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Cabeza femoral I">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>45</Value>
+          <TypeSpecifier>46</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>false</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Intestino Del">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>120000</Value>
+          <TypeSpecifier>15</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>true</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Intestino Del">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>195000</Value>
+          <TypeSpecifier>45</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>true</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Intestino Del">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>30</Value>
+          <TypeSpecifier>45</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>false</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+      </Prescription>
+      <PlanTemplate Version="1.6">
+        <PrescribedPercentage>1</PrescribedPercentage>
+        <DosePerFraction>3</DosePerFraction>
+        <FractionCount>20</FractionCount>
+        <FieldAlignmentRules />
+        <PrescriptionSite>
+          <VolumeID>PTV prostata+vvss</VolumeID>
+          <VolumeCode />
+          <VolumeType>PTV</VolumeType>
+          <VolumeCodeTable />
+        </PrescriptionSite>
+        <Boluses />
+        <Fields>
+                </Fields>
+      </PlanTemplate>
+    </Phase>
+  </Phases>
+  <Review ShowMin="true" ShowMax="true" ShowMean="true" ShowModal="false" ShowMedian="false" ShowStdDev="false" ShowEUD="true" ShowTCP="false" ShowNTCP="false" ShowNDR="false" ShowEquivalentSphereDiameter="false" ShowConformityIndex="false" ShowGradientMeasure="false">
+    <ReviewStructures>
+        </ReviewStructures>
+  </Review>
+</Protocol>

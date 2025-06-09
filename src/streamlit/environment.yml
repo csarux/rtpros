@@ -1,9 +1,0 @@
-name: slrtpr
-channels:
-  - conda-forge
-dependencies:
-  - python=3.11
-  - streamlit=1.35.0
-  - pandas=2.2.2
-  - numpy=1.26.4
-  - pydicom=2.4.4

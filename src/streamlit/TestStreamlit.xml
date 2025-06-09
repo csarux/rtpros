@@ -1,0 +1,703 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Protocol xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.12">
+  <Preview Version="1.2" ID="ProtocoloID" Type="Protocol" ApprovalStatus="Unapproved" Diagnosis="" TreatmentSite="Brain" AssignedUsers="salud\50724293R" Description="" LastModified=" June 09 2025 10:22:15:903" ApprovalHistory="salud\50724293R Created [ June 09 2025 10:22:15:903 ]" />
+  <StructureTemplate Version="1.2">
+    <Structures>
+      <Structure ID="PTV" Name="PTV">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+          <StructureCode />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="Tronco cerebral" Name="Tronco cerebral">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+          <StructureCode />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="N_optico_D" Name="N_optico_D">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+          <StructureCode />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="Quiasma óptico" Name="Quiasma óptico">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+          <StructureCode />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="Médula" Name="Médula">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+          <StructureCode />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="Coclea_D" Name="Coclea_D">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+          <StructureCode />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="Cristalino_D" Name="Cristalino_D">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+          <StructureCode />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="Hipofisis" Name="Hipofisis">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+          <StructureCode />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="Hipocampo" Name="Hipocampo">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+          <StructureCode />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="Cerebro" Name="Cerebro">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+          <StructureCode />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="Ojo_D" Name="Ojo_D">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+          <StructureCode />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="Ojo (cornea)" Name="Ojo (cornea)">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+          <StructureCode />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="Parpados" Name="Parpados">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+          <StructureCode />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="Gland_lacrimal_D" Name="Gland_lacrimal_D">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+          <StructureCode />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="N_optico_I" Name="N_optico_I">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+          <StructureCode />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="Coclea_I" Name="Coclea_I">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+          <StructureCode />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="Cristalino_I" Name="Cristalino_I">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+          <StructureCode />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="Ojo_I" Name="Ojo_I">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+          <StructureCode />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="Gland_lacrimal_I" Name="Gland_lacrimal_I">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+          <StructureCode />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+    </Structures>
+  </StructureTemplate>
+  <FieldAlignmentRules />
+  <Phases>
+    <Phase ID="PlanID">
+      <Mode>Photon</Mode>
+      <DefaultEnergyKV>6000</DefaultEnergyKV>
+      <FractionCount>14</FractionCount>
+      <FractionsPerWeek xsi:nil="true" />
+      <FractionsPerDay xsi:nil="true" />
+      <TreatmentUnit>TrueBeam2</TreatmentUnit>
+      <TreatmentStyle>Dynamic ARC</TreatmentStyle>
+      <ImmobilizationDevice />
+      <LocalizationTechnique />
+      <Prescription Version="1.10">
+        <Item ID="PTV" Primary="false">
+          <Type>0</Type>
+          <Modifier>0</Modifier>
+          <Parameter>95</Parameter>
+          <Dose>2.53365</Dose>
+          <TotalDose>38</TotalDose>
+        </Item>
+        <Item ID="PTV" Primary="false">
+          <Type>0</Type>
+          <Modifier>1</Modifier>
+          <Parameter>5</Parameter>
+          <Dose>2.9337</Dose>
+          <TotalDose>44</TotalDose>
+        </Item>
+        <Item ID="Tronco cerebral" Primary="false">
+          <Type>0</Type>
+          <Modifier>10</Modifier>
+          <Parameter>0</Parameter>
+          <Dose>2.667</Dose>
+          <TotalDose>40</TotalDose>
+        </Item>
+        <Item ID="N_optico_D" Primary="false">
+          <Type>0</Type>
+          <Modifier>10</Modifier>
+          <Parameter>0</Parameter>
+          <Dose>2.667</Dose>
+          <TotalDose>40</TotalDose>
+        </Item>
+        <Item ID="Quiasma óptico" Primary="false">
+          <Type>0</Type>
+          <Modifier>10</Modifier>
+          <Parameter>0</Parameter>
+          <Dose>2.667</Dose>
+          <TotalDose>40</TotalDose>
+        </Item>
+        <Item ID="Médula" Primary="false">
+          <Type>0</Type>
+          <Modifier>10</Modifier>
+          <Parameter>0</Parameter>
+          <Dose>2.53365</Dose>
+          <TotalDose>38</TotalDose>
+        </Item>
+        <Item ID="Coclea_D" Primary="false">
+          <Type>0</Type>
+          <Modifier>8</Modifier>
+          <Parameter>0</Parameter>
+          <Dose>2.60032</Dose>
+          <TotalDose>39</TotalDose>
+        </Item>
+        <Item ID="Coclea_D" Primary="false">
+          <Type>0</Type>
+          <Modifier>10</Modifier>
+          <Parameter>0</Parameter>
+          <Dose>2.33363</Dose>
+          <TotalDose>35</TotalDose>
+        </Item>
+        <Item ID="Cristalino_D" Primary="false">
+          <Type>0</Type>
+          <Modifier>10</Modifier>
+          <Parameter>0</Parameter>
+          <Dose>0.5334</Dose>
+          <TotalDose>8</TotalDose>
+        </Item>
+        <Item ID="Hipofisis" Primary="false">
+          <Type>0</Type>
+          <Modifier>8</Modifier>
+          <Parameter>0</Parameter>
+          <Dose>2.60032</Dose>
+          <TotalDose>39</TotalDose>
+        </Item>
+        <Item ID="Hipocampo" Primary="false">
+          <Type>0</Type>
+          <Modifier>1</Modifier>
+          <Parameter>20</Parameter>
+          <Dose>0.173355</Dose>
+          <TotalDose>2.6</TotalDose>
+        </Item>
+        <Item ID="Cerebro" Primary="false">
+          <Type>0</Type>
+          <Modifier>10</Modifier>
+          <Parameter>0</Parameter>
+          <Dose>3.33375</Dose>
+          <TotalDose>50</TotalDose>
+        </Item>
+        <Item ID="Ojo_D" Primary="false">
+          <Type>0</Type>
+          <Modifier>10</Modifier>
+          <Parameter>0</Parameter>
+          <Dose>2.667</Dose>
+          <TotalDose>40</TotalDose>
+        </Item>
+        <Item ID="Parpados" Primary="false">
+          <Type>0</Type>
+          <Modifier>10</Modifier>
+          <Parameter>0</Parameter>
+          <Dose>2.00025</Dose>
+          <TotalDose>30</TotalDose>
+        </Item>
+        <Item ID="Gland_lacrimal_D" Primary="false">
+          <Type>0</Type>
+          <Modifier>10</Modifier>
+          <Parameter>0</Parameter>
+          <Dose>2.1336</Dose>
+          <TotalDose>32</TotalDose>
+        </Item>
+        <Item ID="N_optico_I" Primary="false">
+          <Type>0</Type>
+          <Modifier>10</Modifier>
+          <Parameter>0</Parameter>
+          <Dose>2.667</Dose>
+          <TotalDose>40</TotalDose>
+        </Item>
+        <Item ID="Coclea_I" Primary="false">
+          <Type>0</Type>
+          <Modifier>8</Modifier>
+          <Parameter>0</Parameter>
+          <Dose>2.60032</Dose>
+          <TotalDose>39</TotalDose>
+        </Item>
+        <Item ID="Coclea_I" Primary="false">
+          <Type>0</Type>
+          <Modifier>10</Modifier>
+          <Parameter>0</Parameter>
+          <Dose>2.33363</Dose>
+          <TotalDose>35</TotalDose>
+        </Item>
+        <Item ID="Cristalino_I" Primary="false">
+          <Type>0</Type>
+          <Modifier>10</Modifier>
+          <Parameter>0</Parameter>
+          <Dose>0.5334</Dose>
+          <TotalDose>8</TotalDose>
+        </Item>
+        <Item ID="Ojo_I" Primary="false">
+          <Type>0</Type>
+          <Modifier>10</Modifier>
+          <Parameter>0</Parameter>
+          <Dose>2.667</Dose>
+          <TotalDose>40</TotalDose>
+        </Item>
+        <Item ID="Gland_lacrimal_I" Primary="false">
+          <Type>0</Type>
+          <Modifier>10</Modifier>
+          <Parameter>0</Parameter>
+          <Dose>2.1336</Dose>
+          <TotalDose>32</TotalDose>
+        </Item>
+        <MeasureItem ID="PTV">
+          <Type>3</Type>
+          <Modifier>0</Modifier>
+          <Value>95</Value>
+          <TypeSpecifier>38</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>false</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="PTV">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>5</Value>
+          <TypeSpecifier>44</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>false</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Tronco cerebral">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>30</Value>
+          <TypeSpecifier>40</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>true</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Tronco cerebral">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>1000</Value>
+          <TypeSpecifier>38</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>true</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Tronco cerebral">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>5000</Value>
+          <TypeSpecifier>34</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>true</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="N_optico_D">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>500</Value>
+          <TypeSpecifier>38</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>true</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Quiasma óptico">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>500</Value>
+          <TypeSpecifier>38</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>true</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Coclea_D">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>500</Value>
+          <TypeSpecifier>31</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>true</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Hipocampo">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>20</Value>
+          <TypeSpecifier>2.6</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>false</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Hipocampo">
+          <Type>4</Type>
+          <Modifier>1</Modifier>
+          <Value>6</Value>
+          <TypeSpecifier>40</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>true</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Cerebro">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>3000</Value>
+          <TypeSpecifier>48</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>true</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Ojo_D">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>30</Value>
+          <TypeSpecifier>38</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>true</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Ojo (cornea)">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>30</Value>
+          <TypeSpecifier>38</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>true</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Gland_lacrimal_D">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>1000</Value>
+          <TypeSpecifier>18</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>true</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="N_optico_I">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>500</Value>
+          <TypeSpecifier>38</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>true</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Coclea_I">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>500</Value>
+          <TypeSpecifier>36</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>true</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Cristalino_I">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>30</Value>
+          <TypeSpecifier>7</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>true</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Ojo_I">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>30</Value>
+          <TypeSpecifier>38</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>true</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Gland_lacrimal_I">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>1000</Value>
+          <TypeSpecifier>18</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>true</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+      </Prescription>
+      <PlanTemplate Version="1.6">
+        <PrescribedPercentage>1</PrescribedPercentage>
+        <DosePerFraction>3</DosePerFraction>
+        <FractionCount>20</FractionCount>
+        <FieldAlignmentRules />
+        <PrescriptionSite>
+          <VolumeID>PTV prostata+vvss</VolumeID>
+          <VolumeCode />
+          <VolumeType>PTV</VolumeType>
+          <VolumeCodeTable />
+        </PrescriptionSite>
+        <Boluses />
+        <Fields>
+                </Fields>
+      </PlanTemplate>
+    </Phase>
+  </Phases>
+  <Review ShowMin="true" ShowMax="true" ShowMean="true" ShowModal="false" ShowMedian="false" ShowStdDev="false" ShowEUD="true" ShowTCP="false" ShowNTCP="false" ShowNDR="false" ShowEquivalentSphereDiameter="false" ShowConformityIndex="false" ShowGradientMeasure="false">
+    <ReviewStructures>
+        </ReviewStructures>
+  </Review>
+</Protocol>
