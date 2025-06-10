@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Protocol Version="1.12" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <Preview Version="1.2" ID="Armadura" Type="Protocol" ApprovalStatus="Unapproved"
-        Diagnosis="" TreatmentSite="Próstata + vvss hipofx" AssignedUsers="salud\50724293r"
+        Diagnosis="" TreatmentSite="Próstata + vvss hipofx" AssignedUsers="Rodriguez Rodriguez.Cesar"
         Description="" LastModified=" diciembre 09 2023 20:52:07:632"
-        ApprovalHistory="salud\50724293r Created [ noviembre 16 2023 10:56:25:988 ]" />
+        ApprovalHistory="Rodriguez Rodriguez.Cesar Created [ noviembre 16 2023 10:56:25:988 ]" />
     <StructureTemplate Version="1.2">
         <Structures>
         </Structures>

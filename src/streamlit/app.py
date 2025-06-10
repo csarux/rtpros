@@ -18,7 +18,23 @@ plan_id = st.sidebar.text_input("Identificación del Plan", value="PlanID")
 prot_out = st.sidebar.text_input("Archivo Protocolo Clínico", value="ClinicalProtocol.xml")
 treatment_site = st.sidebar.selectbox(
     "Sitio de tratamiento",
-    options=["Lungs", "Head and Neck", "Brain", "Thorax", "Abdomen"],
+    options=["Abdomen"
+             "Bone"
+             "Brain", 
+             "Breasts", 
+             "Breast, Left", 
+             "Breast, Right", 
+             "Head and Neck", 
+             "Liver",
+             "Lumbar spine",
+             "Lungs", 
+             "Lung, Left", 
+             "Lung, Right", 
+             "Pelvis",
+             "Prostate",
+             "Rectum"
+             "Stomach"
+             "Thorax", ],
     index=2,
     key="treatment_site",
 )
@@ -104,3 +120,12 @@ if st.sidebar.button("Generar protocolo clínico"):
 # Mostrar mensaje solo si no hay archivo subido
 if uploaded_file is None:
     st.info("Por favor, sube la prescripción exportada en formato CSV para comenzar.")
+
+hide_streamlit_style = """
+    <style>
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    </style>
+    """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
