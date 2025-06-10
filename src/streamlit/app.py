@@ -18,8 +18,8 @@ plan_id = st.sidebar.text_input("Identificación del Plan", value="PlanID")
 prot_out = st.sidebar.text_input("Archivo Protocolo Clínico", value="ClinicalProtocol.xml")
 treatment_site = st.sidebar.selectbox(
     "Sitio de tratamiento",
-    options=["Abdomen"
-             "Bone"
+    options=["Abdomen",
+             "Bone",
              "Brain", 
              "Breasts", 
              "Breast, Left", 
@@ -32,10 +32,10 @@ treatment_site = st.sidebar.selectbox(
              "Lung, Right", 
              "Pelvis",
              "Prostate",
-             "Rectum"
-             "Stomach"
+             "Rectum",
+             "Stomach",
              "Thorax", ],
-    index=2,
+    index=0,
     key="treatment_site",
 )
 treatment_site = st.sidebar.text_input("Editar sitio de tratamiento", value=treatment_site)
