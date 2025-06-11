@@ -72,7 +72,25 @@ if uploaded_file is not None and not st.session_state.edit_csv:
         file_to_parse = uploaded_file
 
     try:
-        pvdf, ccdf, oardf = acp.parse_prescription(file_to_parse)
+        pvdfs, ccdfs, oardfs = acp.parse_prescription(file_to_parse)
+        num_prescripciones = len(pvdfs)
+
+        if num_prescripciones > 1:
+            if 'prescripcion_idx' not in st.session_state:
+                st.session_state.prescripcion_idx = 0
+            prescripcion_idx = st.sidebar.selectbox(
+                "Selecciona la prescripción",
+                options=list(range(num_prescripciones)),
+                format_func=lambda x: f"Prescripción {x+1}",
+                index=st.session_state.prescripcion_idx,
+                key="prescripcion_idx"
+            )
+        else:
+            prescripcion_idx = 0
+
+        pvdf = pvdfs[prescripcion_idx]
+        ccdf = ccdfs[prescripcion_idx]
+        oardf = oardfs[prescripcion_idx]
         st.subheader("Prescripción principal")
         st.dataframe(pvdf, use_container_width=True)
         st.subheader("Condiciones clínicas")
@@ -94,11 +112,12 @@ if st.sidebar.button("Generar protocolo clínico"):
 
     try:
         acp.convertPrescriptionIntoClinicalProtocol(
-            prescription=StringIO(csv_string) if csv_string else uploaded_file,
+            prescription_or_pvdf=uploaded_file,
             ProtocolID=protocolo_id,
             TreatmentSite=treatment_site,
             PlanID=plan_id,
-            ProtOut=prot_out
+            ProtOut=prot_out,
+            PrescriptionIndex = prescripcion_idx,
         )
         st.success(f"Protocolo clínico generado en {prot_out}")
 
@@ -116,6 +135,7 @@ if st.sidebar.button("Generar protocolo clínico"):
         )
     except Exception as e:
         st.error(f"Error generando el protocolo clínico: {e}")
+        st.code(traceback.format_exc(), language="python")
 
 # Mostrar mensaje solo si no hay archivo subido
 if uploaded_file is None:

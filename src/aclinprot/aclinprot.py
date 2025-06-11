@@ -109,26 +109,24 @@ def parse_prescription(file):
     '''
     Function: parse_prescription
     Arguments:
-    file: Path file
-    File containing the prescription. Exported from ARIA in csv format
+    file: Path file or buffer
+        File containing the prescription(s). Exported from ARIA in csv format
 
-    Returns: a tuple comtaining three dataframes pvdf, ccdf, oardf
-    pvdf: Pandas DataFrame
-    Dataframe with the prescription volumes
-    ccdf: Pandas DataFrame
-    Dataframe with the covarage constraints
-    oardf: Pandas DataFrame
-    Dataframe with oars restriction
+    Returns: 
+        pvdfs: list of Pandas DataFrame
+            List of dataframes with the prescription volumes
+        ccds: list of Pandas DataFrame
+            List of dataframes with the coverage constraints
+        oardfs: list of Pandas DataFrame
+            List of dataframes with OAR restrictions
+            
     '''
-
-    # Regular expession dictionary to filter the prescription volumes (PrescribedTo field)
+    # Regular expression dictionaries (igual que antes)
     pv_rx_dict = {
         'Volume': re.compile(r'Volume (?P<Volume>.+)  \d+\.\d+ Gy '),
         'Dose': re.compile(r'  (?P<Dose>\d+\.\d+) Gy'),
         'FxDose' : re.compile(r'  (?P<FxDose>\d+\.\d+) Gy/Frac'),
     }
-
-    # Regular expession dictionary to filter the CovarageConstraints
     cc_rx_dict = {
         'Volume': re.compile(r'Volume / Structure :(?P<Volume>.*) Min Dose'),
         'Min': re.compile(r'Min Dose:(?P<Min>.*) Gy Max'),
@@ -136,37 +134,21 @@ def parse_prescription(file):
         'AtLeast': re.compile(r'At Least (?P<AtLeast>.*) % of (?P<Volume>.*) at (?P<Percentage>.*) % (?P<Dose>.*) Gy No More Than'),
         'NoMore': re.compile(r'No More Than (?P<NoMore>.*) % of (?P<Volume>.*) at (?P<Percentage>.*) % (?P<Dose>.*) Gy'),
     }
-
-    # Regular expession dictionary to filter the OAR constraints
     oar_rx_dict = {
         'Organ': re.compile(r'Organ :(?P<Organ>.*) Mean'),
         'Dmean': re.compile(r'Mean :(?P<Dmean>.*) Max Dose'),
         'Dmax' : re.compile(r'Max Dose :(?P<Dmax>.*)$'),
     }
-   
-    # Define parsing functions
+
     def _parse_prescription_volume(line):
-        """
-        Do a regex search against all defined regexes and
-        return a dictionary the key and match result
-    
-        """
-    
         matches = {}
         for key, rx in pv_rx_dict.items():
             match = rx.search(line)
             if match:
                 matches[key] = match.group(key)
-            
         return matches
 
     def _parse_volume(line):
-        """
-        Do a regex search against all defined CovarageConstraints regexes and
-        return a dictionary the key and match result
-    
-        """
-    
         matches = {}
         for key, rx in cc_rx_dict.items():
             match = rx.search(line)
@@ -182,78 +164,68 @@ def parse_prescription(file):
                     matches[key] = constraint
                 else:
                     matches[key] = match.group(key)
-            
         return matches
-    
+
     def _parse_line(line):
-        """
-        Do a regex search against all defined OAR regexes and
-        return the key and match result of the first matching regex
-    
-        """
-    
         for key, rx in oar_rx_dict.items():
             match = rx.search(line)
             if match:
                 return key, match
-        # if there are no matches
         return None, None
-        
+
     def _parse_organ(line):
-        """
-        Do a regex search against all defined OAR regexes and
-        return a dictionary the key and match result
-    
-        """
-    
         matches = {}
         for key, rx in oar_rx_dict.items():
             match = rx.search(line)
             if match:
                 matches[key] = match.group(key).strip()
-            
         return matches
 
     # Read the prescription file
     prdf = read_prescription(file)
 
-    # Split the fields with the prescription volumes, covarage constraints and the organ at risk
-    pv_lines = prdf.PrescribedTo.values[0].split('|')
-    cc_lines = prdf.CoverageConstraints.values[0].split('|')
-    if isinstance(prdf.OrgansAtRisk.values[0], str):
-        oar_lines = prdf.OrgansAtRisk.values[0].split('\n')
-    else:
-        oar_lines = []
-    
-    # Parse the prescription volume lines and create the pvdf dataframe
-    pvdf = pd.DataFrame([_parse_prescription_volume(pv_line) for pv_line in pv_lines])
-    
-    # Parse the covarage constraint lines and create the ccdf dataframe
-    ccdf = pd.DataFrame([_parse_volume(cc_line) for cc_line in cc_lines])
+    pvdfs, ccds, oardfs = [], [], []
 
-    # Parse the oar lines and create a list, each element with the lines corresponding a specific oar 
-    oars, oar = [], None
-    for oar_line in oar_lines:
-        oar_key, oar_name = _parse_line(oar_line)
-        if oar_key:
-            oars.append(oar)
-            oar = [oar_line]
+    for idx, row in prdf.iterrows():
+        # Split the fields for this prescription
+        pv_lines = row.PrescribedTo.split('|')
+        cc_lines = row.CoverageConstraints.split('|')
+        if isinstance(row.OrgansAtRisk, str):
+            oar_lines = row.OrgansAtRisk.split('\n')
         else:
-            oar.append(oar_line.strip())
-    oars.append(oar)
-    oars.pop(0)
-    oars
-    # Parse each organ and create a list of dcitionaries with Dmin, Dmax and Dosimetric Parameters
-    oars_list = []
-    for oar in oars:
-        oar_dict = _parse_organ(oar[0])
-        oar_dict['DosimPars'] = oar[2:]
-        oars_list.append(oar_dict)
+            oar_lines = []
 
-    # Create the oardf dataframe
-    oardf = pd.DataFrame(oars_list)
+        # Prescription volumes
+        pvdf = pd.DataFrame([_parse_prescription_volume(pv_line) for pv_line in pv_lines])
+        # Coverage constraints
+        ccdf = pd.DataFrame([_parse_volume(cc_line) for cc_line in cc_lines])
 
-    return pvdf, ccdf, oardf
+        # OARs
+        oars, oar = [], None
+        for oar_line in oar_lines:
+            oar_key, oar_name = _parse_line(oar_line)
+            if oar_key:
+                oars.append(oar)
+                oar = [oar_line]
+            else:
+                if oar is not None:
+                    oar.append(oar_line.strip())
+        oars.append(oar)
+        oars = [x for x in oars if x is not None]  # Elimina posibles None iniciales
+
+        oars_list = []
+        for oar in oars:
+            if oar is not None:
+                oar_dict = _parse_organ(oar[0])
+                oar_dict['DosimPars'] = oar[2:]
+                oars_list.append(oar_dict)
+        oardf = pd.DataFrame(oars_list)
+
+        pvdfs.append(pvdf)
+        ccds.append(ccdf)
+        oardfs.append(oardf)
+
+    return pvdfs, ccds, oardfs
 
 def getTreatmentDosePrescription(pvdf):
     '''
@@ -288,7 +260,7 @@ def parseProt(protin = 'ClinicalProtocol.xml'):
     cpet = ET.parse(protin)
     return cpet
 
-def modPreview(cpet, ID, ApprovalStatus='Unapproved', TreatmentSite='', AssignedUsers=r'salud\50724293R'):
+def modPreview(cpet, ID, ApprovalStatus='Unapproved', TreatmentSite='', AssignedUsers=r''):
     '''
     Function: Modify the Preview section of a clinical protocol
 
@@ -302,7 +274,7 @@ def modPreview(cpet, ID, ApprovalStatus='Unapproved', TreatmentSite='', Assigned
     TreatmentSite:  String
         Clinical protocol treatment site
     AssignedUsers: String
-        Aria User(s) writing the clinical protocol. It defaults to 'salud\50724293r'
+        Aria User(s) writing the clinical protocol. It defaults to ''
     '''
     Preview = cpet.find('Preview')
     Preview.set('ID', ID)
@@ -499,13 +471,23 @@ def indentProt(prot):
     cpet = ET.parse(prot)
     writeProt(cpet, prot)
 
-def convertPrescriptionIntoClinicalProtocol(prescription, ProtocolID, TreatmentSite, PlanID, ProtTemplate='BareBone.xml', ProtOut='ClinicalProtocol.xml'):
+def convertPrescriptionIntoClinicalProtocol(
+    prescription_or_pvdf,
+    ProtocolID,
+    TreatmentSite,
+    PlanID,
+    ProtTemplate='BareBone.xml',
+    ProtOut='ClinicalProtocol.xml',
+    PrescriptionIndex=0,
+    ccdf=None,
+    oardf=None
+):
     '''
     Function: Convert a prescription into a clinical protocol
 
     Arguments:
-    prescription: String
-        Prescription file name
+    prescription_or_pvdf: String or DataFrame
+        Prescription file name or Prescription Volume DataFrame
     ProtocolID: String
         The identification of the clinical protocol in ARIA
     TreatmetSite: String
@@ -518,8 +500,21 @@ def convertPrescriptionIntoClinicalProtocol(prescription, ProtocolID, TreatmentS
         Name of the xml file describing the clinical protocol
         
     '''
-    # Read the prescriptiop
-    pvdf, ccdf, oardf = parse_prescription(prescription)
+    # Si el primer argumento es un DataFrame, asume la llamada con pvdf, ccdf, oardf
+    if isinstance(prescription_or_pvdf, pd.DataFrame):
+        pvdf = prescription_or_pvdf
+        # ccdf y oardf deben estar presentes
+        if ccdf is None or oardf is None:
+            raise ValueError("ccdf y oardf deben proporcionarse si el primer argumento es un DataFrame")
+    else:
+        # Asume que es la llamada tradicional con prescription (ruta o buffer)
+        # Read the prescriptiop
+        prescription = prescription_or_pvdf
+        pvdfs, ccdfs, oardfs = parse_prescription(prescription)
+        pvdf = pvdfs[PrescriptionIndex]
+        ccdf = ccdfs[PrescriptionIndex]
+        oardf = oardfs[PrescriptionIndex]
+
     # Read protocol template
     cpet = parseProt(os.path.dirname(__file__) + '/' + ProtTemplate)
     # Preview
