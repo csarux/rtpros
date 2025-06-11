@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <Protocol xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.12">
-  <Preview Version="1.2" ID="ProtocoloID" Type="Protocol" ApprovalStatus="Unapproved" Diagnosis="" TreatmentSite="Abdomen" AssignedUsers="" Description="" LastModified=" June 11 2025 11:24:04:311" ApprovalHistory=" Created [ June 11 2025 11:24:04:311 ]" />
+  <Preview Version="1.2" ID="ProtocoloID" Type="Protocol" ApprovalStatus="Unapproved" Diagnosis="" TreatmentSite="Abdomen" AssignedUsers="" Description="" LastModified=" June 11 2025 18:25:07:323" ApprovalHistory=" Created [ June 11 2025 18:25:07:323 ]" />
   <StructureTemplate Version="1.2">
     <Structures>
-      <Structure ID="PTV mama dcha" Name="PTV mama dcha">
+      <Structure ID="PTV mama izqda" Name="PTV mama izqda">
         <Identification>
           <VolumeID />
           <VolumeCode />
@@ -23,7 +23,7 @@
         <TCPBeta xsi:nil="true" />
         <TCPGamma xsi:nil="true" />
       </Structure>
-      <Structure ID="PTV boost dcho" Name="PTV boost dcho">
+      <Structure ID="PTV boost izqdo" Name="PTV boost izqdo">
         <Identification>
           <VolumeID />
           <VolumeCode />
@@ -43,7 +43,7 @@
         <TCPBeta xsi:nil="true" />
         <TCPGamma xsi:nil="true" />
       </Structure>
-      <Structure ID="Pulmon derecho" Name="Pulmon derecho">
+      <Structure ID="Mama dcha" Name="Mama dcha">
         <Identification>
           <VolumeID />
           <VolumeCode />
@@ -63,7 +63,27 @@
         <TCPBeta xsi:nil="true" />
         <TCPGamma xsi:nil="true" />
       </Structure>
-      <Structure ID="Medula" Name="Medula">
+      <Structure ID="Pulmón izqdo" Name="Pulmón izqdo">
+        <Identification>
+          <VolumeID />
+          <VolumeCode />
+          <VolumeType>Organ</VolumeType>
+          <VolumeCodeTable />
+          <StructureCode />
+        </Identification>
+        <TypeIndex>2</TypeIndex>
+        <ColorAndStyle>Countour - Brown</ColorAndStyle>
+        <SearchCTLow>1000</SearchCTLow>
+        <SearchCTHigh>1000</SearchCTHigh>
+        <DVHLineStyle>0</DVHLineStyle>
+        <DVHLineColor>-16777216</DVHLineColor>
+        <DVHLineWidth>1</DVHLineWidth>
+        <EUDAlpha xsi:nil="true" />
+        <TCPAlpha xsi:nil="true" />
+        <TCPBeta xsi:nil="true" />
+        <TCPGamma xsi:nil="true" />
+      </Structure>
+      <Structure ID="Pulmón dcho" Name="Pulmón dcho">
         <Identification>
           <VolumeID />
           <VolumeCode />
@@ -123,27 +143,7 @@
         <TCPBeta xsi:nil="true" />
         <TCPGamma xsi:nil="true" />
       </Structure>
-      <Structure ID="pulmon izquierdo" Name="pulmon izquierdo">
-        <Identification>
-          <VolumeID />
-          <VolumeCode />
-          <VolumeType>Organ</VolumeType>
-          <VolumeCodeTable />
-          <StructureCode />
-        </Identification>
-        <TypeIndex>2</TypeIndex>
-        <ColorAndStyle>Countour - Brown</ColorAndStyle>
-        <SearchCTLow>1000</SearchCTLow>
-        <SearchCTHigh>1000</SearchCTHigh>
-        <DVHLineStyle>0</DVHLineStyle>
-        <DVHLineColor>-16777216</DVHLineColor>
-        <DVHLineWidth>1</DVHLineWidth>
-        <EUDAlpha xsi:nil="true" />
-        <TCPAlpha xsi:nil="true" />
-        <TCPBeta xsi:nil="true" />
-        <TCPGamma xsi:nil="true" />
-      </Structure>
-      <Structure ID="mama izquierda" Name="mama izquierda">
+      <Structure ID="Médula" Name="Médula">
         <Identification>
           <VolumeID />
           <VolumeCode />
@@ -178,54 +178,47 @@
       <ImmobilizationDevice />
       <LocalizationTechnique />
       <Prescription Version="1.10">
-        <Item ID="PTV mama dcha" Primary="false">
+        <Item ID="PTV mama izqda" Primary="false">
           <Type>0</Type>
           <Modifier>0</Modifier>
           <Parameter>95</Parameter>
           <Dose>2.5365</Dose>
           <TotalDose>38.0475</TotalDose>
         </Item>
-        <Item ID="PTV mama dcha" Primary="false">
+        <Item ID="PTV mama izqda" Primary="false">
           <Type>0</Type>
           <Modifier>1</Modifier>
           <Parameter>5</Parameter>
           <Dose>2.8569</Dose>
           <TotalDose>42.8535</TotalDose>
         </Item>
-        <Item ID="PTV boost dcho" Primary="false">
+        <Item ID="PTV boost izqdo" Primary="false">
           <Type>0</Type>
           <Modifier>0</Modifier>
           <Parameter>95</Parameter>
           <Dose>3.04</Dose>
           <TotalDose>45.6</TotalDose>
         </Item>
-        <Item ID="PTV boost dcho" Primary="false">
+        <Item ID="PTV boost izqdo" Primary="false">
           <Type>0</Type>
           <Modifier>1</Modifier>
           <Parameter>5</Parameter>
           <Dose>3.424</Dose>
           <TotalDose>51.36</TotalDose>
         </Item>
-        <Item ID="Pulmon derecho" Primary="false">
-          <Type>0</Type>
-          <Modifier>1</Modifier>
-          <Parameter>15</Parameter>
-          <Dose>1.2</Dose>
-          <TotalDose>18</TotalDose>
-        </Item>
-        <Item ID="Medula" Primary="false">
+        <Item ID="Mama dcha" Primary="false">
           <Type>0</Type>
           <Modifier>10</Modifier>
           <Parameter>0</Parameter>
-          <Dose>2.66667</Dose>
-          <TotalDose>40</TotalDose>
+          <Dose>0.253333</Dose>
+          <TotalDose>3.8</TotalDose>
         </Item>
-        <Item ID="Medula" Primary="false">
+        <Item ID="Mama dcha" Primary="false">
           <Type>0</Type>
           <Modifier>1</Modifier>
-          <Parameter>0.1</Parameter>
-          <Dose>1.33333</Dose>
-          <TotalDose>20</TotalDose>
+          <Parameter>5</Parameter>
+          <Dose>0.16</Dose>
+          <TotalDose>2.4</TotalDose>
         </Item>
         <Item ID="Corazón" Primary="false">
           <Type>0</Type>
@@ -238,8 +231,8 @@
           <Type>0</Type>
           <Modifier>1</Modifier>
           <Parameter>5</Parameter>
-          <Dose>1.06667</Dose>
-          <TotalDose>16</TotalDose>
+          <Dose>1.33333</Dose>
+          <TotalDose>20</TotalDose>
         </Item>
         <Item ID="Tiroides" Primary="false">
           <Type>0</Type>
@@ -248,74 +241,67 @@
           <Dose>0.064</Dose>
           <TotalDose>0.96</TotalDose>
         </Item>
-        <Item ID="mama izquierda" Primary="false">
+        <Item ID="Médula" Primary="false">
           <Type>0</Type>
           <Modifier>10</Modifier>
           <Parameter>0</Parameter>
-          <Dose>0.253333</Dose>
-          <TotalDose>3.8</TotalDose>
+          <Dose>2.66667</Dose>
+          <TotalDose>40</TotalDose>
         </Item>
-        <Item ID="mama izquierda" Primary="false">
+        <Item ID="Médula" Primary="false">
           <Type>0</Type>
           <Modifier>1</Modifier>
-          <Parameter>5</Parameter>
-          <Dose>0.16</Dose>
-          <TotalDose>2.4</TotalDose>
+          <Parameter>0.1</Parameter>
+          <Dose>1.33333</Dose>
+          <TotalDose>20</TotalDose>
         </Item>
-        <MeasureItem ID="PTV mama dcha">
+        <MeasureItem ID="PTV mama izqda">
           <Type>3</Type>
           <Modifier>0</Modifier>
           <Value>95</Value>
           <TypeSpecifier>38.0475</TypeSpecifier>
           <ReportDQPValueInAbsoluteUnits>false</ReportDQPValueInAbsoluteUnits>
         </MeasureItem>
-        <MeasureItem ID="PTV mama dcha">
+        <MeasureItem ID="PTV mama izqda">
           <Type>3</Type>
           <Modifier>1</Modifier>
           <Value>5</Value>
           <TypeSpecifier>42.8535</TypeSpecifier>
           <ReportDQPValueInAbsoluteUnits>false</ReportDQPValueInAbsoluteUnits>
         </MeasureItem>
-        <MeasureItem ID="PTV boost dcho">
+        <MeasureItem ID="PTV boost izqdo">
           <Type>3</Type>
           <Modifier>0</Modifier>
           <Value>95</Value>
           <TypeSpecifier>45.6</TypeSpecifier>
           <ReportDQPValueInAbsoluteUnits>false</ReportDQPValueInAbsoluteUnits>
         </MeasureItem>
-        <MeasureItem ID="PTV boost dcho">
+        <MeasureItem ID="PTV boost izqdo">
           <Type>3</Type>
           <Modifier>1</Modifier>
           <Value>5</Value>
           <TypeSpecifier>51.36</TypeSpecifier>
           <ReportDQPValueInAbsoluteUnits>false</ReportDQPValueInAbsoluteUnits>
         </MeasureItem>
-        <MeasureItem ID="Pulmon derecho">
+        <MeasureItem ID="Mama dcha">
           <Type>3</Type>
           <Modifier>1</Modifier>
-          <Value>15</Value>
-          <TypeSpecifier>18</TypeSpecifier>
-          <ReportDQPValueInAbsoluteUnits>false</ReportDQPValueInAbsoluteUnits>
-        </MeasureItem>
-        <MeasureItem ID="Medula">
-          <Type>3</Type>
-          <Modifier>1</Modifier>
-          <Value>0.1</Value>
-          <TypeSpecifier>20</TypeSpecifier>
+          <Value>5</Value>
+          <TypeSpecifier>2.4</TypeSpecifier>
           <ReportDQPValueInAbsoluteUnits>false</ReportDQPValueInAbsoluteUnits>
         </MeasureItem>
         <MeasureItem ID="Corazón">
           <Type>3</Type>
           <Modifier>1</Modifier>
           <Value>5</Value>
-          <TypeSpecifier>16</TypeSpecifier>
+          <TypeSpecifier>20</TypeSpecifier>
           <ReportDQPValueInAbsoluteUnits>false</ReportDQPValueInAbsoluteUnits>
         </MeasureItem>
-        <MeasureItem ID="mama izquierda">
+        <MeasureItem ID="Médula">
           <Type>3</Type>
           <Modifier>1</Modifier>
-          <Value>5</Value>
-          <TypeSpecifier>2.4</TypeSpecifier>
+          <Value>0.1</Value>
+          <TypeSpecifier>20</TypeSpecifier>
           <ReportDQPValueInAbsoluteUnits>false</ReportDQPValueInAbsoluteUnits>
         </MeasureItem>
       </Prescription>

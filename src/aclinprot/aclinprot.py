@@ -989,7 +989,7 @@ def readContouringStructureNames(rsdicom):
         constrnames: list
         A list of the structure names given in ARIA
     '''
-    dcmds = dcm.read_file(rsdicom)
+    dcmds = dcm.dcmread(rsdicom)
     strsetsq = dcmds.StructureSetROISequence
     contstrnames = [structure.ROIName for structure in strsetsq]
     return contstrnames
