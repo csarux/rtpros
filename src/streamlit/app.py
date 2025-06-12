@@ -43,7 +43,7 @@ treatment_site = st.sidebar.selectbox(
 treatment_site = st.sidebar.text_input("Editar sitio de tratamiento", value=treatment_site)
 
 
-tab1, tab2 = st.tabs(["Prescripción", "Corrección de estructuras"])
+tab1, tab2, tab3 = st.tabs(["Prescripción", "Corrección de estructuras", "Verificación restricciones OAR"])
 
 with tab1:
     # Aquí va tu lógica actual de prescripción (ya la tienes implementada)
@@ -209,6 +209,65 @@ with tab2:
             st.success("Nombres de estructuras actualizados en los tres dataframes!")
             st.rerun()
 
+    pass
+
+with tab3:
+    rerun_needed = False
+    st.header("Verificación de DosimPars en OARs")
+    # Usa el oardf corregido si existe
+    oardf_to_check = st.session_state.get('oardf', oardf if 'oardf' in locals() else None)
+    if oardf_to_check is not None:
+        df_check = acp.checkDosimPars(oardf_to_check)
+        st.write("Resultado de la verificación de DosimPars:")
+        st.dataframe(df_check, use_container_width=True)
+
+        # Selección de fila para editar/borrar
+        if not df_check.empty:
+            idx_selected = st.selectbox(
+                "Selecciona una restricción para editar o borrar:",
+                options=df_check.index,
+                format_func=lambda i: f"{df_check.loc[i, 'Organ']} | {df_check.loc[i, 'DosimPar']} | Reconocida: {df_check.loc[i, 'Recognized']}"
+            )
+            selected_row = df_check.loc[idx_selected]
+
+            # Añadir restricción
+            if 'show_form_add_constraint' not in st.session_state:
+                st.session_state.show_form_add_constraint = False
+
+            if st.button("Corregir restricción"):
+                st.session_state.show_form_add_constraint = True
+
+            if st.session_state.show_form_add_constraint:
+                st.write("Añadir o corregir una restricción DosimPar para el órgano seleccionado:")
+                with st.form("form_add_constraint", clear_on_submit=True):
+                    organ_selected = st.text_input("Órgano", value=selected_row['Organ'], disabled=True)
+                    dosimpar_new = st.text_input("Restricción (DosimPar)", value=selected_row['DosimPar'])
+                    submitted = st.form_submit_button("Aceptar")
+                    if submitted:
+                        # Usa la función addDosimPar de aclinprot
+                        oardf = acp.addDosimPar(oardf, organ_selected, dosimpar_new)
+                        st.session_state.oardf = oardf
+                        st.session_state.show_form_add_constraint = False
+                        rerun_needed = True
+
+            # Borrar restricción
+            if st.button("Borrar"):
+                organ = selected_row['Organ']
+                dosimpar = selected_row['DosimPar']
+                idx_oar = oardf_to_check[oardf_to_check['Organ'] == organ].index
+                if not idx_oar.empty:
+                    dosimpars_list = oardf_to_check.at[idx_oar[0], 'DosimPars']
+                    if dosimpar in dosimpars_list:
+                        dosimpars_list.remove(dosimpar)
+                        st.session_state.oardf = oardf_to_check
+                        st.success("Restricción eliminada.")
+                        st.rerun()
+                    else:
+                        st.warning("La restricción no se encontró en la lista.")
+            if rerun_needed:
+                st.rerun()
+    else:
+        st.info("Primero debes cargar una prescripción para ver los DosimPars.")        
     pass
 
 hide_streamlit_style = """

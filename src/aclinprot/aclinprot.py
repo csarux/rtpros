@@ -242,6 +242,63 @@ def getTreatmentDosePrescription(pvdf):
     TreatmentDosePrescription = pvdf.Dose.astype('float').max()
     return TreatmentDosePrescription
     
+def checkDosimPars(oardf):
+    '''
+    Function: Check which DosimPars in oardf are recognized by parseDosimPar
+
+    Arguments:
+    oardf: DataFrame
+        DataFrame with OARs, must have columns 'Organ' and 'DosimPars'
+
+    Returns:
+    result_df: DataFrame
+        DataFrame with columns ['Organ', 'DosimPar', 'Recognized']
+    '''
+    rows = []
+    for _, oar in oardf.iterrows():
+        organ = oar['Organ']
+        dosimpars = oar['DosimPars']
+        if not isinstance(dosimpars, list):
+            continue
+        for dosimpar in dosimpars:
+            try:
+                parsed = parseDosimPar(dosimpar)
+                recognized = bool(parsed)  # True si hay algún resultado
+            except Exception:
+                recognized = False
+            rows.append({'Organ': organ, 'DosimPar': dosimpar, 'Recognized': recognized})
+    result_df = pd.DataFrame(rows)
+    return result_df
+
+def addDosimPar(oardf, Organ, DosimPar):
+    '''
+    Añade un DosimPar a la lista de restricciones de un órgano en oardf.
+    Si el órgano no existe, crea una nueva fila.
+
+    Argumentos:
+    oardf: DataFrame
+        DataFrame con columnas 'Organ' y 'DosimPars'
+    Organ: str
+        Nombre del órgano al que añadir la restricción
+    DosimPar: str
+        Restricción a añadir
+
+    Devuelve:
+    oardf: DataFrame actualizado
+    '''
+    idx = oardf[oardf['Organ'] == Organ].index
+    if not idx.empty:
+        # Añade el DosimPar si no está ya en la lista
+        dosimpars = oardf.at[idx[0], 'DosimPars']
+        if DosimPar not in dosimpars:
+            dosimpars.append(DosimPar)
+            oardf.at[idx[0], 'DosimPars'] = dosimpars
+    else:
+        # Crea una nueva fila para el órgano
+        new_row = {'Organ': Organ, 'DosimPars': [DosimPar]}
+        oardf = pd.concat([oardf, pd.DataFrame([new_row])], ignore_index=True)
+    return oardf
+
 '''
     Clinical protocols
 '''

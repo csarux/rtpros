@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <Protocol xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.12">
-  <Preview Version="1.2" ID="ProtocoloID" Type="Protocol" ApprovalStatus="Unapproved" Diagnosis="" TreatmentSite="Abdomen" AssignedUsers="" Description="" LastModified=" June 11 2025 18:25:07:323" ApprovalHistory=" Created [ June 11 2025 18:25:07:323 ]" />
+  <Preview Version="1.2" ID="ProtocoloID" Type="Protocol" ApprovalStatus="Unapproved" Diagnosis="" TreatmentSite="Abdomen" AssignedUsers="" Description="" LastModified=" June 12 2025 13:54:38:963" ApprovalHistory=" Created [ June 12 2025 13:54:38:963 ]" />
   <StructureTemplate Version="1.2">
     <Structures>
       <Structure ID="PTV mama izqda" Name="PTV mama izqda">
@@ -220,6 +220,27 @@
           <Dose>0.16</Dose>
           <TotalDose>2.4</TotalDose>
         </Item>
+        <Item ID="Pulmón izqdo" Primary="false">
+          <Type>0</Type>
+          <Modifier>1</Modifier>
+          <Parameter>20</Parameter>
+          <Dose>1.2</Dose>
+          <TotalDose>18</TotalDose>
+        </Item>
+        <Item ID="Pulmón izqdo" Primary="false">
+          <Type>0</Type>
+          <Modifier>1</Modifier>
+          <Parameter>15</Parameter>
+          <Dose>1.2</Dose>
+          <TotalDose>18</TotalDose>
+        </Item>
+        <Item ID="Pulmón dcho" Primary="false">
+          <Type>0</Type>
+          <Modifier>1</Modifier>
+          <Parameter>15</Parameter>
+          <Dose>0.266667</Dose>
+          <TotalDose>4</TotalDose>
+        </Item>
         <Item ID="Corazón" Primary="false">
           <Type>0</Type>
           <Modifier>8</Modifier>
@@ -288,6 +309,27 @@
           <Modifier>1</Modifier>
           <Value>5</Value>
           <TypeSpecifier>2.4</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>false</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Pulmón izqdo">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>20</Value>
+          <TypeSpecifier>18</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>false</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Pulmón izqdo">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>15</Value>
+          <TypeSpecifier>18</TypeSpecifier>
+          <ReportDQPValueInAbsoluteUnits>false</ReportDQPValueInAbsoluteUnits>
+        </MeasureItem>
+        <MeasureItem ID="Pulmón dcho">
+          <Type>3</Type>
+          <Modifier>1</Modifier>
+          <Value>15</Value>
+          <TypeSpecifier>4</TypeSpecifier>
           <ReportDQPValueInAbsoluteUnits>false</ReportDQPValueInAbsoluteUnits>
         </MeasureItem>
         <MeasureItem ID="Corazón">
