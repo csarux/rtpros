@@ -11,6 +11,30 @@ import difflib
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../aclinprot')))
 import aclinprot as acp
 
+# Función para mostrar el resultado del protocolo clínico y permitir su descarga
+def mostrar_resultado_y_descarga(prot_out, ruta_protocolo):
+    try:
+        st.success(f"Protocolo clínico generado en {prot_out}")
+
+        # Ruta completa al archivo generado
+        xml_path = os.path.join(ruta_protocolo, prot_out)
+        # Lee el archivo XML como texto
+        with open(xml_path, "r", encoding="utf-8") as f:
+            xml_content = f.read()
+        # Botón de descarga
+        st.download_button(
+            label="Descargar protocolo clínico XML",
+            data=xml_content,
+            file_name=prot_out,
+            mime="application/xml"
+        )
+    except Exception as e:
+        st.error(f"Error generando el protocolo clínico: {e}")
+        st.code(traceback.format_exc(), language="python")
+
+
+
+# Aplicación Streamlit
 st.title("Creación de protocolos clínicos mediante prescripciones de radioterapia")
 
 # --- Barra lateral ---
@@ -46,40 +70,12 @@ treatment_site = st.sidebar.text_input("Editar sitio de tratamiento", value=trea
 tab1, tab2, tab3 = st.tabs(["Prescripción", "Corrección de estructuras", "Verificación restricciones OAR"])
 
 with tab1:
-    # Aquí va tu lógica actual de prescripción (ya la tienes implementada)
     uploaded_file = st.file_uploader("Sube el archivo de prescripción (CSV)", type="csv")
 
-    # Estado para edición
-    if 'edit_csv' not in st.session_state:
-        st.session_state.edit_csv = False
-    if 'csv_content' not in st.session_state:
-        st.session_state.csv_content = None
-
-    # Botón para editar el archivo CSV
+    # Mostrar DataFrames directamente al subir archivo
     if uploaded_file is not None:
-        if st.sidebar.button("Editar archivo CSV"):
-            st.session_state.edit_csv = True
-            st.session_state.csv_content = uploaded_file.getvalue().decode("utf-8")
-
-    # Editor de texto para el CSV
-    if uploaded_file is not None and st.session_state.edit_csv:
-        edited_csv = st.text_area("Edita el archivo CSV", value=st.session_state.csv_content, height=400)
-        if st.button("Guardar cambios y recargar"):
-            st.session_state.csv_content = edited_csv
-            st.session_state.edit_csv = False
-            st.rerun()  # <-- Fuerza recarga para mostrar el contenido actualizado
-
-    # Mostrar DataFrames (si no estamos editando)
-    if uploaded_file is not None and not st.session_state.edit_csv:
-        csv_string = st.session_state.csv_content if st.session_state.csv_content else None
-        if csv_string:
-            file_to_parse = StringIO(csv_string)
-        else:
-            uploaded_file.seek(0)
-            file_to_parse = uploaded_file
-
         try:
-            pvdfs, ccdfs, oardfs = acp.parse_prescription(file_to_parse)
+            pvdfs, ccdfs, oardfs = acp.parse_prescription(uploaded_file)
             num_prescripciones = len(pvdfs)
 
             if num_prescripciones > 1:
@@ -108,44 +104,31 @@ with tab1:
         except Exception as e:
             st.error(f"Error procesando el archivo: {e}")
 
-    # Generar protocolo clínico y permitir descarga
-    if st.sidebar.button("Generar protocolo clínico"):
-        ruta_protocolo = os.path.abspath(os.getcwd())
-        os.makedirs(ruta_protocolo, exist_ok=True)
+        # Generar protocolo clínico y permitir descarga
+        if st.button("Generar protocolo clínico", key="gen_prot_tab1"):
+            ruta_protocolo = os.path.abspath(os.getcwd())
+            os.makedirs(ruta_protocolo, exist_ok=True)
 
-        # Usa los dataframes corregidos si existen en session_state
-        pvdf_to_use = st.session_state.get('pvdf', pvdf)
-        ccdf_to_use = st.session_state.get('ccdf', ccdf)
-        oardf_to_use = st.session_state.get('oardf', oardf)
+            # Usa los dataframes corregidos si existen en session_state
+            pvdf_to_use = st.session_state.get('pvdf', pvdf)
+            ccdf_to_use = st.session_state.get('ccdf', ccdf)
+            oardf_to_use = st.session_state.get('oardf', oardf)
 
-        try:
-            acp.convertPrescriptionIntoClinicalProtocol(
-                prescription_or_pvdf=pvdf_to_use,
-                ccdf=ccdf_to_use,
-                oardf=oardf_to_use,
-                ProtocolID=protocolo_id,
-                TreatmentSite=treatment_site,
-                PlanID=plan_id,
-                ProtOut=prot_out,
-                PrescriptionIndex=prescripcion_idx,
-            )
-            st.success(f"Protocolo clínico generado en {prot_out}")
-
-            # Ruta completa al archivo generado
-            xml_path = os.path.join(ruta_protocolo, prot_out)
-            # Lee el archivo XML como texto
-            with open(xml_path, "r", encoding="utf-8") as f:
-                xml_content = f.read()
-            # Botón de descarga
-            st.download_button(
-                label="Descargar protocolo clínico XML",
-                data=xml_content,
-                file_name=prot_out,
-                mime="application/xml"
-            )
-        except Exception as e:
-            st.error(f"Error generando el protocolo clínico: {e}")
-            st.code(traceback.format_exc(), language="python")
+            try:
+                acp.convertPrescriptionIntoClinicalProtocol(
+                    prescription_or_pvdf=pvdf_to_use,
+                    ccdf=ccdf_to_use,
+                    oardf=oardf_to_use,
+                    ProtocolID=protocolo_id,
+                    TreatmentSite=treatment_site,
+                    PlanID=plan_id,
+                    ProtOut=prot_out,
+                    PrescriptionIndex=prescripcion_idx,
+                )
+                mostrar_resultado_y_descarga(prot_out, ruta_protocolo)
+            except Exception as e:
+                st.error(f"Error generando el protocolo clínico: {e}")
+                st.code(traceback.format_exc(), language="python")
 
     # Mostrar mensaje solo si no hay archivo subido
     if uploaded_file is None:
@@ -209,6 +192,32 @@ with tab2:
             st.success("Nombres de estructuras actualizados en los tres dataframes!")
             st.rerun()
 
+        # Generar protocolo clínico y permitir descarga
+        if st.button("Generar protocolo clínico", key="gen_prot_tab2"):
+            ruta_protocolo = os.path.abspath(os.getcwd())
+            os.makedirs(ruta_protocolo, exist_ok=True)
+
+            # Usa los dataframes corregidos si existen en session_state
+            pvdf_to_use = st.session_state.get('pvdf', pvdf)
+            ccdf_to_use = st.session_state.get('ccdf', ccdf)
+            oardf_to_use = st.session_state.get('oardf', oardf)
+
+            try:
+                acp.convertPrescriptionIntoClinicalProtocol(
+                    prescription_or_pvdf=pvdf_to_use,
+                    ccdf=ccdf_to_use,
+                    oardf=oardf_to_use,
+                    ProtocolID=protocolo_id,
+                    TreatmentSite=treatment_site,
+                    PlanID=plan_id,
+                    ProtOut=prot_out,
+                    PrescriptionIndex=prescripcion_idx,
+                )
+                mostrar_resultado_y_descarga(prot_out, ruta_protocolo)
+            except Exception as e:
+                st.error(f"Error generando el protocolo clínico: {e}")
+                st.code(traceback.format_exc(), language="python")
+
     pass
 
 with tab3:
@@ -268,6 +277,33 @@ with tab3:
                 st.rerun()
     else:
         st.info("Primero debes cargar una prescripción para ver los DosimPars.")        
+
+    # Generar protocolo clínico y permitir descarga
+    if st.button("Generar protocolo clínico", key="gen_prot_tab3"):
+        ruta_protocolo = os.path.abspath(os.getcwd())
+        os.makedirs(ruta_protocolo, exist_ok=True)
+
+        # Usa los dataframes corregidos si existen en session_state
+        pvdf_to_use = st.session_state.get('pvdf', pvdf)
+        ccdf_to_use = st.session_state.get('ccdf', ccdf)
+        oardf_to_use = st.session_state.get('oardf', oardf)
+
+        try:
+            acp.convertPrescriptionIntoClinicalProtocol(
+                prescription_or_pvdf=pvdf_to_use,
+                ccdf=ccdf_to_use,
+                oardf=oardf_to_use,
+                ProtocolID=protocolo_id,
+                TreatmentSite=treatment_site,
+                PlanID=plan_id,
+                ProtOut=prot_out,
+                PrescriptionIndex=prescripcion_idx,
+            )
+            mostrar_resultado_y_descarga(prot_out, ruta_protocolo)
+        except Exception as e:
+            st.error(f"Error generando el protocolo clínico: {e}")
+            st.code(traceback.format_exc(), language="python")
+
     pass
 
 hide_streamlit_style = """
