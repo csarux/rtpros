@@ -304,7 +304,7 @@ with tab3:
             st.error(f"Error generando el protocolo clínico: {e}")
             st.code(traceback.format_exc(), language="python")
 
-    pass
+    pass 
 
 hide_streamlit_style = """
     <style>
