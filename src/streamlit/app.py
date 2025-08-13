@@ -1,4 +1,17 @@
 import streamlit as st
+
+# Solo configurar página si no se ha configurado ya
+try:
+    st.set_page_config(
+        page_title="Creación de protocolos clínicos",
+        page_icon="📝",
+        layout="centered",
+        initial_sidebar_state="expanded"
+    )
+except st.errors.StreamlitAPIException:
+    # Ya se configuró la página, continuar sin error
+    pass
+
 import pandas as pd
 import sys
 import os
@@ -305,12 +318,3 @@ with tab3:
             st.code(traceback.format_exc(), language="python")
 
     pass 
-
-hide_streamlit_style = """
-    <style>
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    header {visibility: hidden;}
-    </style>
-    """
-st.markdown(hide_streamlit_style, unsafe_allow_html=True)
