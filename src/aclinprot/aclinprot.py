@@ -577,7 +577,7 @@ def convertPrescriptionIntoClinicalProtocol(
     # Preview
     modPreview(cpet, ID=ProtocolID, TreatmentSite=TreatmentSite)
     # Phases
-    FractionCount = int(float(pvdf.Dose[0])/float(pvdf.FxDose[0]))
+    FractionCount = round(float(pvdf.Dose[0])/float(pvdf.FxDose[0]))
     modPhase(cpet, ID=PlanID, vFractionCount=FractionCount)
     # Structutures
     for pv in pvdf.itertuples():
