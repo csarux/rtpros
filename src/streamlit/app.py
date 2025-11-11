@@ -186,7 +186,19 @@ with tab2:
         # Mostrar el mapeo final
         mapping_df = pd.DataFrame(list(mapping.items()), columns=["Prescripción", "Contorneo"])
         st.write("Correspondencia final:")
-        st.dataframe(mapping_df)
+        # Resaltar en rojo las celdas de "Prescripción" cuando no coinciden con "Contorneo"
+        def _highlight_mismatch(row):
+            pres = row['Prescripción']
+            cont = row['Contorneo']
+            # Considerar NaN como diferencia si sólo uno es NaN
+            if pd.isna(pres) != pd.isna(cont):
+                mismatch = True
+            else:
+                mismatch = False if pd.isna(pres) and pd.isna(cont) else (pres != cont)
+            # Devuelve estilos para cada columna (Prescripción, Contorneo)
+            return ['color: red' if mismatch else '', '']
+
+        st.dataframe(mapping_df.style.apply(_highlight_mismatch, axis=1))
 
         # Botón para aplicar la corrección
         if st.button("Aplicar corrección de nombres"):
