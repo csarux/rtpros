@@ -154,21 +154,22 @@ with tab2:
     dicom_file = st.file_uploader("Sube el archivo DICOM RT Structure Set", type=["dcm"], key="dicom_uploader")
     if dicom_file is not None:
         cont_names = acp.readContouringStructureNames(dicom_file)
+        cont_names = list(cont_names) + ["No contorneado"] 
         contStrdf = pd.DataFrame(cont_names, columns=['Contouring'])
-        st.write("Estructuras en el RT Structure Set:")
-        st.dataframe(contStrdf)
+        # st.write("Estructuras en el RT Structure Set:")
+        # st.dataframe(contStrdf)
 
         # Unir todos los nombres únicos de estructuras de la prescripción
         pres_names = set(pvdf['Volume'].dropna().tolist()) | set(ccdf['Volume'].dropna().tolist()) | set(oardf['Organ'].dropna().tolist())
         pres_names = list(pres_names)
-        st.write("Estructuras en la prescripción:")
-        st.dataframe(pd.DataFrame(pres_names, columns=['Prescripción']))
+        # st.write("Estructuras en la prescripción:")
+        # st.dataframe(pd.DataFrame(pres_names, columns=['Prescripción']))
 
         # Sugerencia automática
         suggestions = {}
         for pres_name in pres_names:
             match = difflib.get_close_matches(pres_name, cont_names, n=1)
-            suggestions[pres_name] = match[0] if match else cont_names[0]
+            suggestions[pres_name] = match[0] if match else cont_names[-1]
 
         # Selección manual
         mapping = {}
@@ -181,7 +182,10 @@ with tab2:
                 index=cont_names.index(default),
                 key=f"map_{pres_name}"
             )
-            mapping[pres_name] = selected
+            if selected != "No contorneado":
+                mapping[pres_name] = selected
+            else:
+                mapping[pres_name] = pres_name
 
         # Mostrar el mapeo final
         mapping_df = pd.DataFrame(list(mapping.items()), columns=["Prescripción", "Contorneo"])
